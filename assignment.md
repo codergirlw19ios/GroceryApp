@@ -40,7 +40,7 @@ You are going to write a GroceryTrip class that will serve as a data model for a
   - Write another function to update the tax rate that can throw an error. Take in the appropriate parameter. Be sure to update the total. Throw an error if the new total exceeds the budget.
 
 ### Week 6:
-  - In your function to add to cart: Allow for the user to override shopping list errorts and add the item as they entered it anyway; still throw the final error for exceeding budget if necessary.
+  - In your function to add to cart: Allow for the user to override shopping list errors and add the item as they entered it anyway; still throw the final error for exceeding budget if necessary.
 - Review your code and consider how you might refactor to improve it.
   - Is any function lengthy? Could you extract code make it its own function? Extracting functions improve readability and their access can be reduced to private methods.
   - Is there part of your code that was difficult to write and is difficult to read? Is there another method you can use that's easier to read? Could you write comments to improve readability? Can you rename variables for clarity?
