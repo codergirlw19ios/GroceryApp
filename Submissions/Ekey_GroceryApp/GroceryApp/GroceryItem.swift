@@ -1,0 +1,34 @@
+import Foundation
+
+
+struct GroceryItem :  Hashable {
+    let name: String
+    var cost: Double?    // This should be an optional value
+    var quantity: Int
+    
+    init(name: String,  quantity: Int = 0, cost: Double = 0.0) {
+        self.name = name
+        self.cost = cost
+        self.quantity = quantity
+    }
+    // must be mutating because structs are value types and you cannot modify struct properties unless mutating
+    // Could not get a hashable item to Throw -- maybe a syntax error - ask Amanda
+    mutating func updateCost(cost: Double) throws
+    {
+        if (cost > 0.0) {
+            self.cost = cost
+        } else {
+            throw GroceryTripError.costCantBeNegative
+        }
+        
+    }
+    mutating func updateQuantity(quantity: Int) throws
+    {
+        if (quantity > 0) {
+            self.quantity = quantity
+        } else {
+            throw GroceryTripError.quantityCantBeZero
+        }
+        
+    }
+}
