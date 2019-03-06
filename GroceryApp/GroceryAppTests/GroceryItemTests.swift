@@ -39,4 +39,5 @@ class GroceryItemTests: XCTestCase {
 
         XCTAssertEqual(testGroceryItem.quantity, expectedQuantity)
     }
+
 }
