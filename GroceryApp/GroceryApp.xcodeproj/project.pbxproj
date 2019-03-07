@@ -16,6 +16,8 @@
 		2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BC222647F000207624 /* ShoppingListModel.swift */; };
 		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
 		26B1893722264D08001765F8 /* ShoppingListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1893622264D08001765F8 /* ShoppingListModelTests.swift */; };
+		E250F0932230981C00BD24BA /* GroceryTripError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250F0922230981C00BD24BA /* GroceryTripError.swift */; };
+		E250F0952230983900BD24BA /* GroceryTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250F0942230983900BD24BA /* GroceryTrip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		2685C1BC222647F000207624 /* ShoppingListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModel.swift; sourceTree = "<group>"; };
 		2685C1BE2226486100207624 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		26B1893622264D08001765F8 /* ShoppingListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModelTests.swift; sourceTree = "<group>"; };
+		E250F0922230981C00BD24BA /* GroceryTripError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripError.swift; sourceTree = "<group>"; };
+		E250F0942230983900BD24BA /* GroceryTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTrip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 				2685C19C222646F400207624 /* ViewController.swift */,
 				2685C19E222646F400207624 /* Main.storyboard */,
 				2685C1A6222646F700207624 /* Info.plist */,
+				E250F0922230981C00BD24BA /* GroceryTripError.swift */,
+				E250F0942230983900BD24BA /* GroceryTrip.swift */,
 			);
 			path = GroceryApp;
 			sourceTree = "<group>";
@@ -221,10 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E250F0952230983900BD24BA /* GroceryTrip.swift in Sources */,
 				2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */,
 				2685C19D222646F400207624 /* ViewController.swift in Sources */,
 				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
+				E250F0932230981C00BD24BA /* GroceryTripError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,12 +396,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JZ9G56K487;
 				INFOPLIST_FILE = GroceryApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = rawls.GroceryApp;
+				PRODUCT_BUNDLE_IDENTIFIER = bain.GroceryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -405,12 +414,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JZ9G56K487;
 				INFOPLIST_FILE = GroceryApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = rawls.GroceryApp;
+				PRODUCT_BUNDLE_IDENTIFIER = bain.GroceryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
