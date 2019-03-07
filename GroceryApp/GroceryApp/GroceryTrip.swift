@@ -14,8 +14,8 @@ class GroceryTrip {
     private var taxRate: Double = 0.0
     
     var totalCost: Double {
-        let total = cart.reduce(0) {(result, next) -> Double in
-            return result + (next.cost! * Double(next.quantity))
+        let total = cart.reduce(0) {(x, y) -> Double in
+            return x + (y.cost! * Double(y.quantity))
         }
         
         return total * (1.0 + taxRate)
