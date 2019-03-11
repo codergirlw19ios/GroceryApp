@@ -29,71 +29,57 @@ class GroceryStoreTrip {
             // since GroceryItem is hashable, the object can be a key
             shoppingList[item] = false
         }
-        // did this for testing .....  self.myCart = groceryList
+//        var interimShoppingListSet: Set = Set(shoppingListArray)
+//        func getShoppingList() -> [GroceryItem: Bool] {
+//            let tuple = interimShoppingListSet.map { ($0, false)}
+//            return Dictionary(uniqueKeysWithValues: tuple)
+//        }
+//        self.shoppingList = getShoppingList()
     }
     
     func addGroceryItemToCart(_ groceryItem: GroceryItem, _ allowOverride: Bool = false) throws {
-        var inList = false
-        var error = GroceryTripError.none
         
-        // Verify the item Name is not already in the cart..
-        if !myCart.contains(where: { $0.name.lowercased() == groceryItem.name.lowercased() }) {
-            // Laurie -- try to reduce this code..
-            // if the item requested is in the shopping list, then add to cart
-            for (gi, b) in shoppingList {
-                // Is the grocery Item name in the shopping list?
-                if gi.name.lowercased() == groceryItem.name.lowercased() && b == false {
-                    if allowOverride || gi.quantity >= groceryItem.quantity {
-                        myCart.append(groceryItem)
-                        // indicate the grocery item was put into the cart
-                        shoppingList[gi] = true
-                        inList = true
-                    } else {
-                        error = GroceryTripError.quantityIsMore
-                    }
-                    break
-                }
-            }
-            if (!inList) {
-                if allowOverride {
-                    myCart.append(groceryItem)
-                }
-                else {
-                    error = GroceryTripError.itemNotOnList
-                }
-            }
-        } else {
-            // don't add item  - it already exists -- could update the quantity though ..
-            error = GroceryTripError.itemExistsInList
+        // if the Item is already in the cart -- throw error
+        guard myCart.isEmpty || myCart.contains(where:
+            { $0.name.lowercased() != groceryItem.name.lowercased() })
+            else {
+            throw GroceryTripError.itemExistsInList
         }
         
-        if (error != GroceryTripError.none) {
-            throw error
+        // if item is on shopping list, continue - else- throw an error
+        guard shoppingList.contains(where: { $0.key.name.lowercased() == groceryItem.name.lowercased() || allowOverride == true }) else {
+            throw GroceryTripError.itemNotOnList
         }
+        
+        // if  is on the shopping list and quantity is lower or allowable to be more, then continue - else throw error
+        guard shoppingList.contains(where: { $0.key.name.lowercased() == groceryItem.name.lowercased() && $0.value == false || (allowOverride || groceryItem.quantity <= $0.key.quantity)}) else {
+            throw GroceryTripError.quantityIsMore
+        }
+        
+        myCart.append(groceryItem)
+        // indicate the grocery item was put into the cart
+        shoppingList[groceryItem] = true
+        
+        
+
     }
     
     func removeGroceryItemFromCart(_ groceryItem: GroceryItem) -> Bool {
         // If item found in cart, remove from cart, and update the shoppingList Bool value to FALSE to indicate item not in Cart
-        
-        // Laurie -- try to reduce this code..
         var itemFound = false
-        var index = 0
-        for item in myCart {
-            if item.name.lowercased() == groceryItem.name.lowercased() {
-                // found!  remove item from cart
-                myCart.remove(at: index)
-                index += 1
-                for (gi, _) in shoppingList {
-                    if gi.name.lowercased() == groceryItem.name.lowercased() {
-                        // update shopping list to inidicate item not in cart anymore
-                        shoppingList[gi] = false
-                    }
-                }
-                itemFound = true
-                break;
-            }
+        
+        // if the item is found in the cart - remove it.
+        // because item is equatable
+        if let index = myCart.index(of: groceryItem) {
+            myCart.remove(at: index)
+            itemFound = true
         }
         
+        if shoppingList.contains(where: { $0.key == groceryItem }) {
+            shoppingList[groceryItem] = false
+        }
+        
+
         return itemFound
     }
     

@@ -41,12 +41,13 @@ class GroceryStoreTripTests: XCTestCase {
 
   
     func test_AddGroceryItemToCart_Count() {
-        XCTAssertEqual(myTrip.myCart.count, 2)
+        var count = myTrip.myCart.count
+        XCTAssertEqual(count, 2)
         let expectedOutput = myTrip.myCart.count + 1
         // try? if throws error will be nil
         try? myTrip.addGroceryItemToCart(GroceryItem(name: "Hamburger", quantity: 1, cost: 2.50), true)
-        
-        XCTAssertEqual(myTrip.myCart.count, expectedOutput)
+        count = myTrip.myCart.count
+        XCTAssertEqual(count, expectedOutput)
     }
     
     func test_RemoveGroceryItemToCart_Count() {

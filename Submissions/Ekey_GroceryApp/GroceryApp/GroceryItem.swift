@@ -12,7 +12,7 @@ struct GroceryItem :  Hashable {
         self.quantity = quantity
     }
     // must be mutating because structs are value types and you cannot modify struct properties unless mutating
-    // Could not get a hashable item to Throw -- maybe a syntax error - ask Amanda
+    
     mutating func updateCost(cost: Double) throws
     {
         if (cost > 0.0) {
