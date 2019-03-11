@@ -1,6 +1,6 @@
 import Foundation
 
-struct GroceryItem {
+struct GroceryItem: Hashable {
     let name: String
     var quantity: Int
     var cost: Double?
