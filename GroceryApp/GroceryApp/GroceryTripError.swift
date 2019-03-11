@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum GrocertyTripError {
+enum GroceryTripError: Error {
     case totalExceedBudget
     case itemNotFound
     case qtyExceedAmt
