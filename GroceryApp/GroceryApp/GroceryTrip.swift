@@ -27,6 +27,7 @@ class GroceryTrip {
             var total:Double = cart.reduce(0) { x, y in
                 y.cost != nil ? (x + (y.cost! * Double(y.quantity))) : x }
             total = total + (total * taxRate/100)
+            print(total)
             return total
         }
     }
@@ -43,11 +44,21 @@ class GroceryTrip {
     //: - - If the quantity does not match the GroceryItem's quantity in the shopping list dictionary, throw the appropriate error.
     //: - - If the quantity matches, update the dictionary's boolean to true and add the GroceryItem with cost to the cart array. Check the new balance and throw an error if necessary.
     func addGroceryItemToCart(cost: Double, quantity: Int, name: String) throws {
+        //If same item exists in cart then update quantity?
         let match: [GroceryItem: Bool] = shoppingList.filter{$0.key.name == name}
         if match.isEmpty {throw GroceryTripError.noMatchingItem}
-        if (match.first?.key.quantity != quantity) {throw GroceryTripError.quantityNotMatching}
+        if (match.first!.key.quantity < quantity) { throw GroceryTripError.quantityNotMatching}
         shoppingList.updateValue(true, forKey: match.first!.key)
-        cart.append(GroceryItem(name: name, quantity: quantity, cost: cost))
+        var existingItemInCart = false
+        for i in cart.indices {
+            if (cart[i].name == name) {
+                cart[i].quantity = cart[i].quantity + quantity
+                existingItemInCart = true
+            }
+        }
+        if (!existingItemInCart) {
+            cart.append(GroceryItem(name: name, quantity: quantity, cost: cost))
+        }
         //update the dictionary's boolean to true and add the GroceryItem with cost to the cart array. Check the new balance and throw an error if necessary.
         if (balance < 0) { throw GroceryTripError.totalExceedsBudget}
     }

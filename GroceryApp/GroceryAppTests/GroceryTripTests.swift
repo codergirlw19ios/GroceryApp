@@ -14,12 +14,14 @@ class GroceryTripTests: XCTestCase {
     var cerealItem = GroceryItem(name: "cereal", quantity: 1)
     var milkItem = GroceryItem(name: "milk", quantity: 2)
     var cerealItemQuantityTwo = GroceryItem(name: "cereal", quantity: 2)
+    var cerealItemQuantityThree = GroceryItem(name: "cereal", quantity: 3)
 
     override func setUp() {
-        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItem, milkItem])
+        
     }
 
     func testTotalCostAndBalanceWithOneItemInCart() throws {
+        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItem, milkItem])
         try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "bread")
         let expectedTotalCost = 2 + (2 * 0.055)
         XCTAssertEqual(testGroceryTrip.totalCost, expectedTotalCost)
@@ -27,12 +29,15 @@ class GroceryTripTests: XCTestCase {
     }
     
     func testAddingGroceryItemNotOnShoppingListThrowsError() throws {
-//        let actualResult = try? testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "milk")
-        XCTAssertThrowsError(try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "milk"))
-//        XCTAssertThrowsError(try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "milk")) { error in XCTAssertEqual(error as! GroceryTripError, GroceryTripError.noMatchingItem) }
+        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItem, milkItem])
+        XCTAssertThrowsError(try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "cheese")) {
+            error in
+    
+            XCTAssertEqual(error as! GroceryTripError, GroceryTripError.noMatchingItem) }
     }
     
     func testTotalCostAndBalanceWithTwoItemsInCart() throws {
+        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItem, milkItem])
         try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "bread")
         try testGroceryTrip.addGroceryItemToCart(cost: 4.0, quantity: 1, name: "cereal")
         let expectedTotalCost = 6 + (6 * 0.055)
@@ -41,6 +46,7 @@ class GroceryTripTests: XCTestCase {
     }
     
     func test_removeGroceryItemFromCart() throws {
+        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItem, milkItem])
         try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "bread")
         try testGroceryTrip.addGroceryItemToCart(cost: 4.0, quantity: 1, name: "cereal")
         var expectedTotalCost = 6 + (6 * 0.055)
@@ -66,6 +72,7 @@ class GroceryTripTests: XCTestCase {
     }
     
     func testCheckout() throws {
+        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItem, milkItem])
         try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "bread")
         try testGroceryTrip.addGroceryItemToCart(cost: 4.0, quantity: 1, name: "cereal")
         let expectedTotalCost = 6 + (6 * 0.055)
@@ -77,6 +84,7 @@ class GroceryTripTests: XCTestCase {
     }
     
     func test_updateTaxRate() throws {
+        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItem, milkItem])
         try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "bread")
         try testGroceryTrip.addGroceryItemToCart(cost: 4.0, quantity: 1, name: "cereal")
         var expectedTotalCost = 6 + (6 * 0.055)
@@ -87,6 +95,7 @@ class GroceryTripTests: XCTestCase {
     }
     
     func test_updateTaxRateNegative() throws {
+        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItem, milkItem])
         try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "bread")
         try testGroceryTrip.addGroceryItemToCart(cost: 4.0, quantity: 1, name: "cereal")
         XCTAssertThrowsError(try testGroceryTrip.updateTaxRate(newTaxRate: -2.0))
@@ -98,5 +107,15 @@ class GroceryTripTests: XCTestCase {
         try testGroceryTrip.addGroceryItemToCart(cost: 4.0, quantity: 1, name: "cereal")
         XCTAssertThrowsError(try testGroceryTrip.updateTaxRate(newTaxRate: 50.0))
         
+    }
+    
+    func testTotalCostAndBalanceWithSameItemTwiceInCart() throws {
+        testGroceryTrip = GroceryTrip(budget: 120.00, taxRate: 5.5, shoppingListArray: [breadItem, cerealItemQuantityThree])
+        try testGroceryTrip.addGroceryItemToCart(cost: 2.0, quantity: 1, name: "bread")
+        try testGroceryTrip.addGroceryItemToCart(cost: 4.0, quantity: 2, name: "cereal")
+        try testGroceryTrip.addGroceryItemToCart(cost: 4.0, quantity: 1, name: "cereal")
+        let expectedTotalCost = 14 + (14 * 0.055)
+        XCTAssertEqual(testGroceryTrip.totalCost, expectedTotalCost)
+        XCTAssertEqual(testGroceryTrip.balance,120 - expectedTotalCost)
     }
 }

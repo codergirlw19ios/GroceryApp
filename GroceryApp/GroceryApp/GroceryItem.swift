@@ -10,6 +10,12 @@ struct GroceryItem : Hashable {
         self.quantity = quantity
         self.cost = cost
     }
+    
+    init(name: String, quantity: Int) {
+        self.name = name
+        self.quantity = quantity
+        self.cost = nil
+    }
 
     mutating func update(cost: Double){
         self.cost = cost
