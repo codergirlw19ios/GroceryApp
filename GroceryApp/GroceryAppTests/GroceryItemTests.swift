@@ -1,12 +1,11 @@
-//
-//  GroceryAppTests.swift
-//  GroceryAppTests
-//
-//  Created by Amanda Rawls on 2/26/19.
-//
-
 import XCTest
 @testable import GroceryApp
+
+// Your GroceryItem will have
+//a name (a string),
+//a quantity (an int),
+//and a cost (a dollar amount).
+//The shopping list will not know the cost of the items before the trip, so make cost an optional value. Write a mutating function that will update cost, and another to update quantity in case the grocery store does not have the items in stock.
 
 class GroceryItemTests: XCTestCase {
     var testGroceryItem: GroceryItem!
@@ -25,14 +24,14 @@ class GroceryItemTests: XCTestCase {
 
         XCTAssertEqual(actualGroceryItem.cost, expectedCost)
     }
-
+//
     func test_updateCost_HasCorrectCostValue_AfterUpdate() {
         let expectedCost: Double = 1.04
         testGroceryItem.update(cost: expectedCost)
-
+//
         XCTAssertEqual(testGroceryItem.cost, expectedCost)
     }
-
+//
     func test_updateQuantity_HasCorrectValue_AfterUpdate() {
         let expectedQuantity: Int = 4
         testGroceryItem.update(quantity: expectedQuantity)
