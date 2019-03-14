@@ -9,7 +9,6 @@ import UIKit
 
 class ShoppingListViewController: UIViewController {
 
-    // dependency injection of ShoppingListPersistence
     let model = ShoppingListModel(persistence: ShoppingListPersistence())
 
     @IBOutlet weak var shoppingListTableView: UITableView!

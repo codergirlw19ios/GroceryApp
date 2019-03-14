@@ -8,19 +8,19 @@ class ShoppingListModel {
     weak var delegate: ShoppingListModelDelegate?
 
     private let persistence: ShoppingListPersistence
-    
+
     private var shoppingList: [GroceryItem] {
         didSet {
             persistence.write(shoppingList)
         }
     }
-    
-    var listCount: Int { return shoppingList.count }
 
-    init(persistence: ShoppingListPersistence) {
+    init(persistence: ShoppingListPersistence){
         self.persistence = persistence
         shoppingList = persistence.shoppingList()
     }
+    
+    var listCount: Int { return shoppingList.count }
 
     func groceryItemFor(row: Int) -> GroceryItem? {
         guard row < listCount else { return nil }

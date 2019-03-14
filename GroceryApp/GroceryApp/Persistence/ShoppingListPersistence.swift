@@ -2,15 +2,17 @@
 //  ShoppingListPersistence.swift
 //  GroceryApp
 //
-//  Created by Amanda Rawls on 3/13/19.
+//  Created by Amanda Rawls on 3/14/19.
 //
 
 import Foundation
 
 class ShoppingListPersistence {
+    // ShoppingList.json
     private let fileName = "ShoppingList"
-    private let fileURL: URL
     private let type = "json"
+
+    private let fileURL: URL
 
     init() {
         fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -31,24 +33,23 @@ class ShoppingListPersistence {
         return []
     }
 
-
     // write JSON to file
     func write(_ list: [GroceryItem]) {
         do {
             let data = try encode(list)
-            try data.write(to: fileURL, options: Data.WritingOptions.atomicWrite)
+            try data.write(to: fileURL, options: .atomicWrite)
         } catch let error as NSError {
             print(error.debugDescription)
         }
     }
 
-    // encode from GroceryItem to JSON
-    private func encode<T>(_ item: T) throws -> Data where T: Encodable {
-        return try JSONEncoder().encode(item)
-    }
-
-    // decode from JSON to GroceryItem
+    // decode from JSON to a Type
     private func decode<T>(type: T.Type, _ data: Data) throws -> T where T: Decodable {
         return try JSONDecoder().decode(type, from: data)
+    }
+
+    // encode from a Type to JSON
+    private func encode<T>(_ item: T) throws -> Data where T: Encodable {
+        return try JSONEncoder().encode(item)
     }
 }
