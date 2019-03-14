@@ -7,14 +7,16 @@ protocol ShoppingListModelDelegate: class {
 class ShoppingListModel {
     weak var delegate: ShoppingListModelDelegate?
 
-    private var shoppingList: [GroceryItem] = [
-        GroceryItem(name: "Pears", quantity: 5),
-        GroceryItem(name: "Oranges", quantity: 7),
-        GroceryItem(name: "Grapes", quantity: 24),
-        GroceryItem(name: "Pineapple", quantity: 1)
-    ]
+    private let persistence: ShoppingListPersistence
+    
+    private var shoppingList: [GroceryItem]
 
     var listCount: Int { return shoppingList.count }
+
+    init(persistence: ShoppingListPersistence) {
+        self.persistence = persistence
+        shoppingList = persistence.shoppingList()
+    }
 
     func groceryItemFor(row: Int) -> GroceryItem? {
         guard row < listCount else { return nil }
@@ -23,7 +25,9 @@ class ShoppingListModel {
 
     func addItemToShoppingList(name: String, quantity: Int) -> GroceryItem {
         let groceryItem = GroceryItem(name: name, quantity: quantity)
+
         shoppingList.append(groceryItem)
+        persistence.write(groceryItem)
 
         // let the controller know to update the table view
         delegate?.dataUpdated()
