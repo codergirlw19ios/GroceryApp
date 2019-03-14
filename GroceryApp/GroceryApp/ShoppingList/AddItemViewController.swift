@@ -6,7 +6,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,13 +16,25 @@ class AddItemViewController: UIViewController {
         nameTextField.delegate = self
     }
 
-    @IBAction func userTappedButton(_ sender: UIButton) {
+    @IBAction func saveTappedButton(_ sender: UIButton) {
+        nameTextField.resignFirstResponder()
+        quantityTextField.resignFirstResponder()
+        
         guard let name = nameTextField.text, let quantity = Int(quantityTextField.text ?? "") else {
             return
         }
 
         let groceryItem = model?.addItemToShoppingList(name: name, quantity: quantity)
-        print(groceryItem ?? "")
+
+        guard groceryItem != nil else {
+            return
+        }
+
+        dismiss(animated: true, completion: nil)
+    }
+
+    deinit {
+        print("deinit AddItemViewController")
     }
 }
 

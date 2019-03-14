@@ -1,6 +1,11 @@
 import Foundation
 
+protocol ShoppingListModelDelegate: class {
+    func dataUpdated()
+}
+
 class ShoppingListModel {
+    weak var delegate: ShoppingListModelDelegate?
 
     private var shoppingList: [GroceryItem] = [
         GroceryItem(name: "Pears", quantity: 5),
@@ -20,6 +25,9 @@ class ShoppingListModel {
         let groceryItem = GroceryItem(name: name, quantity: quantity)
         shoppingList.append(groceryItem)
 
+        // let the controller know to update the table view
+        delegate?.dataUpdated()
+
         return groceryItem
     }
 
@@ -37,6 +45,10 @@ class ShoppingListModel {
         }
 
         return quantityInt
+    }
+
+    deinit {
+        print("deinit ShoppingListModel")
     }
 }
 

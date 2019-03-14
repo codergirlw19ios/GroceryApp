@@ -18,6 +18,26 @@ class ShoppingListViewController: UIViewController {
 
         shoppingListTableView.dataSource = self
         shoppingListTableView.delegate = self
+
+        model.delegate = self
+    }
+
+
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        // call the segue AddItemSegue
+        performSegue(withIdentifier: "AddItemSegue", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? AddItemViewController else {
+            return
+        }
+
+        destination.model = model
+    }
+
+    deinit {
+        print("deinit ShoppingListViewController")
     }
 }
 
@@ -48,7 +68,10 @@ extension ShoppingListViewController: UITableViewDataSource {
 
         return cell
     }
-
-
 }
 
+extension ShoppingListViewController: ShoppingListModelDelegate {
+    func dataUpdated() {
+        shoppingListTableView.reloadData()
+    }
+}
