@@ -16,7 +16,7 @@ class ShoppingListPersistence {
         fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             .first!
             .appendingPathComponent(fileName, isDirectory: false)
-            .appendingPathComponent(type)
+            .appendingPathExtension(type)
     }
 
     // read JSON from file
@@ -33,9 +33,9 @@ class ShoppingListPersistence {
 
 
     // write JSON to file
-    func write(_ item: GroceryItem) {
+    func write(_ list: [GroceryItem]) {
         do {
-            let data = try encode(item)
+            let data = try encode(list)
             try data.write(to: fileURL, options: Data.WritingOptions.atomicWrite)
         } catch let error as NSError {
             print(error.debugDescription)

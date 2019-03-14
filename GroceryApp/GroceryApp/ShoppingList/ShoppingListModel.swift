@@ -9,8 +9,12 @@ class ShoppingListModel {
 
     private let persistence: ShoppingListPersistence
     
-    private var shoppingList: [GroceryItem]
-
+    private var shoppingList: [GroceryItem] {
+        didSet {
+            persistence.write(shoppingList)
+        }
+    }
+    
     var listCount: Int { return shoppingList.count }
 
     init(persistence: ShoppingListPersistence) {
@@ -27,7 +31,6 @@ class ShoppingListModel {
         let groceryItem = GroceryItem(name: name, quantity: quantity)
 
         shoppingList.append(groceryItem)
-        persistence.write(groceryItem)
 
         // let the controller know to update the table view
         delegate?.dataUpdated()
