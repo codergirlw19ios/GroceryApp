@@ -13,14 +13,14 @@ class ShoppingListModelTests: XCTestCase {
 
 
     func test_addItemToShoppingList_CorrectlyAddsItem() {
-        XCTAssertEqual(testShoppingListModel.listCount, 0)
+        XCTAssertEqual(testShoppingListModel.listCount, 4)
 
         let expectedName = "test"
         let expectedQuantity = 1
 
         let actualShoppingListItem: GroceryItem? = testShoppingListModel.addItemToShoppingList(name: expectedName, quantity: expectedQuantity)
 
-        XCTAssertEqual(testShoppingListModel.listCount, 1)
+        XCTAssertEqual(testShoppingListModel.listCount, 5)
         XCTAssertEqual(actualShoppingListItem?.name, expectedName)
         XCTAssertEqual(actualShoppingListItem?.quantity, expectedQuantity)
         XCTAssertNil(actualShoppingListItem?.cost)
@@ -60,7 +60,7 @@ class ShoppingListModelTests: XCTestCase {
 
     func test_groceryItemForRow_returnsCorrectGroceryItem() {
         let indexPath = IndexPath(row: 1, section: 0)
-        let expectedGroceryItem = GroceryItem(name: "pears", quantity: 6)
+        let expectedGroceryItem = GroceryItem(name: "Oranges", quantity: 7)
 
         _ = testShoppingListModel.addItemToShoppingList(name: "bananas", quantity: 3)
         _ = testShoppingListModel.addItemToShoppingList(name: expectedGroceryItem.name, quantity: expectedGroceryItem.quantity)
@@ -71,9 +71,9 @@ class ShoppingListModelTests: XCTestCase {
     }
 
     func test_groceryItemForRow_returnsNilWhenExceedingCount() {
-        let indexPath = IndexPath(row: 1, section: 0)
+        let indexPath = IndexPath(row: 5, section: 0)
 
-        _ = testShoppingListModel.addItemToShoppingList(name: "bananas", quantity: 3)
+        _ = testShoppingListModel.addItemToShoppingList(name: "Oranges", quantity: 7)
 
 
         let actualResult = testShoppingListModel.groceryItemFor(row: indexPath.row)
