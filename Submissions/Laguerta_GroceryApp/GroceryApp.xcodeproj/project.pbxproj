@@ -17,6 +17,7 @@
 		2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BC222647F000207624 /* ShoppingListModel.swift */; };
 		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
 		26B1893722264D08001765F8 /* ShoppingListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1893622264D08001765F8 /* ShoppingListModelTests.swift */; };
+		590362702240901E0044A2A0 /* GroceryTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903626F2240901E0044A2A0 /* GroceryTrip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		2685C1BC222647F000207624 /* ShoppingListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModel.swift; sourceTree = "<group>"; };
 		2685C1BE2226486100207624 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		26B1893622264D08001765F8 /* ShoppingListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModelTests.swift; sourceTree = "<group>"; };
+		5903626F2240901E0044A2A0 /* GroceryTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTrip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				2685C1BB2226479300207624 /* ShoppingList */,
 				2685C1BE2226486100207624 /* GroceryItem.swift */,
+				5903626F2240901E0044A2A0 /* GroceryTrip.swift */,
 				2685C1BA2226473100207624 /* Supporting Files */,
 			);
 			path = GroceryApp;
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590362702240901E0044A2A0 /* GroceryTrip.swift in Sources */,
 				2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */,
 				2685C19D222646F400207624 /* AddItemViewController.swift in Sources */,
 				262236D22238A4BC00B29A19 /* ShoppingListViewController.swift in Sources */,
