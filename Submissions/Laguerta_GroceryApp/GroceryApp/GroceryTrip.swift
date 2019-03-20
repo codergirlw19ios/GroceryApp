@@ -39,15 +39,16 @@ class GroceryTrip {
     
     //In your function to add to cart: Allow for the user to override shopping list errorts and add the item as they entered it anyway; still throw the final error for exceeding budget if necessary.
     
-    func addToCart(cost: Double, quantity: Int, item: GroceryItem) throws {
+    //func addToCart(cost: Double, quantity: Int, item: GroceryItem) throws {
+    func addToCart(groceryItem: GroceryItem) throws{
         //If the string does not match any of the GroceryItems' names in the shopping list dictionary, throw the appropriate error.
-        guard shoppingList.contains(where: {$0.key.name == item.name}) else {
+        guard shoppingList.contains(where: {$0.key.name == groceryItem.name}) else {
             throw GroceryTripError.unplannedGroceryItem
         }
         
         //If the quantity does not match the GroceryItem's quantity in the shopping list dictionary, throw the appropriate error.
-        guard shoppingList.contains(where: { $0.key.name == item.name && $0.key.quantity == item.quantity } ) else {
-            if shoppingList.contains(where: { $0.key.name == item.name && $0.key.quantity < item.quantity} ) {
+        guard shoppingList.contains(where: { $0.key.name == groceryItem.name && $0.key.quantity == groceryItem.quantity } ) else {
+            if shoppingList.contains(where: { $0.key.name == groceryItem.name && $0.key.quantity < groceryItem.quantity} ) {
                 throw GroceryTripError.shortQuantity }
             else {
                 throw GroceryTripError.excessQuantity
@@ -56,9 +57,9 @@ class GroceryTrip {
         
         //If the quantity matches, update the dictionary's boolean to true and add the GroceryItem with cost to the cart array. Check the new balance and throw an error if necessary.
         
-        if shoppingList.contains(where: {$0.key.name == item.name && $0.key.quantity == item.quantity}) || shoppingList.contains(where: {$0.key.name == item.name && $0.key.quantity != item.quantity}){
-            let groceryItem = GroceryItem(name: item.name, quantity: quantity, cost: cost)
-            shoppingList[groceryItem] = true
+        if shoppingList.contains(where: {$0.key.name == groceryItem.name && $0.key.quantity == groceryItem.quantity}) || shoppingList.contains(where: {$0.key.name == groceryItem.name && $0.key.quantity != groceryItem.quantity}) {
+            let item: GroceryItem = groceryItem
+            shoppingList[item] = true
             cart.append(item)
             
             guard balance <= budget else {
