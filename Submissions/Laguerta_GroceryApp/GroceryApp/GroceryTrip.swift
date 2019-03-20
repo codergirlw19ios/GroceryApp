@@ -8,11 +8,11 @@
 import Foundation
 
 class GroceryTrip {
-    var budget: Double
-    var shoppingList: [GroceryItem : Bool]
-    var cart: [GroceryItem]
+    private var budget: Double
+    private var shoppingList: [GroceryItem : Bool]
+    private var cart: [GroceryItem] = []
     //A PERCENTAGE
-    var taxRate: Double
+    private var taxRate: Double
     
     init(budget: Double, shoppingListArray: [GroceryItem], taxRate: Double) {
         self.budget = budget
@@ -78,7 +78,7 @@ class GroceryTrip {
     }
     
     //Write a function to checkout that can throw an error. This function will return the remaining items on the shopping list and the remaining budget in a tuple. If the tax rate is 0.0, return the appropriate error. If the balance is negative, throw the appropriate error. Otherwise, remove everything from the shopping list whose boolean evaluates to true and return everything on the shopping list that wasn't purchased, and return the remaining available budget amount. Do not return a dictionary, but return an array of GroceryItem.
-    func checkout(taxRate: Double, balance: Double, shoppingList: [GroceryItem]) throws -> (remainingBudget: Double, nonPurchasedItems: [GroceryItem])  {
+    func checkout() throws -> (remainingBudget: Double, nonPurchasedItems: [GroceryItem])  {
         if taxRate == 0.0 {
             throw GroceryTripError.noTax
         }
@@ -91,7 +91,7 @@ class GroceryTrip {
         
         for (item, inCart) in shoppingList {
             if inCart == true {
-                shoppingList.removeValue(forKey: item)
+                self.shoppingList.removeValue(forKey: item)
             } else {
                 nonPurchasedItems.append(item)
             }
