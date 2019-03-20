@@ -8,6 +8,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
 
     override func viewDidLoad() {
+        print(#function + "Add Item")
         super.viewDidLoad()
 
         saveButton.isEnabled = false
@@ -16,7 +17,11 @@ class AddItemViewController: UIViewController {
         nameTextField.delegate = self
     }
 
-    @IBAction func saveTappedButton(_ sender: UIButton) {
+    @IBAction func cancelButtonTapped(_sender : UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
         nameTextField.resignFirstResponder()
         quantityTextField.resignFirstResponder()
         

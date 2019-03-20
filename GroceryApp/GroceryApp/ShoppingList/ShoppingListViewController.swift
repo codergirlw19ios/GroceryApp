@@ -14,6 +14,7 @@ class ShoppingListViewController: UIViewController {
     @IBOutlet weak var shoppingListTableView: UITableView!
 
     override func viewDidLoad() {
+        print(#function + "Shopping List")
         super.viewDidLoad()
 
         shoppingListTableView.dataSource = self

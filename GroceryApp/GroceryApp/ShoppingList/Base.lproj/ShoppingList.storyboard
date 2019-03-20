@@ -46,7 +46,14 @@
                                 <rect key="frame" x="325" y="20" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
-                                    <action selector="saveTappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Smu-bc-LUx"/>
+                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Smu-bc-LUx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSD-Km-KLV">
+                                <rect key="frame" x="28" y="36" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTappedWith_sender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WJ7-Ke-A8S"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -60,8 +67,10 @@
                             <constraint firstItem="lrf-Bb-gIE" firstAttribute="leading" secondItem="cju-Fx-aXS" secondAttribute="trailing" constant="20" id="DAv-Cm-1P3"/>
                             <constraint firstItem="Vnw-ol-IRY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="Eb0-Gs-l3s"/>
                             <constraint firstItem="cju-Fx-aXS" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-100" id="Q61-UG-PjS"/>
+                            <constraint firstItem="sSD-Km-KLV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="UG1-SW-U1M"/>
                             <constraint firstItem="8xc-HS-8pN" firstAttribute="trailing" secondItem="lrf-Bb-gIE" secondAttribute="trailing" id="bGk-cz-ow5"/>
                             <constraint firstItem="cju-Fx-aXS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="ftE-zq-ca3"/>
+                            <constraint firstItem="sSD-Km-KLV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="hZA-A6-SRM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lrf-Bb-gIE" secondAttribute="trailing" constant="20" id="hkL-sy-JTm"/>
                             <constraint firstItem="CaO-Mf-AzP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="nia-cZ-aX3"/>
                             <constraint firstItem="Vnw-ol-IRY" firstAttribute="top" secondItem="cju-Fx-aXS" secondAttribute="bottom" constant="50" id="osd-KZ-lMq"/>
@@ -113,7 +122,7 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shoppingListCell" textLabel="ktt-sa-lbS" detailTextLabel="4M9-GM-I1K" style="IBUITableViewCellStyleValue1" id="I7S-2I-2TR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shoppingListCell" textLabel="ktt-sa-lbS" detailTextLabel="4M9-GM-I1K" style="IBUITableViewCellStyleValue1" id="I7S-2I-2TR">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I7S-2I-2TR" id="VJF-zB-rW4">
@@ -178,9 +187,9 @@
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1j-Ru-mUT">
                                 <rect key="frame" x="20" y="336.5" width="335" height="320.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Bonjour mes amis!
+                                <string key="text">Bonjour mes amis!
 
-Je suis une étudiante de la vie! En vraiement, je travaille comme développeuse informatique de iOS. Aussi, je suis enseigneuse du développement d'iOS à LaunchCode Codergirl.  ---   Hello friends!  I am a student of life! Actually, I work as an iOS software developer. I also teach iOS development at LaunchCode Codergirl.    Graduated from UMSL with: - Bachelor of Arts - Modern Languages - French - Bachelor of Science - Computer Science</mutableString>
+Je suis une étudiante de la vie! En vraiement, je travaille comme développeuse informatique de iOS. Aussi, je suis enseigneuse du développement d'iOS à LaunchCode Codergirl.  ---   Hello friends!  I am a student of life! Actually, I work as an iOS software developer. I also teach iOS development at LaunchCode Codergirl.    Graduated from UMSL with: - Bachelor of Arts - Modern Languages - French - Bachelor of Science - Computer Science</string>
                                 <fontDescription key="fontDescription" name="Apple-Chancery" family="Apple Chancery" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
