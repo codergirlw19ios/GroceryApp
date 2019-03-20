@@ -37,6 +37,8 @@ class GroceryTrip {
         return budget - totalCost
     }
     
+    //In your function to add to cart: Allow for the user to override shopping list errorts and add the item as they entered it anyway; still throw the final error for exceeding budget if necessary.
+    
     func addToCart(cost: Double, quantity: Int, item: GroceryItem) throws {
         //If the string does not match any of the GroceryItems' names in the shopping list dictionary, throw the appropriate error.
         guard shoppingList.contains(where: {$0.key.name == item.name}) else {
@@ -44,15 +46,17 @@ class GroceryTrip {
         }
         
         //If the quantity does not match the GroceryItem's quantity in the shopping list dictionary, throw the appropriate error.
-        guard shoppingList.contains(where: {$0.key.name == item.name && $0.key.quantity == item.quantity}) else {
-            if shoppingList.contains(where: {$0.key.name == item.name && $0.key.quantity < item.quantity}) {
-                throw GroceryTripError.shortQuantity } else {
-                throw GroceryTripError.excessQuantity }
+        guard shoppingList.contains(where: { $0.key.name == item.name && $0.key.quantity == item.quantity } ) else {
+            if shoppingList.contains(where: { $0.key.name == item.name && $0.key.quantity < item.quantity} ) {
+                throw GroceryTripError.shortQuantity }
+            else {
+                throw GroceryTripError.excessQuantity
+            }
         }
         
         //If the quantity matches, update the dictionary's boolean to true and add the GroceryItem with cost to the cart array. Check the new balance and throw an error if necessary.
         
-        if shoppingList.contains(where: {$0.key.name == item.name && $0.key.quantity == item.quantity}) {
+        if shoppingList.contains(where: {$0.key.name == item.name && $0.key.quantity == item.quantity}) || shoppingList.contains(where: {$0.key.name == item.name && $0.key.quantity != item.quantity}){
             let groceryItem = GroceryItem(name: item.name, quantity: quantity, cost: cost)
             shoppingList[groceryItem] = true
             cart.append(item)
