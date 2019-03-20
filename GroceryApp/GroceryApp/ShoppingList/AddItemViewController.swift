@@ -44,10 +44,28 @@ class AddItemViewController: UIViewController {
 }
 
 extension AddItemViewController: UITextFieldDelegate {
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
 
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        let name = try? model?.validate(name: nameTextField.text)
-        let quantity = try? model?.validate(quantity: quantityTextField.text)
+        guard let model = model else {
+            saveButton.isEnabled = false
+            return true
+        }
+
+        // TODO: handle specific error cases and inform user of
+        // why the save button is disabled
+        var name: String?
+        var quantity: Int?
+        if textField == quantityTextField {
+            quantity = try? model.validate(quantity: string)
+            name = try? model.validate(name: nameTextField.text)
+        } else if textField == nameTextField {
+            name = try? model.validate(name: string)
+            quantity = try? model.validate(quantity: quantityTextField.text)
+        }
 
         if name != nil, quantity != nil {
             saveButton.isEnabled = true
