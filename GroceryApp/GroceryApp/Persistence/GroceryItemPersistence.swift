@@ -7,8 +7,8 @@
 
 import Foundation
 
-class ShoppingListPersistence {
-    // ShoppingList.json
+class GroceryItemPersistence {
+    // make this a generic persistence class by adding a parameter to the persistence for the filename
     private let fileName = "ShoppingList"
     private let type = "json"
 

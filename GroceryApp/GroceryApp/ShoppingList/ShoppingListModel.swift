@@ -7,7 +7,7 @@ protocol ShoppingListModelDelegate: class {
 class ShoppingListModel {
     weak var delegate: ShoppingListModelDelegate?
 
-    private let persistence: ShoppingListPersistence
+    private let persistence: GroceryItemPersistence
 
     private var shoppingList: [GroceryItem] {
         didSet {
@@ -15,7 +15,7 @@ class ShoppingListModel {
         }
     }
 
-    init(persistence: ShoppingListPersistence){
+    init(persistence: GroceryItemPersistence){
         self.persistence = persistence
         shoppingList = persistence.shoppingList()
     }
