@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--About View Controller-->
+        <scene sceneID="qD2-sq-GW6">
+            <objects>
+                <viewController title="About View Controller" id="fgK-44-QVu" userLabel="About View Controller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="14f-pU-oqh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nB-ok-Mgk">
+                                <rect key="frame" x="128" y="50" width="119" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="oW5-GW-Kuy"/>
+                                    <constraint firstAttribute="width" constant="119" id="wZA-yV-B65"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laurie Ekey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9N-dA-VIy">
+                                <rect key="frame" x="38" y="113" width="167" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="H55-1v-lTT"/>
+                                    <constraint firstAttribute="width" constant="167" id="Hpo-Sd-UTi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Puppy" translatesAutoresizingMaskIntoConstraints="NO" id="UFZ-Iy-niA">
+                                <rect key="frame" x="219" y="86" width="119" height="89"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="119" id="57B-vg-UA3"/>
+                                    <constraint firstAttribute="height" constant="89" id="hwF-t5-AaP"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rfo-5y-qnG">
+                                <rect key="frame" x="38" y="195" width="337" height="142"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="142" id="uLs-x4-x8x"/>
+                                </constraints>
+                                <string key="text">
+Welcome to the Grocery Application. 
+
+This application will help you keep track of what you are spending at any store.   
+
+Enjoy!
+
+
+
+
+
+
+
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Rfo-5y-qnG" secondAttribute="trailing" id="32t-ln-9XA"/>
+                            <constraint firstItem="Rfo-5y-qnG" firstAttribute="leading" secondItem="Y9N-dA-VIy" secondAttribute="leading" id="4HI-Tb-l5M"/>
+                            <constraint firstItem="Xky-a7-sfU" firstAttribute="trailing" secondItem="2nB-ok-Mgk" secondAttribute="trailing" constant="128" id="AWq-ql-35A"/>
+                            <constraint firstItem="Xky-a7-sfU" firstAttribute="bottom" secondItem="Rfo-5y-qnG" secondAttribute="bottom" constant="330" id="OMc-64-d61"/>
+                            <constraint firstItem="2nB-ok-Mgk" firstAttribute="top" secondItem="Xky-a7-sfU" secondAttribute="top" constant="30" id="WBw-JS-S1t"/>
+                            <constraint firstItem="Y9N-dA-VIy" firstAttribute="top" secondItem="2nB-ok-Mgk" secondAttribute="bottom" constant="42" id="Wvt-Tn-0hI"/>
+                            <constraint firstItem="Xky-a7-sfU" firstAttribute="trailing" secondItem="UFZ-Iy-niA" secondAttribute="trailing" constant="37" id="mDE-vC-BZ8"/>
+                            <constraint firstItem="Y9N-dA-VIy" firstAttribute="leading" secondItem="Xky-a7-sfU" secondAttribute="leading" constant="38" id="r5Y-Da-dMI"/>
+                            <constraint firstItem="UFZ-Iy-niA" firstAttribute="top" secondItem="2nB-ok-Mgk" secondAttribute="bottom" constant="15" id="tnc-FC-xP7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xky-a7-sfU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mfj-6Z-bCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746.39999999999998" y="44.527736131934034"/>
+        </scene>
+        <!--Shopper View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ShopperViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrQ-mV-ERC" userLabel="Name Label">
+                                <rect key="frame" x="16" y="108" width="45" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKh-v7-R2C" userLabel="Quantity Label">
+                                <rect key="frame" x="16" y="157" width="81" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ODs-EN-WHj" userLabel="nameTextField">
+                                <rect key="frame" x="114" y="108" width="245" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Nx1-sM-iFD" userLabel="qtyTextField">
+                                <rect key="frame" x="114" y="156" width="245" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntw-g2-MJ3">
+                                <rect key="frame" x="258" y="55" width="101" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="userTappedSave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WGQ-aY-lR2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="ODs-EN-WHj" id="i0U-lh-5FV"/>
+                        <outlet property="qtyTextField" destination="Nx1-sM-iFD" id="B92-lp-FhP"/>
+                        <outlet property="saveButton" destination="ntw-g2-MJ3" id="ZUA-oF-D41"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="44.527736131934034"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Puppy" width="182" height="121"/>
+    </resources>
+</document>

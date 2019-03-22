@@ -92,7 +92,7 @@ class GroceryStoreTrip {
         
         do {
              // checks if tax rate is zero -- if so throws
-             try calculateBalance()
+             _ = try calculateBalance()
         } catch {
             throw error
         }
@@ -157,7 +157,7 @@ class GroceryStoreTrip {
             throw GroceryTripError.taxRateZero
         }
         self.taxRate = taxRate
-        try calculateTtlCost()
+        _ = try calculateTtlCost()
         return true
     }
 }

@@ -16,8 +16,8 @@ class ShopperTest: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         sue = Shopper()
         do {
-            try sue.addGroceryItemToList(GroceryItem(name: "Bread", quantity: 1))
-            try sue.addGroceryItemToList(GroceryItem(name: "Milk", quantity: 1))
+            try sue.addGroceryItemToList(GroceryItem("Bread",  1))
+            try sue.addGroceryItemToList(GroceryItem("Milk",  1))
 
         } catch {
             print(error)   // itemExistsInList
@@ -29,7 +29,7 @@ class ShopperTest: XCTestCase {
         let expectedOutput = sue.myGroceryList.count + 1
         
         do {
-            try sue.addGroceryItemToList(GroceryItem(name: "chips", quantity: 1))
+            try sue.addGroceryItemToList(GroceryItem( "chips",  1))
             
         } catch {
             print(error)   // itemExistsInList
@@ -44,7 +44,7 @@ class ShopperTest: XCTestCase {
         // This is an example of a functional test case.
         let expectedOutput = GroceryTripError.itemExistsInList
         
-        XCTAssertThrowsError(try sue.addGroceryItemToList(GroceryItem(name: "Bread", quantity: 1))) { error in XCTAssertEqual(error as! GroceryTripError, expectedOutput)
+        XCTAssertThrowsError(try sue.addGroceryItemToList(GroceryItem( "Bread",  1))) { error in XCTAssertEqual(error as! GroceryTripError, expectedOutput)
         }
     }
 

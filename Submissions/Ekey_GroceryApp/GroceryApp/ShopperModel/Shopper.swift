@@ -15,5 +15,26 @@ class Shopper {
         }
         
     }
+    
+    // verify string is not empty
+    func validateString(name: String?) throws {
+        guard let stringName = name, !stringName.isEmpty else {
+            throw ShopperError.EmptyString
+        }
+    }
 
+    // Verify string is not empty and only contains integers
+    func validateInt(qty: String?) throws -> Int {
+        try validateString(name: qty)
+        
+        guard let quantity = Int(qty!) else {
+            throw ShopperError.NonIntegerValue
+        }
+        return quantity
+    }
+}
+
+enum ShopperError: Error {
+    case EmptyString
+    case NonIntegerValue
 }

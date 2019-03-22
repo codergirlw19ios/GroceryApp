@@ -16,12 +16,12 @@ class GroceryStoreTripTests: XCTestCase {
 
     override func setUp() {
         sue = Shopper()
-        testGroceryItem = GroceryItem(name: "test", quantity: 1)
+        testGroceryItem = GroceryItem( "test",  1)
         
         do {
-            try sue.addGroceryItemToList(GroceryItem(name: "bread", quantity: 1))
-            try sue.addGroceryItemToList(GroceryItem(name: "Yogurt", quantity: 4))
-            try sue.addGroceryItemToList(GroceryItem(name: "Apples", quantity: 4))
+            try sue.addGroceryItemToList(GroceryItem( "bread",  1))
+            try sue.addGroceryItemToList(GroceryItem( "Yogurt", 4))
+            try sue.addGroceryItemToList(GroceryItem( "Apples", 4))
         } catch {
             print(error)   // itemExistsInList
         }
@@ -31,8 +31,8 @@ class GroceryStoreTripTests: XCTestCase {
         
         do {
             // allow override of adding milk since not on groceryList
-            try myTrip.addGroceryItemToCart(GroceryItem(name: "Milk", quantity: 1, cost: 2.50), true)
-            try myTrip.addGroceryItemToCart(GroceryItem(name: "Bread", quantity: 1, cost: 2.50))
+            try myTrip.addGroceryItemToCart(GroceryItem( "Milk", 1, 2.50), true)
+            try myTrip.addGroceryItemToCart(GroceryItem("Bread", 1,  2.50))
             
         } catch {
             print(error)
@@ -45,7 +45,7 @@ class GroceryStoreTripTests: XCTestCase {
         XCTAssertEqual(count, 2)
         let expectedOutput = myTrip.myCart.count + 1
         // try? if throws error will be nil
-        try? myTrip.addGroceryItemToCart(GroceryItem(name: "Hamburger", quantity: 1, cost: 2.50), true)
+        try? myTrip.addGroceryItemToCart(GroceryItem("Hamburger",  1,  2.50), true)
         count = myTrip.myCart.count
         XCTAssertEqual(count, expectedOutput)
     }
@@ -55,7 +55,7 @@ class GroceryStoreTripTests: XCTestCase {
         XCTAssertEqual(myTrip.myCart.count, 2)
         let expectedOutput = myTrip.myCart.count - 1
         
-        myTrip.removeGroceryItemFromCart(GroceryItem(name: "Milk", quantity: 1, cost: 2.50))
+        _ = myTrip.removeGroceryItemFromCart(GroceryItem( "Milk",  1,  2.50))
         
         XCTAssertEqual(myTrip.myCart.count, expectedOutput)
     }
@@ -141,8 +141,8 @@ class GroceryStoreTripTests: XCTestCase {
         //   remove everything from shoppingCart where bool = true
         // returns tuple ( array of Groceryitems in Shopping List where bool value = FALSE and remaining budget)
         XCTAssertEqual(myTrip.myCart.count, 2)
-        let expectedOutput = (items: [GroceryItem(name: "Yogurt", quantity: 4),
-                                      GroceryItem(name: "Apples", quantity: 4)], balance: 94.75)
+        let expectedOutput = (items: [GroceryItem( "Yogurt",  4),
+                                      GroceryItem( "Apples",  4)], balance: 94.75)
         
         _ = try? myTrip.updateTaxRate(taxRate: 0.05)   // 5 %
         var actualOutput = try! myTrip.checkOut()

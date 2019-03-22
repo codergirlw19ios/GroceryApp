@@ -12,12 +12,12 @@ class GroceryItemTests: XCTestCase {
     var testGroceryItem: GroceryItem!
 
     override func setUp() {
-        testGroceryItem = GroceryItem(name: "test", quantity: 1)
+        testGroceryItem = GroceryItem("test", 1)
     }
 
     func test_GroceryItemInitializedWithCost_HasCorrectCostValue() {
         let expectedCost: Double = 1.04
-        let actualGroceryItem = GroceryItem(name: "test", quantity: 1, cost: expectedCost)
+        let actualGroceryItem = GroceryItem( "test",  1,  expectedCost)
 
         XCTAssertEqual(actualGroceryItem.cost, expectedCost)
     }
