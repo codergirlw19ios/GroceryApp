@@ -24,13 +24,16 @@ class AddItemViewController: UIViewController {
     
     @IBOutlet weak var quantityTextField: UITextField!
     @IBAction func userTappedSave(_ sender: UIButton) {
-        
+        nameTextField.resignFirstResponder()
+        quantityTextField.resignFirstResponder()
         guard let name = nameTextField.text, let quantity = Int(quantityTextField.text ?? "") else {
             return
         }
         
         let groceryItem = model?.addItemToShoppingList(name: name, quantity: quantity)
-        print(groceryItem   )
+        guard groceryItem != nil else {return}
+        
+        dismiss(animated: true, completion: nil)
     }
 }
 extension AddItemViewController: UITextFieldDelegate {

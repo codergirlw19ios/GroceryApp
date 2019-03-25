@@ -19,6 +19,7 @@
 		BE9AA9B3222B5C46007E1C07 /* GroceryTripError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9AA9B2222B5C46007E1C07 /* GroceryTripError.swift */; };
 		BE9AA9B6222B5CCB007E1C07 /* GroceryTripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9AA9B5222B5CCB007E1C07 /* GroceryTripTests.swift */; };
 		BEBE90462247DEE600167058 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE90452247DEE600167058 /* ShoppingListViewController.swift */; };
+		BEBE9050224948D200167058 /* ShoppingListPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE904F224948D200167058 /* ShoppingListPersistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		BE9AA9B2222B5C46007E1C07 /* GroceryTripError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripError.swift; sourceTree = "<group>"; };
 		BE9AA9B5222B5CCB007E1C07 /* GroceryTripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripTests.swift; sourceTree = "<group>"; };
 		BEBE90452247DEE600167058 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
+		BEBE904F224948D200167058 /* ShoppingListPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListPersistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		2685C18E222646F400207624 = {
 			isa = PBXGroup;
 			children = (
+				BEBE904E2249489500167058 /* Persistence */,
 				2685C199222646F400207624 /* GroceryApp */,
 				2685C1AE222646F700207624 /* GroceryAppTests */,
 				2685C198222646F400207624 /* Products */,
@@ -128,6 +131,14 @@
 				BEBE90452247DEE600167058 /* ShoppingListViewController.swift */,
 			);
 			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		BEBE904E2249489500167058 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				BEBE904F224948D200167058 /* ShoppingListPersistence.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */,
+				BEBE9050224948D200167058 /* ShoppingListPersistence.swift in Sources */,
 				BE9AA9B3222B5C46007E1C07 /* GroceryTripError.swift in Sources */,
 				2685C19D222646F400207624 /* AddItemViewController.swift in Sources */,
 				BEBE90462247DEE600167058 /* ShoppingListViewController.swift in Sources */,

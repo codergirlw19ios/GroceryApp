@@ -18,11 +18,18 @@ class ShoppingListViewController: UIViewController {
         super.viewDidLoad()
         shoppingListTableView.dataSource = self
         shoppingListTableView.delegate = self
+        model.delegate = self
     }
     @IBAction func addButtonTapped(_ sender: UIButton) {
         //call the AddItemSegue
         performSegue(withIdentifier: "AddItemSegue", sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? AddItemViewController else {return}
+        destination.model = model
+        }
+    
 }
 
 extension ShoppingListViewController: UITableViewDelegate {
@@ -47,5 +54,11 @@ extension ShoppingListViewController: UITableViewDataSource {
         //quantity
         cell.detailTextLabel?.text = groceryItem?.quantity != nil ? String(groceryItem!.quantity): ""
         return cell
+    }
+}
+
+extension ShoppingListViewController: ShoppingListModelDelegate {
+    func dataUpdated() {
+        shoppingListTableView.reloadData()
     }
 }
