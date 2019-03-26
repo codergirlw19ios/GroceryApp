@@ -10,6 +10,7 @@ import Foundation
 class GroceryItemPersistence {
     // ShoppingList.json
     private let fileName: String
+
     private let type = "json"
 
     private let fileURL: URL
