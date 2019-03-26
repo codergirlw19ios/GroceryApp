@@ -9,12 +9,14 @@ import Foundation
 
 class GroceryItemPersistence {
     // ShoppingList.json
-    private let fileName = "ShoppingList"
+    private let fileName: String
     private let type = "json"
 
     private let fileURL: URL
 
-    init() {
+    //TODO take a parameter for fileName
+    init(_ fileName: String) {
+        self.fileName = fileName
         fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             .first!
             .appendingPathComponent(fileName, isDirectory: false)
@@ -22,7 +24,7 @@ class GroceryItemPersistence {
     }
 
     // read JSON from file
-    func groceryItemPersistence() -> [GroceryItem] {
+    func groceryItems() -> [GroceryItem] {
         do {
             let data = try Data(contentsOf: fileURL)
             return try decode(type: [GroceryItem].self, data)
