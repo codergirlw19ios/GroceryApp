@@ -1,8 +1,34 @@
 import Foundation
 
+protocol ShopperDelegate : class {
+    func dataUpdated()
+}
+
 class Shopper {
     
-    public private(set) var myGroceryList = [GroceryItem]()
+    weak var delegate : ShopperDelegate?
+    
+    private let persistence: GroceryListPersistence
+    
+    public private(set) var myGroceryList: [GroceryItem] {
+        didSet {
+            persistence.writeGroceryList(myGroceryList)
+        }
+    }
+    
+    init(persistence: GroceryListPersistence) {
+        self.persistence = persistence
+        myGroceryList = persistence.readGroceryList()
+    }
+//    public private(set) var myGroceryList = [
+//        GroceryItem( "Milk", 1, 2.50),
+//        GroceryItem( "Yogurt",  1,  2.50),
+//        GroceryItem( "Apples",  4),
+//        GroceryItem( "Bread",  1),
+//        GroceryItem( "Lettuce",  1,  2.50),
+//        GroceryItem( "Cucumber",  1,  2.50),
+//        GroceryItem( "Tomato",  1)
+//    ]
     
     // Add a unique groceryItem to the users list
     func addGroceryItemToList(_ groceryItem: GroceryItem ) throws {
@@ -14,6 +40,20 @@ class Shopper {
             throw GroceryTripError.itemExistsInList
         }
         
+        // notify whoever is listening that we updated the data
+        delegate?.dataUpdated()
+        
+    }
+    
+    
+    // can be nil
+    func getGroceryItem(index: Int) throws -> GroceryItem? {
+        
+        if index < 0 || index >= myGroceryList.count {
+            throw ShopperError.OutOfBounds
+        }
+    
+        return myGroceryList[index]
     }
     
     // verify string is not empty
@@ -37,4 +77,5 @@ class Shopper {
 enum ShopperError: Error {
     case EmptyString
     case NonIntegerValue
+    case OutOfBounds
 }

@@ -48,6 +48,10 @@ class ShopperTest: XCTestCase {
         }
     }
 
+    func test_getGroceryItem() {
+        
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

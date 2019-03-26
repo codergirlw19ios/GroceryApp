@@ -15,11 +15,12 @@
 		2685C1B0222646F700207624 /* GroceryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1AF222646F700207624 /* GroceryItemTests.swift */; };
 		2685C1BD222647F000207624 /* Shopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BC222647F000207624 /* Shopper.swift */; };
 		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
-		26B1893722264D08001765F8 /* ShoppingListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1893622264D08001765F8 /* ShoppingListModelTests.swift */; };
 		C744FC25222EE03E009F2EB3 /* GroceryTripError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC24222EE03E009F2EB3 /* GroceryTripError.swift */; };
 		C744FC27222EE64A009F2EB3 /* ShopperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC26222EE64A009F2EB3 /* ShopperTest.swift */; };
 		C744FC29222EE827009F2EB3 /* GroceryStoreTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC28222EE827009F2EB3 /* GroceryStoreTrip.swift */; };
 		C744FC2B222EE841009F2EB3 /* GroceryStoreTripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC2A222EE841009F2EB3 /* GroceryStoreTripTests.swift */; };
+		C783E41222495062001B056A /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C783E41122495062001B056A /* GroceryListViewController.swift */; };
+		C783E4152249DB3C001B056A /* GroceryListPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C783E4142249DB3C001B056A /* GroceryListPersistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,11 +46,12 @@
 		2685C1B1222646F700207624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2685C1BC222647F000207624 /* Shopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopper.swift; sourceTree = "<group>"; };
 		2685C1BE2226486100207624 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
-		26B1893622264D08001765F8 /* ShoppingListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModelTests.swift; sourceTree = "<group>"; };
 		C744FC24222EE03E009F2EB3 /* GroceryTripError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripError.swift; sourceTree = "<group>"; };
 		C744FC26222EE64A009F2EB3 /* ShopperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopperTest.swift; sourceTree = "<group>"; };
 		C744FC28222EE827009F2EB3 /* GroceryStoreTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTrip.swift; sourceTree = "<group>"; };
 		C744FC2A222EE841009F2EB3 /* GroceryStoreTripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTripTests.swift; sourceTree = "<group>"; };
+		C783E41122495062001B056A /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
+		C783E4142249DB3C001B056A /* GroceryListPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListPersistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		2685C199222646F400207624 /* GroceryApp */ = {
 			isa = PBXGroup;
 			children = (
+				C783E4132249DB1F001B056A /* Persistence */,
 				2685C1BB2226479300207624 /* ShopperModel */,
 				C744FC24222EE03E009F2EB3 /* GroceryTripError.swift */,
 				2685C1BE2226486100207624 /* GroceryItem.swift */,
@@ -107,7 +110,6 @@
 				2685C1AF222646F700207624 /* GroceryItemTests.swift */,
 				C744FC26222EE64A009F2EB3 /* ShopperTest.swift */,
 				C744FC2A222EE841009F2EB3 /* GroceryStoreTripTests.swift */,
-				26B1893622264D08001765F8 /* ShoppingListModelTests.swift */,
 				2685C1B1222646F700207624 /* Info.plist */,
 			);
 			path = GroceryAppTests;
@@ -128,9 +130,18 @@
 			children = (
 				2685C19E222646F400207624 /* Shopper.storyboard */,
 				2685C19C222646F400207624 /* ShopperViewController.swift */,
+				C783E41122495062001B056A /* GroceryListViewController.swift */,
 				2685C1BC222647F000207624 /* Shopper.swift */,
 			);
 			path = ShopperModel;
+			sourceTree = "<group>";
+		};
+		C783E4132249DB1F001B056A /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				C783E4142249DB3C001B056A /* GroceryListPersistence.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C744FC29222EE827009F2EB3 /* GroceryStoreTrip.swift in Sources */,
+				C783E41222495062001B056A /* GroceryListViewController.swift in Sources */,
 				2685C1BD222647F000207624 /* Shopper.swift in Sources */,
+				C783E4152249DB3C001B056A /* GroceryListPersistence.swift in Sources */,
 				2685C19D222646F400207624 /* ShopperViewController.swift in Sources */,
 				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
@@ -249,7 +262,6 @@
 				C744FC2B222EE841009F2EB3 /* GroceryStoreTripTests.swift in Sources */,
 				C744FC27222EE64A009F2EB3 /* ShopperTest.swift in Sources */,
 				2685C1B0222646F700207624 /* GroceryItemTests.swift in Sources */,
-				26B1893722264D08001765F8 /* ShoppingListModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
