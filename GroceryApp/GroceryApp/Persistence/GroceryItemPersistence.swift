@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ShoppingListPersistence {
+class GroceryItemPersistence {
     // ShoppingList.json
     private let fileName = "ShoppingList"
     private let type = "json"
@@ -22,7 +22,7 @@ class ShoppingListPersistence {
     }
 
     // read JSON from file
-    func shoppingList() -> [GroceryItem] {
+    func groceryItemPersistence() -> [GroceryItem] {
         do {
             let data = try Data(contentsOf: fileURL)
             return try decode(type: [GroceryItem].self, data)
