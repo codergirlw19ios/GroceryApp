@@ -5,7 +5,7 @@ struct GroceryItem: Hashable {
     var quantity: Int
     var cost: Double?
 
-    init(name: String, quantity: Int, cost: Double? = nil) {
+    init(name: String, quantity: Int, cost: Double? = 0.0) {
         print(#function)
         self.name = name
         self.quantity = quantity

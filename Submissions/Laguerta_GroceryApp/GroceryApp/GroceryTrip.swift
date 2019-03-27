@@ -14,6 +14,8 @@ class GroceryTrip {
     //A PERCENTAGE
     private var taxRate: Double
     
+    
+    
     init(budget: Double, shoppingListArray: [GroceryItem], taxRate: Double) {
         self.budget = budget
         let shoppingListSet = Set(shoppingListArray)
@@ -24,11 +26,12 @@ class GroceryTrip {
         self.taxRate = taxRate
     }
     
+    var cartCount: Int { return cart.count }
     
     var totalCost: Double {
-        let accumulatingTotal = cart.reduce(0) { (result, nextValue) -> Double in
+        let accumulatingTotal = cart.reduce(0, { (result, nextValue) -> Double in
             return result + (nextValue.cost! * Double(nextValue.quantity))
-        }
+        })
         //taxRate is a percentage so divide it by 100 and add 1 so totalCost = accumulatingTotal PLUS tax
         return accumulatingTotal * (1 + (taxRate / 100))
     }
@@ -39,8 +42,8 @@ class GroceryTrip {
     
     //In your function to add to cart: Allow for the user to override shopping list errorts and add the item as they entered it anyway; still throw the final error for exceeding budget if necessary.
     
-    //func addToCart(cost: Double, quantity: Int, item: GroceryItem) throws {
-    func addToCart(groceryItem: GroceryItem) throws{
+    func addToCart(cost: Double, quantity: Int, groceryItem: GroceryItem) throws {
+    //func addToCart(groceryItem: GroceryItem) throws{
         //If the string does not match any of the GroceryItems' names in the shopping list dictionary, throw the appropriate error.
         guard shoppingList.contains(where: {$0.key.name == groceryItem.name}) else {
             throw GroceryTripError.unplannedGroceryItem
