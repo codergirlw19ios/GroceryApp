@@ -6,7 +6,7 @@ class ShoppingListModelTests: XCTestCase {
     var testShoppingListModel: ShoppingListModel!
 
     override func setUp() {
-        testShoppingListModel = ShoppingListModel()
+        testShoppingListModel = ShoppingListModel(persistence: GroceryItemPersistence("ShoppingList"))
 
         continueAfterFailure = false
     }

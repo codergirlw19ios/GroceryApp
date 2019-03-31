@@ -9,17 +9,28 @@ import Foundation
 
 class ShoppingListPersistence {
     //ShoppingList.json
-    private let fileName = "ShoppingList"
+    // ShoppingList.json
+    private let fileName: String
+//    private let fileName = "ShoppingList"
     private let type = "json"
     
     private let fileURL: URL
     
-    init() {
+    //TODO take a parameter for fileName
+    init(_ fileName: String) {
+        self.fileName = fileName
         fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        .first!
+            .first!
             .appendingPathComponent(fileName, isDirectory: false)
             .appendingPathExtension(type)
     }
+    
+//    init() {
+//        fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//        .first!
+//            .appendingPathComponent(fileName, isDirectory: false)
+//            .appendingPathExtension(type)
+//    }
     
     //read the data from the file
     func shoppingList() -> [GroceryItem] {

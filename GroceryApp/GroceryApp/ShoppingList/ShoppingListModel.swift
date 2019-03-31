@@ -6,9 +6,16 @@ protocol ShoppingListModelDelegate:class {
 
 class ShoppingListModel {
     weak var delegate: ShoppingListModelDelegate?
-    private var shoppingList : [GroceryItem] = [GroceryItem(name: "banana", quantity: 12), GroceryItem(name: "milk", quantity: 3),
-    GroceryItem(name: "bread", quantity: 2),
-    GroceryItem(name: "yogurt", quantity: 6)]
+    private let persistence: ShoppingListPersistence
+    private var shoppingList : [GroceryItem] {
+        didSet {
+            persistence.write(shoppingList)
+        }
+    }
+    init(persistence: ShoppingListPersistence) {
+        self.persistence = persistence
+        shoppingList = persistence.shoppingList()
+    }
 
     var listCount: Int { return shoppingList.count }
 
