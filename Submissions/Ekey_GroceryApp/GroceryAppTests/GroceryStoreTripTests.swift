@@ -15,7 +15,7 @@ class GroceryStoreTripTests: XCTestCase {
     var myTrip: GroceryStoreTrip!
 
     override func setUp() {
-        sue = Shopper()
+        sue = Shopper(persistence: GroceryListPersistence())
         testGroceryItem = GroceryItem( "test",  1)
         
         do {
@@ -27,7 +27,7 @@ class GroceryStoreTripTests: XCTestCase {
         }
         
         // sets tax rate = 0.0
-        myTrip = GroceryStoreTrip(budget: 100.00, groceryList: sue.myGroceryList)
+        myTrip = GroceryStoreTrip(persistence: GroceryListPersistence(), budget: 100.00, groceryList: sue.myGroceryList)
         
         do {
             // allow override of adding milk since not on groceryList
@@ -67,9 +67,9 @@ class GroceryStoreTripTests: XCTestCase {
         // tax rate = 0  throws
         // tax rate changes -- new costCalculation
         
-        let expectedOutput = GroceryTripError.taxRateZero
+        let expectedOutput = GroceryStoreTripError.taxRateZero
         
-        XCTAssertThrowsError(try myTrip.calculateTtlCost()) { error in XCTAssertEqual(error as! GroceryTripError, expectedOutput)
+        XCTAssertThrowsError(try myTrip.calculateTtlCost()) { error in XCTAssertEqual(error as! GroceryStoreTripError, expectedOutput)
         }
     }
     
@@ -92,9 +92,9 @@ class GroceryStoreTripTests: XCTestCase {
         
         // if tax rate 0 then calcTtlCost throws and calcBalance propogates an error
         
-        let expectedOutput = GroceryTripError.taxRateZero
+        let expectedOutput = GroceryStoreTripError.taxRateZero
         
-        XCTAssertThrowsError(try myTrip.calculateBalance()) { error in XCTAssertEqual(error as! GroceryTripError, expectedOutput)
+        XCTAssertThrowsError(try myTrip.calculateBalance()) { error in XCTAssertEqual(error as! GroceryStoreTripError, expectedOutput)
         }
     }
     func test_calculateBalance() {
@@ -117,9 +117,9 @@ class GroceryStoreTripTests: XCTestCase {
         // calcTtlCost
         // if tax rate 0 then calcTtlCost throws and calcBalance propogates an error
         
-        let expectedOutput = GroceryTripError.taxRateZero
+        let expectedOutput = GroceryStoreTripError.taxRateZero
         
-        XCTAssertThrowsError(try myTrip.updateTaxRate(taxRate: -0.02)) { error in XCTAssertEqual(error as! GroceryTripError, expectedOutput)
+        XCTAssertThrowsError(try myTrip.updateTaxRate(taxRate: -0.02)) { error in XCTAssertEqual(error as! GroceryStoreTripError, expectedOutput)
         }
 
     }

@@ -14,7 +14,7 @@ class ShopperTest: XCTestCase {
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sue = Shopper()
+        sue = Shopper(persistence: GroceryListPersistence())
         do {
             try sue.addGroceryItemToList(GroceryItem("Bread",  1))
             try sue.addGroceryItemToList(GroceryItem("Milk",  1))
@@ -42,9 +42,9 @@ class ShopperTest: XCTestCase {
     
     func test_addGroceryItemToList_Error() {
         // This is an example of a functional test case.
-        let expectedOutput = GroceryTripError.itemExistsInList
+        let expectedOutput = GroceryStoreTripError.itemExistsInList
         
-        XCTAssertThrowsError(try sue.addGroceryItemToList(GroceryItem( "Bread",  1))) { error in XCTAssertEqual(error as! GroceryTripError, expectedOutput)
+        XCTAssertThrowsError(try sue.addGroceryItemToList(GroceryItem( "Bread",  1))) { error in XCTAssertEqual(error as! GroceryStoreTripError, expectedOutput)
         }
     }
 

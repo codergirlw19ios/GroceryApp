@@ -7,7 +7,14 @@
 
 import Foundation
 
+protocol GroceryStoreTripDelegate : class {
+    func dataUpdated()
+}
 class GroceryStoreTrip {
+    
+    weak var delegate : GroceryStoreTripDelegate?
+    
+    private let persistence: GroceryListPersistence
     
     public private(set) var budget : Double = 0.0
     private var taxRate = 0.0     // percentage
@@ -19,10 +26,14 @@ class GroceryStoreTrip {
     
     
     
-    init(budget: Double, groceryList: [GroceryItem], taxRate: Double = 0.0) {
+    init(persistence: GroceryListPersistence, budget: Double, groceryList: [GroceryItem], taxRate: Double = 0.0) {
         self.budget = budget
         self.taxRate = taxRate
         self.balance = budget - totalCost
+        
+        self.persistence = persistence
+        myCart = persistence.readGroceryList()
+        
         // Convert the array of GroceryList to a Dictionary and populate shoppingList
         // read groceryList into a dictionary  for each item in the groceryList, create a dictionary Item
         for item in groceryList {
@@ -37,23 +48,33 @@ class GroceryStoreTrip {
 //        self.shoppingList = getShoppingList()
     }
     
+    // can be nil
+    func getGroceryCartItem(index: Int) throws -> GroceryItem? {
+        
+        if index < 0 || index >= myCart.count {
+            throw GroceryStoreTripError.outOfBounds
+        }
+        
+        return myCart[index]
+    }
+    
     func addGroceryItemToCart(_ groceryItem: GroceryItem, _ allowOverride: Bool = false) throws {
         
         // if the Item is already in the cart -- throw error
         guard myCart.isEmpty || myCart.contains(where:
             { $0.name.lowercased() != groceryItem.name.lowercased() })
             else {
-            throw GroceryTripError.itemExistsInList
+            throw GroceryStoreTripError.itemExistsInList
         }
         
         // if item is on shopping list, continue - else- throw an error
         guard shoppingList.contains(where: { $0.key.name.lowercased() == groceryItem.name.lowercased() || allowOverride == true }) else {
-            throw GroceryTripError.itemNotOnList
+            throw GroceryStoreTripError.itemNotOnList
         }
         
         // if  is on the shopping list and quantity is lower or allowable to be more, then continue - else throw error
         guard shoppingList.contains(where: { $0.key.name.lowercased() == groceryItem.name.lowercased() && $0.value == false || (allowOverride || groceryItem.quantity <= $0.key.quantity)}) else {
-            throw GroceryTripError.quantityIsMore
+            throw GroceryStoreTripError.quantityIsMore
         }
         
         myCart.append(groceryItem)
@@ -99,7 +120,7 @@ class GroceryStoreTrip {
        
         
         if balance < 0.0 {
-            throw GroceryTripError.exceedsBudget
+            throw GroceryStoreTripError.exceedsBudget
         }
         
         var unPurchasedItems = [GroceryItem]()
@@ -130,7 +151,7 @@ class GroceryStoreTrip {
         } )
         // If taxRate = 0  throw an error  else
         guard taxRate > 0.0 else {
-            throw GroceryTripError.taxRateZero
+            throw GroceryStoreTripError.taxRateZero
         }
         totalCost = mySum + (mySum * taxRate)
         return totalCost
@@ -140,9 +161,9 @@ class GroceryStoreTrip {
         do {
             let ttlCost = try calculateTtlCost()
             balance = budget - ttlCost
-        } catch GroceryTripError.taxRateZero {
+        } catch GroceryStoreTripError.taxRateZero {
             print("taxRate Zero")
-            throw GroceryTripError.taxRateZero
+            throw GroceryStoreTripError.taxRateZero
         } catch {
             print(error)
             throw error
@@ -154,7 +175,7 @@ class GroceryStoreTrip {
     func updateTaxRate(taxRate: Double) throws -> Bool{
         // If tax rate is ! > 0.0  throw error
         guard taxRate > 0.0 else {
-            throw GroceryTripError.taxRateZero
+            throw GroceryStoreTripError.taxRateZero
         }
         self.taxRate = taxRate
         _ = try calculateTtlCost()

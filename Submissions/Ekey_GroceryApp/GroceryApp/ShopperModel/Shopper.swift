@@ -18,6 +18,7 @@ class Shopper {
     
     init(persistence: GroceryListPersistence) {
         self.persistence = persistence
+        // read the data from the file and initialize list
         myGroceryList = persistence.readGroceryList()
     }
 //    public private(set) var myGroceryList = [
@@ -37,7 +38,7 @@ class Shopper {
         if !myGroceryList.contains(where: { $0.name.lowercased() == groceryItem.name.lowercased() }) {
             myGroceryList.append(groceryItem)
         } else {
-            throw GroceryTripError.itemExistsInList
+            throw GroceryStoreTripError.itemExistsInList
         }
         
         // notify whoever is listening that we updated the data

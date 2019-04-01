@@ -1,5 +1,5 @@
 //
-//  GroceryTripError.swift
+//  GroceryStoreTripError.swift
 //  GroceryApp
 //
 //  Created by johnekey on 3/5/19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GroceryTripError: Error {
+enum GroceryStoreTripError: Error {
     case exceedsBudget
     case itemNotOnList
     case quantityIsMore
@@ -15,5 +15,6 @@ enum GroceryTripError: Error {
     case quantityCantBeZero
     case costCantBeNegative
     case itemExistsInList
+    case outOfBounds
     case none
 }

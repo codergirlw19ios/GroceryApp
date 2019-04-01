@@ -18,7 +18,7 @@ struct GroceryItem :  Hashable, Decodable, Encodable {
         if (cost > 0.0) {
             self.cost = cost
         } else {
-            throw GroceryTripError.costCantBeNegative
+            throw GroceryStoreTripError.costCantBeNegative
         }
         
     }
@@ -27,7 +27,7 @@ struct GroceryItem :  Hashable, Decodable, Encodable {
         if (quantity > 0) {
             self.quantity = quantity
         } else {
-            throw GroceryTripError.quantityCantBeZero
+            throw GroceryStoreTripError.quantityCantBeZero
         }
         
     }
