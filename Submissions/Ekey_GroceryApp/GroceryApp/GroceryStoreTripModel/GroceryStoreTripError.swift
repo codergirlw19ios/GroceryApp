@@ -16,5 +16,7 @@ enum GroceryStoreTripError: Error {
     case costCantBeNegative
     case itemExistsInList
     case outOfBounds
+    case emptyString
+    case nonIntegerValue
     case none
 }

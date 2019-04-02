@@ -23,6 +23,8 @@
 		C783E41222495062001B056A /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C783E41122495062001B056A /* GroceryListViewController.swift */; };
 		C783E4152249DB3C001B056A /* GroceryListPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C783E4142249DB3C001B056A /* GroceryListPersistence.swift */; };
 		C783E418224B2345001B056A /* GroceryStoreTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C783E417224B2345001B056A /* GroceryStoreTrip.storyboard */; };
+		C7F280022251BD330049A43A /* AddToCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F280012251BD330049A43A /* AddToCartViewController.swift */; };
+		C7F280042252B84E0049A43A /* GSTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F280032252B84E0049A43A /* GSTTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		C783E41122495062001B056A /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		C783E4142249DB3C001B056A /* GroceryListPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListPersistence.swift; sourceTree = "<group>"; };
 		C783E417224B2345001B056A /* GroceryStoreTrip.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroceryStoreTrip.storyboard; sourceTree = "<group>"; };
+		C7F280012251BD330049A43A /* AddToCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartViewController.swift; sourceTree = "<group>"; };
+		C7F280032252B84E0049A43A /* GSTTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +101,10 @@
 		2685C199222646F400207624 /* GroceryApp */ = {
 			isa = PBXGroup;
 			children = (
-				C783E416224B2187001B056A /* GroceryStoreTripModel */,
-				C783E4132249DB1F001B056A /* Persistence */,
-				2685C1BB2226479300207624 /* ShopperModel */,
 				2685C1BE2226486100207624 /* GroceryItem.swift */,
+				C783E4132249DB1F001B056A /* Persistence */,
+				C783E416224B2187001B056A /* GroceryStoreTripModel */,
+				2685C1BB2226479300207624 /* ShopperModel */,
 				2685C1BA2226473100207624 /* Supporting Files */,
 				2685C1A6222646F700207624 /* Info.plist */,
 			);
@@ -150,10 +154,12 @@
 		C783E416224B2187001B056A /* GroceryStoreTripModel */ = {
 			isa = PBXGroup;
 			children = (
+				C783E417224B2345001B056A /* GroceryStoreTrip.storyboard */,
 				C744FC28222EE827009F2EB3 /* GroceryStoreTrip.swift */,
 				C744FC24222EE03E009F2EB3 /* GroceryStoreTripError.swift */,
-				C783E417224B2345001B056A /* GroceryStoreTrip.storyboard */,
 				C733AC5E22518E320064DF16 /* GroceryStoreTripListViewController.swift */,
+				C7F280032252B84E0049A43A /* GSTTableViewCell.swift */,
+				C7F280012251BD330049A43A /* AddToCartViewController.swift */,
 			);
 			path = GroceryStoreTripModel;
 			sourceTree = "<group>";
@@ -262,11 +268,13 @@
 				C733AC5F22518E320064DF16 /* GroceryStoreTripListViewController.swift in Sources */,
 				C744FC29222EE827009F2EB3 /* GroceryStoreTrip.swift in Sources */,
 				C783E41222495062001B056A /* GroceryListViewController.swift in Sources */,
+				C7F280022251BD330049A43A /* AddToCartViewController.swift in Sources */,
 				2685C1BD222647F000207624 /* Shopper.swift in Sources */,
 				C783E4152249DB3C001B056A /* GroceryListPersistence.swift in Sources */,
 				2685C19D222646F400207624 /* ShopperViewController.swift in Sources */,
 				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
+				C7F280042252B84E0049A43A /* GSTTableViewCell.swift in Sources */,
 				C744FC25222EE03E009F2EB3 /* GroceryStoreTripError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

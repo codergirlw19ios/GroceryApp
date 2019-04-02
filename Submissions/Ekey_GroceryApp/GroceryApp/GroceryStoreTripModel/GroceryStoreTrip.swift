@@ -22,9 +22,14 @@ class GroceryStoreTrip {
     private var totalCost = 0.0   // read only computed value  Make optional value
     // dictionary of groceryItems bool = true if item was placed in cart
     private var shoppingList = [GroceryItem : Bool]()
-    public private(set) var myCart = [GroceryItem]()
+ //   public private(set) var myCart = [GroceryItem]()
     
     
+    public private(set) var myCart: [GroceryItem] {
+        didSet {
+            persistence.writeGroceryList(myCart)
+        }
+    }
     
     init(persistence: GroceryListPersistence, budget: Double, groceryList: [GroceryItem], taxRate: Double = 0.0) {
         self.budget = budget
@@ -48,6 +53,31 @@ class GroceryStoreTrip {
 //        self.shoppingList = getShoppingList()
     }
     
+    // verify string is not empty
+    func validateString(stringValue: String?) throws {
+        guard let stringName = stringValue, !stringName.isEmpty else {
+            throw GroceryStoreTripError.emptyString
+        }
+    }
+    
+    // Verify string is not empty and only contains integers
+    func validateInt(intValue: String?) throws -> Int {
+        try validateString(stringValue: intValue)
+        
+        guard let int = Int(intValue!) else {
+            throw GroceryStoreTripError.nonIntegerValue
+        }
+        return int
+    }
+    
+    func validateDouble(doubleValue: String?) throws -> Double {
+        try validateString(stringValue: doubleValue)
+        
+        guard let dbl = Double(doubleValue!) else {
+            throw GroceryStoreTripError.nonIntegerValue
+        }
+        return dbl
+    }
     // can be nil
     func getGroceryCartItem(index: Int) throws -> GroceryItem? {
         
@@ -81,7 +111,9 @@ class GroceryStoreTrip {
         // indicate the grocery item was put into the cart
         shoppingList[groceryItem] = true
         
-        
+        // notify whoever is listening to the GroceryStoreTripDelegate that we updated the data
+        delegate?.dataUpdated()
+
 
     }
     
@@ -146,9 +178,15 @@ class GroceryStoreTrip {
         // totalCost = myCart.reduce(0, { self.cost, self.quantity in self.cost * self.quantity})
         // NOTE:  sum up the values if cost is not nil and qty is not 0
         
+//        let mySum = self.myCart.reduce(0.0, { ( result: Double, groceryItem: GroceryItem) -> Double in
+//            return result + (groceryItem.cost! * Double(groceryItem.quantity))
+//        } )
+
+        
         let mySum = self.myCart.reduce(0.0, { ( result: Double, groceryItem: GroceryItem) -> Double in
-            return result + (groceryItem.cost! * Double(groceryItem.quantity))
+            return result + ((groceryItem.cost != nil ? groceryItem.cost! : 0.0) * Double(groceryItem.quantity))
         } )
+        
         // If taxRate = 0  throw an error  else
         guard taxRate > 0.0 else {
             throw GroceryStoreTripError.taxRateZero

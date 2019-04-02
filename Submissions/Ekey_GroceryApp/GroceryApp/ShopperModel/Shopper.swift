@@ -41,7 +41,7 @@ class Shopper {
             throw GroceryStoreTripError.itemExistsInList
         }
         
-        // notify whoever is listening that we updated the data
+        // notify whoever is listening to the shoppperDelegate that we updated the data
         delegate?.dataUpdated()
         
     }
