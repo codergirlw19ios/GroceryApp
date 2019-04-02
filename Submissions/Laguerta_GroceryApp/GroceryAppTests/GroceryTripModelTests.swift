@@ -23,13 +23,7 @@ class GroceryTripModelTests: XCTestCase {
         continueAfterFailure = false
     }
 
-//
     func test_AddToCart_CorrectlyAddsToCart() {
-        // This is an example of a functional test case.
-//        XCTAssertEqual(testGroceryTripModel.shoppingListArray.count, 4)
-
-//        let expectedQuantity = 5
-//        let expectedNumberOfCartItems = 1
         try? testGroceryTripModel?.addToCart(cost: 1.20, quantity: 5, groceryItem: pears)
         XCTAssertEqual(testGroceryTripModel.cartCount, 1)
     }
