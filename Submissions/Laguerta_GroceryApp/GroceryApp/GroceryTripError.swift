@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GroceryTripError: Error {
+enum GroceryTripError: Error, Equatable {
     case totalExceedsBudget
     case excessQuantity
     case shortQuantity
