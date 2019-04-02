@@ -59,4 +59,5 @@ extension ShoppingListModel {
 enum StringValidationError:Error {
     case emptyString
     case nonNumericCharacters
+    case notValidFormat
 }

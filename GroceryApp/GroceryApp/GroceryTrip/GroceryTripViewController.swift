@@ -6,17 +6,30 @@
 //
 
 import UIKit
+
 class GroceryTripViewController: UIViewController {
+    let model =
+        GroceryTrip(persistence: ShoppingListPersistence("Cart"), budget: 100.0, taxRate: 5.5, shoppingListArray: [GroceryItem(name:"chocolate", quantity: 2, cost: 5.0), GroceryItem(name:"coconut", quantity: 3, cost: 1.0), GroceryItem(name:"bread", quantity: 1, cost: 2.50)])
     
+    @IBAction func userTappedAdd(_ sender: UIButton) {
+        //call the AddItemSegue
+        performSegue(withIdentifier: "AddItemSegueId", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? AddGroceryItemViewController else {return}
+        destination.model = model
+    }
     
     @IBOutlet weak var groceryTripTable: UITableView!
     
-    let model = ShoppingListModel(persistence: ShoppingListPersistence("Cart"))
-
+    @IBOutlet weak var total: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         groceryTripTable.dataSource = self
         groceryTripTable.delegate = self
+        total.text = String(model.totalCost)
     }
 }
     extension GroceryTripViewController: UITableViewDelegate {
@@ -40,7 +53,7 @@ extension GroceryTripViewController: UITableViewDataSource {
     
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             // all items in our shopping list
-            return model.listCount
+            return model.getCartCount()
         }
     
     }

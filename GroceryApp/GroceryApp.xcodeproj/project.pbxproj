@@ -23,6 +23,7 @@
 		BEF144D9224C406B00A94ED6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2685C1A3222646F700207624 /* LaunchScreen.storyboard */; };
 		BEF144DA224C409800A94ED6 /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2685C19E222646F400207624 /* ShoppingList.storyboard */; };
 		BEF144DB224C40C000A94ED6 /* GroceryTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBE90512249A3D300167058 /* GroceryTrip.storyboard */; };
+		BEF144DE2252E68A00A94ED6 /* AddGroceryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF144DD2252E68A00A94ED6 /* AddGroceryItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		BEBE904F224948D200167058 /* ShoppingListPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListPersistence.swift; sourceTree = "<group>"; };
 		BEBE90512249A3D300167058 /* GroceryTrip.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroceryTrip.storyboard; sourceTree = "<group>"; };
 		BEBE9058224AA1B100167058 /* GroceryTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripViewController.swift; sourceTree = "<group>"; };
+		BEF144DD2252E68A00A94ED6 /* AddGroceryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			children = (
 				BEBE90512249A3D300167058 /* GroceryTrip.storyboard */,
 				BEBE9058224AA1B100167058 /* GroceryTripViewController.swift */,
+				BEF144DD2252E68A00A94ED6 /* AddGroceryItemViewController.swift */,
 			);
 			path = GroceryTrip;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */,
 				BEBE9050224948D200167058 /* ShoppingListPersistence.swift in Sources */,
 				BE9AA9B3222B5C46007E1C07 /* GroceryTripError.swift in Sources */,
+				BEF144DE2252E68A00A94ED6 /* AddGroceryItemViewController.swift in Sources */,
 				2685C19D222646F400207624 /* AddItemViewController.swift in Sources */,
 				BEBE90462247DEE600167058 /* ShoppingListViewController.swift in Sources */,
 				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,

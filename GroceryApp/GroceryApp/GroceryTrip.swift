@@ -5,10 +5,13 @@ class GroceryTrip {
     private var shoppingList: [GroceryItem: Bool]
     private var cart: [GroceryItem] = []
     private var taxRate = 0.0
+    private let persistence: ShoppingListPersistence
     
     //: - Your class initializer will need the parameters for the user's budget (a dollar amount) and shopping list (an array of GroceryItem) and a tax rate with a default value of 0.0. You will need to convert the shoppingList array to a dictionary yourself. The rest that are not computed variables should default to logical values.
     //: - Converting the array of your own struct to a dictionary requires a few steps. The easiest way to do this is to first ensure your array contains unique values by initializing a Set from your array. Then map over the set and and return a tuple that represent the key-value pair that you want to be your dictionary item. Then use the Dictionary(uniqueKeysWithValues) initializer and pass in your array of tuples that you received from the map high order function.
-    init( budget: Double, taxRate: Double, shoppingListArray: [GroceryItem]) {
+    init(persistence: ShoppingListPersistence, budget: Double, taxRate: Double, shoppingListArray: [GroceryItem]) {
+        self.persistence = persistence
+        cart = persistence.shoppingList()
         self.budget = budget
         self.taxRate = taxRate
         var interimShoppingListSet: Set = Set(shoppingListArray)
@@ -91,5 +94,45 @@ class GroceryTrip {
         taxRate = newTaxRate
         if (totalCost > budget) {throw GroceryTripError.totalExceedsBudget}
     }
-
+    
+    func groceryItemFor(row : Int) -> GroceryItem? {
+        guard row < cart.count else { return nil}
+        return cart[row]
+    }
+    
+    func getCartCount() -> Int {
+        return cart.count
+    }
+    
+    func validate(name: String?) throws -> String {
+        let name = try validateNotEmpty(string: name)
+        return name
+    }
+    
+    func validate(quantity: String?) throws -> Int {
+        let quantity = try validateNotEmpty(string: quantity)
+        guard let intQuantity = Int(quantity) else {
+            throw StringValidationError.nonNumericCharacters
+        }
+        return intQuantity
+    }
+    
+    func validate(cost: String?) throws -> Double {
+        let cost = try validateNotEmpty(string: cost)
+        guard let doubleCost = Double(cost) else {
+            throw StringValidationError.notValidFormat
+        }
+        return doubleCost
+    }
+    
 }
+
+extension GroceryTrip {
+    private func validateNotEmpty(string: String?) throws -> String {
+        guard let string = string, !string.isEmpty else {
+            throw StringValidationError.emptyString
+        }
+        return string
+    }
+}
+
