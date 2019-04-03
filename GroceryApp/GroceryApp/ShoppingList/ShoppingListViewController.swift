@@ -9,7 +9,7 @@ import UIKit
 
 class ShoppingListViewController: UIViewController {
 
-    let model = ShoppingListModel(persistence: GroceryItemPersistence())
+    let model = ShoppingListModel(persistence: GroceryItemPersistence(filename: "ShoppingList"))
 
     @IBOutlet weak var shoppingListTableView: UITableView!
 
