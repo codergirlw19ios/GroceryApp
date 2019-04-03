@@ -1,6 +1,7 @@
 import Foundation
 
-struct GroceryItem: Hashable, Decodable {
+//instead of listing both Decodable and Encodable, you can use Codeable to conform to both
+struct GroceryItem: Hashable, Codable {
     let name: String
     var quantity: Int
     var cost: Double?

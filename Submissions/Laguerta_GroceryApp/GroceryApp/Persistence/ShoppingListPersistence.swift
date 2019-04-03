@@ -52,5 +52,15 @@ class ShoppingListPersistence {
     //write out list to the file
     //downside of flatfile persistence is that we can't just update one grocery item or read one grocery item, we have to write all of it and read all of it at the time; a lot of data will have performance costs so we would need to condider other persistence solutions
     //to write, instead of decode from a gorcery item we need to encode from a grocery item into data
+    
+    func write (_ list: [GroceryItem]) {
+        do {
+            let data = try JSONEncoder().encode(list)
+            //atomicwrite prevents writing conflicts
+            try data.write(to: fileURL, options: .atomicWrite)
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }
+    }
 
 }
