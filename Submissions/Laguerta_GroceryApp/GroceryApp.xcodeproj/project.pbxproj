@@ -20,6 +20,7 @@
 		590362702240901E0044A2A0 /* GroceryTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903626F2240901E0044A2A0 /* GroceryTrip.swift */; };
 		59036272224092230044A2A0 /* GroceryTripError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59036271224092230044A2A0 /* GroceryTripError.swift */; };
 		5903627622409CA10044A2A0 /* GroceryTripModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903627522409CA10044A2A0 /* GroceryTripModelTests.swift */; };
+		59069EF022556982006BB702 /* ShoppingListPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59069EEF22556982006BB702 /* ShoppingListPersistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		5903626F2240901E0044A2A0 /* GroceryTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTrip.swift; sourceTree = "<group>"; };
 		59036271224092230044A2A0 /* GroceryTripError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripError.swift; sourceTree = "<group>"; };
 		5903627522409CA10044A2A0 /* GroceryTripModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripModelTests.swift; sourceTree = "<group>"; };
+		59069EEF22556982006BB702 /* ShoppingListPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListPersistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		2685C199222646F400207624 /* GroceryApp */ = {
 			isa = PBXGroup;
 			children = (
+				59069EEE2255693D006BB702 /* Persistence */,
 				2685C1BB2226479300207624 /* ShoppingList */,
 				2685C1BE2226486100207624 /* GroceryItem.swift */,
 				5903626F2240901E0044A2A0 /* GroceryTrip.swift */,
@@ -131,6 +134,14 @@
 				262236D12238A4BC00B29A19 /* ShoppingListViewController.swift */,
 			);
 			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		59069EEE2255693D006BB702 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				59069EEF22556982006BB702 /* ShoppingListPersistence.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				590362702240901E0044A2A0 /* GroceryTrip.swift in Sources */,
+				59069EF022556982006BB702 /* ShoppingListPersistence.swift in Sources */,
 				2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */,
 				2685C19D222646F400207624 /* AddItemViewController.swift in Sources */,
 				262236D22238A4BC00B29A19 /* ShoppingListViewController.swift in Sources */,
