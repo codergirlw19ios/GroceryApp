@@ -35,5 +35,12 @@ class GroceryTripModelTests: XCTestCase {
             XCTAssertEqual(error as! GroceryTripError, GroceryTripError.unplannedGroceryItem)
         }
     }
+    
+    func test_AddToCart_ShortQuantity_ThrowsError() {
+        let testItem: GroceryItem = GroceryItem(name: "pears", quantity: 3)
+        XCTAssertThrowsError(try testGroceryTripModel.addToCart(cost: 1.20, quantity: 4, groceryItem: testItem)) { error in
+            XCTAssertEqual(error as! GroceryTripError, GroceryTripError.shortQuantity)
+        }
+    }
 
 }
