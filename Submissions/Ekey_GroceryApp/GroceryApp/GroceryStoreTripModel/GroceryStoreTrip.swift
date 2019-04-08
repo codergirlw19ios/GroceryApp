@@ -10,6 +10,14 @@ import Foundation
 protocol GroceryStoreTripDelegate : class {
     func dataUpdated()
 }
+
+class GSTAction {
+    
+    var action = Action.Add
+    var row = 0
+    
+}
+
 class GroceryStoreTrip {
     
     weak var delegate : GroceryStoreTripDelegate?
@@ -22,10 +30,12 @@ class GroceryStoreTrip {
     private var totalCost = 0.0   // read only computed value  Make optional value
     // dictionary of groceryItems bool = true if item was placed in cart
     private var shoppingList = [GroceryItem : Bool]()
- //   public private(set) var myCart = [GroceryItem]()
+//lp    public private(set) var myCart = [GroceryItem]()
     
+    public var actionModel = GSTAction()
     
     public private(set) var myCart: [GroceryItem] {
+        // property observer -- before setting the property
         didSet {
             persistence.writeGroceryList(myCart)
         }
@@ -126,10 +136,13 @@ class GroceryStoreTrip {
         if let index = myCart.index(of: groceryItem) {
             myCart.remove(at: index)
             itemFound = true
-        }
-        
-        if shoppingList.contains(where: { $0.key == groceryItem }) {
-            shoppingList[groceryItem] = false
+            
+            if shoppingList.contains(where: { $0.key == groceryItem }) {
+                shoppingList[groceryItem] = false
+
+            }
+            // notify whoever is listening to the GroceryStoreTripDelegate that we updated the data
+            delegate?.dataUpdated()
         }
         
 

@@ -19,8 +19,7 @@ class GroceryListPersistence {
         
         // FileManager default is a singleton
         // ask Amanda questions about standards for saving data..
-        //FileManager.SearchpathDirectory is a enum... so I can use the .notation
-        // returns an array of URL's [URL]
+        //Filereturns an array of URL's [URL]
         fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         .first!
         .appendingPathComponent(filename, isDirectory: false)
@@ -31,7 +30,8 @@ class GroceryListPersistence {
     func readGroceryList() -> [GroceryItem] {
         do {
             let data = try Data(contentsOf: fileURL)
-            return try JSONDecoder().decode([GroceryItem].self, from: data)
+            let groceryitems = try JSONDecoder().decode([GroceryItem].self, from: data)
+            return groceryitems
             
         } catch let error as NSError {
             print(error.debugDescription)

@@ -20,3 +20,10 @@ enum GroceryStoreTripError: Error {
     case nonIntegerValue
     case none
 }
+
+enum Action {
+    case Add
+    case Edit
+    case Delete
+    
+}

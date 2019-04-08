@@ -10,6 +10,8 @@ struct GroceryItem :  Hashable, Decodable, Encodable {
         self.name = name
         self.cost = cost
         self.quantity = quantity
+        
+        print(#function)
     }
     // must be mutating because structs are value types and you cannot modify struct properties unless mutating
     

@@ -15,6 +15,7 @@
 		2685C1B0222646F700207624 /* GroceryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1AF222646F700207624 /* GroceryItemTests.swift */; };
 		2685C1BD222647F000207624 /* Shopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BC222647F000207624 /* Shopper.swift */; };
 		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
+		C727B8B422555449009EC3CA /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727B8B322555449009EC3CA /* Questions.swift */; };
 		C733AC5F22518E320064DF16 /* GroceryStoreTripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C733AC5E22518E320064DF16 /* GroceryStoreTripListViewController.swift */; };
 		C744FC25222EE03E009F2EB3 /* GroceryStoreTripError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC24222EE03E009F2EB3 /* GroceryStoreTripError.swift */; };
 		C744FC27222EE64A009F2EB3 /* ShopperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC26222EE64A009F2EB3 /* ShopperTest.swift */; };
@@ -50,6 +51,7 @@
 		2685C1B1222646F700207624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2685C1BC222647F000207624 /* Shopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopper.swift; sourceTree = "<group>"; };
 		2685C1BE2226486100207624 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		C727B8B322555449009EC3CA /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		C733AC5E22518E320064DF16 /* GroceryStoreTripListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTripListViewController.swift; sourceTree = "<group>"; };
 		C744FC24222EE03E009F2EB3 /* GroceryStoreTripError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTripError.swift; sourceTree = "<group>"; };
 		C744FC26222EE64A009F2EB3 /* ShopperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopperTest.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		2685C18E222646F400207624 = {
 			isa = PBXGroup;
 			children = (
+				C727B8B322555449009EC3CA /* Questions.swift */,
 				2685C199222646F400207624 /* GroceryApp */,
 				2685C1AE222646F700207624 /* GroceryAppTests */,
 				2685C198222646F400207624 /* Products */,
@@ -157,9 +160,9 @@
 				C783E417224B2345001B056A /* GroceryStoreTrip.storyboard */,
 				C744FC28222EE827009F2EB3 /* GroceryStoreTrip.swift */,
 				C744FC24222EE03E009F2EB3 /* GroceryStoreTripError.swift */,
+				C7F280012251BD330049A43A /* AddToCartViewController.swift */,
 				C733AC5E22518E320064DF16 /* GroceryStoreTripListViewController.swift */,
 				C7F280032252B84E0049A43A /* GSTTableViewCell.swift */,
-				C7F280012251BD330049A43A /* AddToCartViewController.swift */,
 			);
 			path = GroceryStoreTripModel;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				2685C19D222646F400207624 /* ShopperViewController.swift in Sources */,
 				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
+				C727B8B422555449009EC3CA /* Questions.swift in Sources */,
 				C7F280042252B84E0049A43A /* GSTTableViewCell.swift in Sources */,
 				C744FC25222EE03E009F2EB3 /* GroceryStoreTripError.swift in Sources */,
 			);

@@ -7,10 +7,14 @@
 
 import UIKit
 
+
+
 class AddToCartViewController: UIViewController {
 
     // have a PTR to the GroceryStoreTrip
     var gstModel:  GroceryStoreTrip?
+    var groceryItem: GroceryItem?
+    var action = Action.Add
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -20,6 +24,9 @@ class AddToCartViewController: UIViewController {
     
     @IBOutlet weak var costTextField: UITextField!
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +35,34 @@ class AddToCartViewController: UIViewController {
         qtyTextField.delegate = self
         itemNameTextField.delegate = self
         costTextField.delegate = self
+        
+        if (gstModel != nil) {
+            action = gstModel!.actionModel.action
+        }
+        
+        switch (action) {
+            case(Action.Edit):
+                do {
+                    groceryItem = try gstModel?.getGroceryCartItem(index: (gstModel?.actionModel.row)!)
+                    if groceryItem != nil {
+                        qtyTextField.text = String(groceryItem!.quantity)
+                        itemNameTextField.text = groceryItem?.name
+                        costTextField.text = (String(format:"%.1f", groceryItem!.cost ?? 0.0))
+                        }
+                } catch {
+                    print(error)
+            }
+            default:
+                return
+        }
+        
+        // if not nil, then we are editing
+//        if groceryItem != nil {
+//            qtyTextField.text = String(groceryItem!.quantity)
+//            itemNameTextField.text = groceryItem?.name
+//            costTextField.text = (String(format:"%.1f", groceryItem!.cost ?? 0.0))
+//
+//        }
     }
     
     @IBAction func userTappedCancel(_ sender: UIButton) {
@@ -50,13 +85,18 @@ class AddToCartViewController: UIViewController {
             return
         }
         
-        let groceryItem = GroceryItem(itemName, itemQty, itemCost )
+        if action == Action.Edit {
+            if !(gstModel?.removeGroceryItemFromCart(groceryItem!))! {
+                print("Grocery Item Not Found")
+            }
+        }
         
         do {
-            try gstModel?.addGroceryItemToCart( groceryItem, true )
+            try gstModel?.addGroceryItemToCart( GroceryItem(itemName, itemQty, itemCost ), true )
             itemNameTextField.text!.removeAll()
             qtyTextField.text!.removeAll()
             costTextField.text!.removeAll()
+            
             
             // somehow we need to notify the GroceryStoreTripViewContoller that we added and Item and to show it in the list..
             // I think they add a notification to the addGroceryItemToCart -- then anyone who is listening can do what they need to do
