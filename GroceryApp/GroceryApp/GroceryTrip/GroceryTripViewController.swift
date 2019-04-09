@@ -35,6 +35,8 @@ class GroceryTripViewController: UIViewController {
         model?.delegate = self
 
         addButton.isEnabled = false
+
+        budgetTextField.becomeFirstResponder()
     }
 
     func generateModel() {
@@ -42,6 +44,8 @@ class GroceryTripViewController: UIViewController {
             return
         }
 
+        // eventually pass in shopping list from shopping list model
+        // instead of persistence
         model = GroceryTripModel(budget: budget, shoppingList: GroceryItemPersistence(filename: "ShoppingList").groceryItems(), persistence: GroceryItemPersistence(filename: "Cart"))
         addButton.isEnabled = true
         populateTextViews()
@@ -89,10 +93,22 @@ extension GroceryTripViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // all items in our shopping list
-        return model?.listCount ?? 0
+        if section == 0 {
+            return model?.listCount ?? 0
+        } else if section == 1 {
+            return 1
+        }
+
+        return 0
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if indexPath.section == 0 {
         guard let cell = groceryTripTableView.dequeueReusableCell(withIdentifier: "GroceryTripCell", for: indexPath) as? GroceryTripTableViewCell else {
             return UITableViewCell()
         }
@@ -103,7 +119,29 @@ extension GroceryTripViewController: UITableViewDataSource {
         cell.decorateCell(with: groceryItem)
 
         return cell
+        }
+        else if indexPath.section == 1 {
+            let cell = groceryTripTableView.dequeueReusableCell(withIdentifier: "demoSection", for: indexPath)
+            cell.textLabel?.text = "hello"
+            cell.detailTextLabel?.text = "laurie"
+
+            return cell
+        }
+
+        return UITableViewCell()
+
     }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "grocery items"
+        } else if section == 1 {
+            return "section title example"
+        }
+
+        return nil
+    }
+
 }
 
 extension GroceryTripViewController: UITextFieldDelegate {
@@ -128,11 +166,10 @@ extension GroceryTripViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
 
-        if let gesture = dismissKeyboardGesture {
-            self.view.addGestureRecognizer(gesture)
-        }
+        self.view.addGestureRecognizer(gesture)
+        dismissKeyboardGesture = gesture
         
         return true
     }
