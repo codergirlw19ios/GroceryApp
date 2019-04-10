@@ -17,16 +17,11 @@ class AddToCartViewController: UIViewController {
     var action = Action.Add
     
     @IBOutlet weak var saveButton: UIButton!
-    
     @IBOutlet weak var itemNameTextField: UITextField!
-    
     @IBOutlet weak var qtyTextField: UITextField!
-    
     @IBOutlet weak var costTextField: UITextField!
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,14 +31,17 @@ class AddToCartViewController: UIViewController {
         itemNameTextField.delegate = self
         costTextField.delegate = self
         
+        
+        // if we have a model, get the action
         if (gstModel != nil) {
             action = gstModel!.actionModel.action
         }
-        
+        // if an Edit, the get the GroceryItem we are editing
         switch (action) {
             case(Action.Edit):
                 do {
                     groceryItem = try gstModel?.getGroceryCartItem(index: (gstModel?.actionModel.row)!)
+                    // populate fields on screen
                     if groceryItem != nil {
                         qtyTextField.text = String(groceryItem!.quantity)
                         itemNameTextField.text = groceryItem?.name
@@ -56,18 +54,13 @@ class AddToCartViewController: UIViewController {
                 return
         }
         
-        // if not nil, then we are editing
-//        if groceryItem != nil {
-//            qtyTextField.text = String(groceryItem!.quantity)
-//            itemNameTextField.text = groceryItem?.name
-//            costTextField.text = (String(format:"%.1f", groceryItem!.cost ?? 0.0))
-//
-//        }
     }
     
     @IBAction func userTappedCancel(_ sender: UIButton) {
         // call dismiss - so no memory leak with gstModel
         // if we don't call dismiss, the gstModel has a reference count which never goes down
+        
+        //Laurie:  Not sure we need this with a Navigation bar
         dismiss(animated: true, completion: nil)
     }
     
@@ -85,10 +78,15 @@ class AddToCartViewController: UIViewController {
             return
         }
         
+        // if Edit, remove item from list and re-add
         if action == Action.Edit {
             if !(gstModel?.removeGroceryItemFromCart(groceryItem!))! {
                 print("Grocery Item Not Found")
             }
+            // clean up the action
+            gstModel?.actionModel.action = Action.Add
+            gstModel?.actionModel.row = 0
+            
         }
         
         do {
@@ -106,7 +104,9 @@ class AddToCartViewController: UIViewController {
             return
         }
         // dismiss this modal dialog --  so memory is properly cleaned up
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        
+        navigationController?.popViewController
     }
     /*
     // MARK: - Navigation
@@ -128,19 +128,19 @@ extension  AddToCartViewController : UITextFieldDelegate {
         do {
             // Focus may have just left one object, however both need to be valid to enable the save
             if (textField == itemNameTextField) {
-                try gstModel?.validateString(stringValue: textField.text)
-                _ = try gstModel?.validateInt(intValue: qtyTextField.text)
-                _ = try gstModel?.validateDouble(doubleValue: costTextField.text)
+                try Validation.validateString(stringValue: textField.text)
+                _ = try Validation.validateInt(intValue: qtyTextField.text)
+                _ = try Validation.validateDouble(doubleValue: costTextField.text)
             }
             if (textField == qtyTextField) {
-                let _ = try gstModel?.validateInt(intValue: textField.text)
-                try gstModel?.validateString(stringValue: itemNameTextField.text)
-                _ = try gstModel?.validateDouble(doubleValue: costTextField.text)
+                let _ = try Validation.validateInt(intValue: textField.text)
+                try Validation.validateString(stringValue: itemNameTextField.text)
+                _ = try Validation.validateDouble(doubleValue: costTextField.text)
             }
             if (textField == costTextField) {
-                let _ = try gstModel?.validateDouble(doubleValue: textField.text)
-                try gstModel?.validateString(stringValue: itemNameTextField.text)
-                _ = try gstModel?.validateInt(intValue: qtyTextField.text)
+                let _ = try Validation.validateDouble(doubleValue: textField.text)
+                try Validation.validateString(stringValue: itemNameTextField.text)
+                _ = try Validation.validateInt(intValue: qtyTextField.text)
             }
             saveButton.isEnabled = true
         } catch {

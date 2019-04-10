@@ -10,7 +10,6 @@ import UIKit
 class GSTTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameTextField: UILabel!
-    
     @IBOutlet weak var ttlCostTextField: UILabel!
     @IBOutlet weak var costTextField: UILabel!
     @IBOutlet weak var qtyTextField: UILabel!

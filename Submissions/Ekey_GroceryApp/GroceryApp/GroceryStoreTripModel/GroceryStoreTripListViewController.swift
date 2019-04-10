@@ -12,43 +12,46 @@ class GroceryStoreTripListViewController: UIViewController {
   //  let shopperModel = Shopper(persistence: GroceryListPersistence())
     
     @IBOutlet weak var addButton: UIButton!
-    
-    
-    @IBOutlet weak var budgetValue: UILabel!
-    
-    @IBOutlet weak var totalCostValue: UILabel!
-    
-    @IBOutlet weak var balanceValue: UILabel!
-    
-    //var gstModel:  GroceryStoreTrip?
-    
-    let gstModel = GroceryStoreTrip(persistence: GroceryListPersistence(),
-                                    budget: 100.00,
-                                    groceryList: [ GroceryItem( "Milk", 1, 2.50),                                                                                   GroceryItem( "Yogurt",  1,  2.50),                                                                                                                 GroceryItem( "Apples",  4),                                                                                                                ], taxRate: 0.10)
-    
+    @IBOutlet weak var budgetValue: UITextField!
+    @IBOutlet weak var taxRateValue: UITextField!
+    @IBOutlet weak var totalCostValue: UITextField!
+    @IBOutlet weak var balanceValue: UITextField!
     @IBOutlet weak var groceryStoreTripTableView: UITableView!
+    var gstModel:  GroceryStoreTrip?
+    
+//    let gstModel = GroceryStoreTrip(persistence: GroceryListPersistence(),
+//                                    budget: 100.00,
+//                                    groceryList: [ GroceryItem( "Milk", 1, 2.50),                                                                                   GroceryItem( "Yogurt",  1,  2.50),                                                                                                                 GroceryItem( "Apples",  4),                                                                                                                ], taxRate: 0.10)
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   addButton.isEnabled = false
+        addButton.isEnabled = false
         groceryStoreTripTableView.dataSource = self
         groceryStoreTripTableView.delegate = self
         
-        // let the groceryStoreTripTableView listen for the model's delegate
-        gstModel.delegate = self
-        
-        budgetValue.text = "100.0"
+        // let the groceryStoreTripTableView listen for the model's delegate  i.e.  GroceryStoreTripDelegate {
+        gstModel?.delegate = self
+        budgetValue.delegate = self
+        taxRateValue.delegate = self
+        budgetValue.text = Validation.currency(from: 0.0)
 
+        totalCostValue.isEnabled = false
+        balanceValue.isEnabled = false
         calculateTotals()
     }
     
-
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        gstModel.actionModel.action = Action.Add
-        gstModel.actionModel.row = 0
+        // if there is no model, do not trigger segue; you cannot abort from prepare(for:sender:) so you have to stop the action here.
+        guard gstModel != nil else { return }
+
+        gstModel?.actionModel.action = Action.Add
+        gstModel?.actionModel.row = 0
         // call the segue - AddItemSegueID
         performSegue(withIdentifier: "AddItemSegueID", sender: nil)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -59,35 +62,32 @@ class GroceryStoreTripListViewController: UIViewController {
         
         // pass the REAL unique ptr to the model to the destination view controller
         destination.gstModel = gstModel
+    }
+    
+    func generateModel(budget: Double, taxRate: Double) -> Bool {
         
-        // determine if I'm add or edit
-//        let theSender = sender as? GroceryItem
-//
-//        if (theSender != nil)
-//        {
-//            destination.groceryItem = theSender!
-//        }
+        if (budget > 0.0) {
+            gstModel = GroceryStoreTrip(persistence: GroceryListPersistence(),
+                                        budget: budget,
+                                        groceryList: [ GroceryItem( "Milk", 1, 2.50),                                                                                                          GroceryItem( "Yogurt",  1,  2.50),                                                                                                                 GroceryItem( "Apples",  4),                                                                                                                ], taxRate: taxRate > 0.0 ? taxRate : 0.0)
+           
+            
+            addButton.isEnabled = true
+            //        populateTextViews()
+            groceryStoreTripTableView.reloadData()
+            view.layoutIfNeeded()
+            return true
+        }
         
- 
-        
-//        switch(segue.identifier ?? "") {
-//
-//        case "AddItemSegueID":
-//            print("Add Item")
-//        case "EditItemSegueID":
-//            print("EditItem")
-//        default:
-//            fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "No Identifier")")
-//        }
-        
-        
+        return false
     }
     
     func calculateTotals() {
         do {
-            totalCostValue.text = String(try gstModel.calculateTtlCost())
-            balanceValue.text = String(try gstModel.calculateBalance())
-            _ = try gstModel.checkOut()
+            taxRateValue.text = String(gstModel?.taxRate ?? 0.0)
+            totalCostValue.text = Validation.currency(from: try gstModel?.calculateTtlCost() ?? 0.0)
+            balanceValue.text = Validation.currency(from: try gstModel?.calculateBalance() ?? 0.0)
+            _ = try gstModel?.checkOut()
         } catch {
             
         }
@@ -107,16 +107,11 @@ extension GroceryStoreTripListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // hanlde selecting a row for editing
         
-        do {
-            
-            gstModel.actionModel.action = Action.Edit
-            gstModel.actionModel.row = indexPath.row
-            // call the segue - AddItemSegueID
-            performSegue(withIdentifier: "AddItemSegueID", sender: nil)
-            
-        } catch {
-            print(error)
-        }
+        gstModel?.actionModel.action = Action.Edit
+        gstModel?.actionModel.row = indexPath.row
+        // call the segue - AddItemSegueID
+        performSegue(withIdentifier: "AddItemSegueID", sender: nil)
+        
     }
     
 }
@@ -124,7 +119,7 @@ extension GroceryStoreTripListViewController : UITableViewDelegate {
 // When the user scrolls off the screen the cell gets dequeued to conserve memor
 extension GroceryStoreTripListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gstModel.myCart.count
+        return gstModel?.myCart.count ?? 0
     }
 
 
@@ -137,11 +132,11 @@ extension GroceryStoreTripListViewController : UITableViewDataSource {
         // var groceryItem: GroceryItem?
 
         do {
-            let groceryItem = try gstModel.getGroceryCartItem(index: indexPath.row)
+            let groceryItem = try gstModel?.getGroceryCartItem(index: indexPath.row)
             // item quantity
              var ttlCost = 0.0
             if groceryItem!.cost != nil && groceryItem!.quantity != 0 {
-                ttlCost = groceryItem!.cost ?? 0.0 * Double(groceryItem!.quantity)
+                ttlCost = (groceryItem!.cost ?? 0.0) * Double(groceryItem!.quantity)
             }
             let ttlCostString = String(format:"%.1f", ttlCost)
             cell.ttlCostTextField?.text = ttlCostString
@@ -183,12 +178,37 @@ extension  GroceryStoreTripListViewController : UITextFieldDelegate {
         do {
             // Focus may have just left one object, however both need to be valid to enable the save
             if (textField == budgetValue ) {
-                _ = try gstModel.validateDouble(doubleValue: textField.text)
-                guard let dbl = Double(textField.text!) else {
+                guard let budget = try? Validation.validateDouble(doubleValue: textField.text) else {
                     throw(GroceryStoreTripError.nonIntegerValue)
                 }
-                if dbl > 0.0 {
+                guard let taxRate = try? Validation.validateDouble(doubleValue: taxRateValue.text) else {
+                    throw(GroceryStoreTripError.nonIntegerValue)
+                }
+                
+                // if budget was valid and model generated
+                if (generateModel(budget: budget, taxRate: taxRate)) {
                     addButton.isEnabled = true
+                    // Since we updated the data, let's recalculate totals
+                    calculateTotals()
+                } else {
+                    // reset the old value
+                    budgetValue.text = String(gstModel?.budget ?? 0.0)
+                    addButton.isEnabled = false
+                }
+            }
+            if (textField == taxRateValue ) {
+                guard let taxRate = try? Validation.validateDouble(doubleValue: textField.text) else {
+                    throw(GroceryStoreTripError.nonIntegerValue)
+                }
+                if taxRate > 0.0 {
+                    _ = try gstModel?.updateTaxRate(taxRate: taxRate)
+                    addButton.isEnabled = true
+                    // Since we updated the data, let's recalculate totals
+                    calculateTotals()
+                } else {
+                    // reset the old value
+                    taxRateValue.text = String(gstModel?.taxRate ?? 0.0)
+                    addButton.isEnabled = false
                 }
             }
         } catch {

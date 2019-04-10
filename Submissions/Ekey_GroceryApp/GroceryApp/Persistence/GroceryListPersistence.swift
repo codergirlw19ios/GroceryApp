@@ -11,7 +11,6 @@ class GroceryListPersistence {
    // private let filename = "GroceryList"
     private let filename = "ShoppingList"
     private let type = "json"
-    
     private let fileURL: URL
     
     init() {

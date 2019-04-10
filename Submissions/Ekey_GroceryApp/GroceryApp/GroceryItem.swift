@@ -1,6 +1,6 @@
 import Foundation
 
-
+//  
 struct GroceryItem :  Hashable, Decodable, Encodable {
     let name: String
     var cost: Double?    // This should be an optional value

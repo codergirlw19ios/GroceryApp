@@ -13,9 +13,7 @@ class ShopperViewController: UIViewController {
     var model:  Shopper?
     
     @IBOutlet weak var saveButton: UIButton!
-    
     @IBOutlet weak var qtyTextField: UITextField!
-    
     @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidLoad() {
@@ -92,35 +90,6 @@ extension  ShopperViewController : UITextFieldDelegate {
     return true
     }
     
-    //Laurie:  Amanda rewrite --This function is called with every keystroke change -- string contains 1 char -- user other method
-//    func textField( _ textField: UITextField,
-//        shouldChangeCharactersIn range: NSRange,
-//        replacementString string: String
-//        ) -> Bool {
-//
-////        guard let model = model else {
-////            saveButton.isEnabled = false
-////            return true
-////        }
-//
-//        // TODO: handle specific error cases and inform user of
-//        // why the save button is disabled
-//
-//        do {
-//            if textField == qtyTextField {
-//                _ = try model.validateInt(qty: string)
-//                try model.validateString(name: nameTextField.text)
-//            } else if textField == nameTextField {
-//                try model.validateString(name: string)
-//                _ = try model.validateInt(qty: qtyTextField.text)
-//            }
-//            saveButton.isEnabled = true
-//        } catch {
-//            saveButton.isEnabled = false
-//        }
-//
-//        return true
-//    }
 }
     
 

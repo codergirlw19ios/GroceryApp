@@ -11,6 +11,7 @@ protocol GroceryStoreTripDelegate : class {
     func dataUpdated()
 }
 
+// GSTAction - represents an Add/Edit/Delete from the viewModel
 class GSTAction {
     
     var action = Action.Add
@@ -21,19 +22,15 @@ class GSTAction {
 class GroceryStoreTrip {
     
     weak var delegate : GroceryStoreTripDelegate?
-    
+    public var actionModel = GSTAction()
     private let persistence: GroceryListPersistence
-    
     public private(set) var budget : Double = 0.0
-    private var taxRate = 0.0     // percentage
+    public private(set) var taxRate = 0.0     // percentage
     private var balance = 0.0     // read only computed value
-    private var totalCost = 0.0   // read only computed value  Make optional value
+    private var totalCost = 0.0   // read only computed value
     // dictionary of groceryItems bool = true if item was placed in cart
     private var shoppingList = [GroceryItem : Bool]()
 //lp    public private(set) var myCart = [GroceryItem]()
-    
-    public var actionModel = GSTAction()
-    
     public private(set) var myCart: [GroceryItem] {
         // property observer -- before setting the property
         didSet {
@@ -55,39 +52,9 @@ class GroceryStoreTrip {
             // since GroceryItem is hashable, the object can be a key
             shoppingList[item] = false
         }
-//        var interimShoppingListSet: Set = Set(shoppingListArray)
-//        func getShoppingList() -> [GroceryItem: Bool] {
-//            let tuple = interimShoppingListSet.map { ($0, false)}
-//            return Dictionary(uniqueKeysWithValues: tuple)
-//        }
-//        self.shoppingList = getShoppingList()
     }
     
-    // verify string is not empty
-    func validateString(stringValue: String?) throws {
-        guard let stringName = stringValue, !stringName.isEmpty else {
-            throw GroceryStoreTripError.emptyString
-        }
-    }
-    
-    // Verify string is not empty and only contains integers
-    func validateInt(intValue: String?) throws -> Int {
-        try validateString(stringValue: intValue)
-        
-        guard let int = Int(intValue!) else {
-            throw GroceryStoreTripError.nonIntegerValue
-        }
-        return int
-    }
-    
-    func validateDouble(doubleValue: String?) throws -> Double {
-        try validateString(stringValue: doubleValue)
-        
-        guard let dbl = Double(doubleValue!) else {
-            throw GroceryStoreTripError.nonIntegerValue
-        }
-        return dbl
-    }
+
     // can be nil
     func getGroceryCartItem(index: Int) throws -> GroceryItem? {
         
