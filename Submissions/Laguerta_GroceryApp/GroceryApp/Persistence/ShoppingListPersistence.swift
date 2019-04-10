@@ -39,7 +39,7 @@ class ShoppingListPersistence {
         do {
             //json file contains human readable text, and to make it a struct, have it return a data type; have it decode and initialize from the contents url so if file doesnt exists, throws an error and if it succeeds, use a json decoder
             let data = try Data(contentsOf: fileURL)
-            return try JSONDecoder().decode([GroceryItem].self, from: data)
+            return try decode(type: [GroceryItem].self, data)
             
         } catch let error as NSError {
             print(error.debugDescription)
@@ -55,12 +55,25 @@ class ShoppingListPersistence {
     
     func write (_ list: [GroceryItem]) {
         do {
-            let data = try JSONEncoder().encode(list)
+            let data = try encode(list)
             //atomicwrite prevents writing conflicts
             try data.write(to: fileURL, options: .atomicWrite)
         } catch let error as NSError {
             print(error.debugDescription)
         }
+    }
+    
+    
+    //separate the reading and decoding concerns with a generic; decode from JSON to a Type
+    private func decode<T>(type: T.Type, _ data: Data) throws -> T where T: Decodable {
+        return try JSONDecoder().decode(type, from: data)
+    }
+    
+    //T says I can pass in anything and arbitrailiy name it T
+    //reject any funciton calls that rejects where the object being passed in doesn't conform to Encodable
+    //Encode from a Type to JSON
+    private func encode<T>(_ item: T) throws -> Data where T: Encodable {
+        return try JSONEncoder().encode(item)
     }
 
 }
