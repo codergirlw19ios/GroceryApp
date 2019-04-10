@@ -35,15 +35,15 @@ class AddToCartViewController: UIViewController {
             return
         }
 
-//        do {
-            try? model.addToCart(name: name, quantity: quantity, cost: cost)
-//        } catch let error as GroceryTripError { // TODO: handle errors individually and inform user what faileds
-//            print(error)
-//            return
-//        } catch {
-//            print(#function)
-//            return
-//        }
+        do {
+            try model.addToCart(name: name, quantity: quantity, cost: cost)
+        } catch let error as GroceryTripError { // TODO: handle errors individually and inform user what faileds
+            print(error)
+            return
+        } catch {
+            print(#function)
+            return
+        }
 
         cancelButtonTapped(_sender: nil)
     }
