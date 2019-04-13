@@ -26,6 +26,7 @@
 		2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BC222647F000207624 /* ShoppingListModel.swift */; };
 		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
 		26B1893722264D08001765F8 /* ShoppingListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1893622264D08001765F8 /* ShoppingListModelTests.swift */; };
+		26C4652F225EC45800F426BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C4652E225EC45800F426BB /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		2685C1BC222647F000207624 /* ShoppingListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModel.swift; sourceTree = "<group>"; };
 		2685C1BE2226486100207624 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		26B1893622264D08001765F8 /* ShoppingListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModelTests.swift; sourceTree = "<group>"; };
+		26C4652E225EC45800F426BB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		2685C199222646F400207624 /* GroceryApp */ = {
 			isa = PBXGroup;
 			children = (
+				26C4652D225EC44600F426BB /* Main */,
 				2674FB73225434EC005AD287 /* GroceryTrip */,
 				2685C1BB2226479300207624 /* ShoppingList */,
 				2685C1BE2226486100207624 /* GroceryItem.swift */,
@@ -173,6 +176,14 @@
 				2685C19C222646F400207624 /* AddItemViewController.swift */,
 			);
 			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		26C4652D225EC44600F426BB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				26C4652E225EC45800F426BB /* Main.storyboard */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2685C1A5222646F700207624 /* LaunchScreen.storyboard in Resources */,
+				26C4652F225EC45800F426BB /* Main.storyboard in Resources */,
 				2685C1A2222646F700207624 /* Assets.xcassets in Resources */,
 				2685C1A0222646F400207624 /* ShoppingList.storyboard in Resources */,
 				2674FB7A225434EC005AD287 /* GroceryTrip.storyboard in Resources */,

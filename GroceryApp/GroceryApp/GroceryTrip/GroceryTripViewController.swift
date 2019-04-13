@@ -15,7 +15,7 @@ class GroceryTripViewController: UIViewController {
     @IBOutlet weak var totalTextField: UITextField!
     @IBOutlet weak var balanceTextField: UITextField!
     @IBOutlet weak var groceryTripTableView: UITableView!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     var model: GroceryTripModel?
     private var dismissKeyboardGesture: UITapGestureRecognizer?
@@ -55,7 +55,7 @@ class GroceryTripViewController: UIViewController {
     }
 
 
-    @IBAction func addButtonTapped(_ sender: UIButton) {
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         // if there is no model, do not trigger segue; you cannot abort from prepare(for:sender:) so you have to stop the action here.
         guard model != nil else { return }
 
