@@ -17,7 +17,7 @@
 		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
 		C727B8B422555449009EC3CA /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727B8B322555449009EC3CA /* Questions.swift */; };
 		C728FB46225D155800AD5D9A /* StringValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728FB45225D155800AD5D9A /* StringValidation.swift */; };
-		C728FB4C2265286F00AD5D9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C728FB4B2265286F00AD5D9A /* Main.storyboard */; };
+		C728FB4E2267EABF00AD5D9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C728FB4D2267EABF00AD5D9A /* Main.storyboard */; };
 		C733AC5F22518E320064DF16 /* GroceryStoreTripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C733AC5E22518E320064DF16 /* GroceryStoreTripListViewController.swift */; };
 		C744FC25222EE03E009F2EB3 /* GroceryStoreTripError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC24222EE03E009F2EB3 /* GroceryStoreTripError.swift */; };
 		C744FC27222EE64A009F2EB3 /* ShopperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC26222EE64A009F2EB3 /* ShopperTest.swift */; };
@@ -55,7 +55,7 @@
 		2685C1BE2226486100207624 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		C727B8B322555449009EC3CA /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		C728FB45225D155800AD5D9A /* StringValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidation.swift; sourceTree = "<group>"; };
-		C728FB4B2265286F00AD5D9A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C728FB4D2267EABF00AD5D9A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C733AC5E22518E320064DF16 /* GroceryStoreTripListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTripListViewController.swift; sourceTree = "<group>"; };
 		C744FC24222EE03E009F2EB3 /* GroceryStoreTripError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTripError.swift; sourceTree = "<group>"; };
 		C744FC26222EE64A009F2EB3 /* ShopperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopperTest.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 		C728FB4A2265285B00AD5D9A /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C728FB4B2265286F00AD5D9A /* Main.storyboard */,
+				C728FB4D2267EABF00AD5D9A /* Main.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -270,7 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2685C1A5222646F700207624 /* LaunchScreen.storyboard in Resources */,
-				C728FB4C2265286F00AD5D9A /* Main.storyboard in Resources */,
+				C728FB4E2267EABF00AD5D9A /* Main.storyboard in Resources */,
 				C783E418224B2345001B056A /* GroceryStoreTrip.storyboard in Resources */,
 				2685C1A2222646F700207624 /* Assets.xcassets in Resources */,
 				2685C1A0222646F400207624 /* Shopper.storyboard in Resources */,
