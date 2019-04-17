@@ -10,27 +10,27 @@ class Shopper {
     
     private let persistence: GroceryListPersistence
     
-    public private(set) var myGroceryList: [GroceryItem] {
-        didSet {
-            persistence.writeGroceryList(myGroceryList)
-        }
-    }
+//    public private(set) var myGroceryList: [GroceryItem] {
+//        didSet {
+//           persistence.writeGroceryList(myGroceryList)
+//        }
+//    }
     
     init(persistence: GroceryListPersistence) {
         self.persistence = persistence
         // read the data from the file and initialize list
-        myGroceryList = persistence.readGroceryList()
+   //     myGroceryList = persistence.readGroceryList()
     }
-//    public private(set) var myGroceryList = [
-//        GroceryItem( "Milk", 1, 2.50),
-//        GroceryItem( "Yogurt",  1,  2.50),
+    public private(set) var myGroceryList = [
+        GroceryItem( "Milk", 1, 2.50),
+        GroceryItem( "Yogurt",  1,  2.50),
 //        GroceryItem( "Apples",  4),
 //        GroceryItem( "Bread",  1),
 //        GroceryItem( "Lettuce",  1,  2.50),
 //        GroceryItem( "Cucumber",  1,  2.50),
 //        GroceryItem( "Tomato",  1)
-//    ]
-    
+    ]
+
     // Add a unique groceryItem to the users list
     func addGroceryItemToList(_ groceryItem: GroceryItem ) throws {
         // check the list to see if item already exists, if so, give user a message

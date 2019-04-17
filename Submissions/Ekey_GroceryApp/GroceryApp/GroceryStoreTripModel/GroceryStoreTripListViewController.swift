@@ -11,13 +11,15 @@ class GroceryStoreTripListViewController: UIViewController {
 
   //  let shopperModel = Shopper(persistence: GroceryListPersistence())
     
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var budgetValue: UITextField!
     @IBOutlet weak var taxRateValue: UITextField!
     @IBOutlet weak var totalCostValue: UITextField!
     @IBOutlet weak var balanceValue: UITextField!
     @IBOutlet weak var groceryStoreTripTableView: UITableView!
     var gstModel:  GroceryStoreTrip?
+    
+    private var dismissKeyboardGesture: UITapGestureRecognizer?
     
 //    let gstModel = GroceryStoreTrip(persistence: GroceryListPersistence(),
 //                                    budget: 100.00,
@@ -36,13 +38,14 @@ class GroceryStoreTripListViewController: UIViewController {
         budgetValue.delegate = self
         taxRateValue.delegate = self
         budgetValue.text = Validation.currency(from: 0.0)
-
+        budgetValue.becomeFirstResponder()
+        
         totalCostValue.isEnabled = false
         balanceValue.isEnabled = false
         calculateTotals()
     }
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         // if there is no model, do not trigger segue; you cannot abort from prepare(for:sender:) so you have to stop the action here.
         guard gstModel != nil else { return }
 
@@ -66,20 +69,26 @@ class GroceryStoreTripListViewController: UIViewController {
     
     func generateModel(budget: Double, taxRate: Double) -> Bool {
         
-        if (budget > 0.0) {
-            gstModel = GroceryStoreTrip(persistence: GroceryListPersistence(),
-                                        budget: budget,
-                                        groceryList: [ GroceryItem( "Milk", 1, 2.50),                                                                                                          GroceryItem( "Yogurt",  1,  2.50),                                                                                                                 GroceryItem( "Apples",  4),                                                                                                                ], taxRate: taxRate > 0.0 ? taxRate : 0.0)
-           
-            
-            addButton.isEnabled = true
-            //        populateTextViews()
-            groceryStoreTripTableView.reloadData()
-            view.layoutIfNeeded()
-            return true
+        if (budget <= 0.0) {
+            return false
         }
         
-        return false
+        if (gstModel == nil) {
+            gstModel = GroceryStoreTrip(persistence: GroceryListPersistence(),
+                                    budget: budget,
+                                    groceryList: [ GroceryItem( "Milk", 1, 2.50),                                                                                                          GroceryItem( "Yogurt",  1,  2.50),                                                                                                                 GroceryItem( "Apples",  4),                                                                                                                ], taxRate: taxRate > 0.0 ? taxRate : 0.0)
+       
+        }
+        
+        addButton.isEnabled = true
+        gstModel?.delegate = self
+        //        populateTextViews()
+        groceryStoreTripTableView.reloadData()
+        view.layoutIfNeeded()
+            
+        
+        
+        return true
     }
     
     func calculateTotals() {
@@ -166,6 +175,7 @@ extension GroceryStoreTripListViewController : GroceryStoreTripDelegate {
     
         // Since we updated the data, let's recalculate totals
         calculateTotals()
+        view.layoutIfNeeded()
     }
 }
 
@@ -188,10 +198,14 @@ extension  GroceryStoreTripListViewController : UITextFieldDelegate {
                 // if budget was valid and model generated
                 if (generateModel(budget: budget, taxRate: taxRate)) {
                     addButton.isEnabled = true
+         //           budgetValue.text = Validation.currency(from: budget)
+                    budgetValue.text = String(budget)
+                    gstModel?.update(budget: budget)
                     // Since we updated the data, let's recalculate totals
                     calculateTotals()
                 } else {
                     // reset the old value
+        //            budgetValue.text = Validation.currency(from: gstModel?.budget ?? 0.0)
                     budgetValue.text = String(gstModel?.budget ?? 0.0)
                     addButton.isEnabled = false
                 }
@@ -216,7 +230,30 @@ extension  GroceryStoreTripListViewController : UITextFieldDelegate {
         }
         
         
+        
         // return false means focus is retained on field
+        return true
+    }
+    
+    @objc func endEditing() {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        
+        self.view.addGestureRecognizer(gesture)
+        dismissKeyboardGesture = gesture
+        
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let gesture = dismissKeyboardGesture {
+            self.view.removeGestureRecognizer(gesture)
+            dismissKeyboardGesture = nil
+        }
+        textField.resignFirstResponder()
         return true
     }
 }

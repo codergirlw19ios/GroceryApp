@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol GroceryStoreTripDelegate : class {
-    func dataUpdated()
-}
+
 
 // GSTAction - represents an Add/Edit/Delete from the viewModel
 class GSTAction {
@@ -19,9 +17,14 @@ class GSTAction {
     
 }
 
+protocol GroceryStoreTripDelegate : class {
+    func dataUpdated()
+}
+
 class GroceryStoreTrip {
     
     weak var delegate : GroceryStoreTripDelegate?
+    
     public var actionModel = GSTAction()
     private let persistence: GroceryListPersistence
     public private(set) var budget : Double = 0.0
@@ -30,13 +33,13 @@ class GroceryStoreTrip {
     private var totalCost = 0.0   // read only computed value
     // dictionary of groceryItems bool = true if item was placed in cart
     private var shoppingList = [GroceryItem : Bool]()
-//lp    public private(set) var myCart = [GroceryItem]()
-    public private(set) var myCart: [GroceryItem] {
-        // property observer -- before setting the property
-        didSet {
-            persistence.writeGroceryList(myCart)
-        }
-    }
+    public private(set) var myCart = [GroceryItem]()
+//    public private(set) var myCart: [GroceryItem] {
+//        // property observer -- before setting the property
+//        didSet {
+//            persistence.writeGroceryList(myCart)
+//        }
+//    }
     
     init(persistence: GroceryListPersistence, budget: Double, groceryList: [GroceryItem], taxRate: Double = 0.0) {
         self.budget = budget
@@ -44,7 +47,7 @@ class GroceryStoreTrip {
         self.balance = budget - totalCost
         
         self.persistence = persistence
-        myCart = persistence.readGroceryList()
+  //      myCart = persistence.readGroceryList()
         
         // Convert the array of GroceryList to a Dictionary and populate shoppingList
         // read groceryList into a dictionary  for each item in the groceryList, create a dictionary Item
@@ -63,6 +66,10 @@ class GroceryStoreTrip {
         }
         
         return myCart[index]
+    }
+    
+    func update(budget: Double) {
+        self.budget = budget
     }
     
     func addGroceryItemToCart(_ groceryItem: GroceryItem, _ allowOverride: Bool = false) throws {

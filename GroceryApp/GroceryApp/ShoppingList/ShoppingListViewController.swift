@@ -24,7 +24,7 @@ class ShoppingListViewController: UIViewController {
     }
 
 
-    @IBAction func addButtonTapped(_ sender: UIButton) {
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         // call the segue AddItemSegue
         performSegue(withIdentifier: "AddItemSegue", sender: nil)
     }

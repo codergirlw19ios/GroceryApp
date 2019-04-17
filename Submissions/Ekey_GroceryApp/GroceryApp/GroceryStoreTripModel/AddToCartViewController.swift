@@ -16,7 +16,7 @@ class AddToCartViewController: UIViewController {
     var groceryItem: GroceryItem?
     var action = Action.Add
     
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var qtyTextField: UITextField!
     @IBOutlet weak var costTextField: UITextField!
@@ -56,15 +56,16 @@ class AddToCartViewController: UIViewController {
         
     }
     
-    @IBAction func userTappedCancel(_ sender: UIButton) {
+    @IBAction func userTappedCancel(_ sender: UIBarButtonItem) {
         // call dismiss - so no memory leak with gstModel
         // if we don't call dismiss, the gstModel has a reference count which never goes down
         
         //Laurie:  Not sure we need this with a Navigation bar
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+       // dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func userTappedSave(_ sender: UIButton) {
+    @IBAction func userTappedSave(_ sender: UIBarButtonItem) {
         // Tell the nameTextField to loose focus and execute delegate
         itemNameTextField.resignFirstResponder()
         qtyTextField.resignFirstResponder()
@@ -103,10 +104,7 @@ class AddToCartViewController: UIViewController {
             print(error)
             return
         }
-        // dismiss this modal dialog --  so memory is properly cleaned up
-//        dismiss(animated: true, completion: nil)
-        
-        navigationController?.popViewController
+        navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation

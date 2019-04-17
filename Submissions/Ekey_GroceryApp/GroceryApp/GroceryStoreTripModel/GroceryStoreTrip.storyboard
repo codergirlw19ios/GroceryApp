@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rlx-e0-fks">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3m4-ko-GBE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add To Cart View Controller-->
+        <!--Add to Cart-->
         <scene sceneID="asj-Ml-qUx">
             <objects>
                 <viewController id="Axv-p5-dRG" customClass="AddToCartViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,29 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKy-kg-JU2">
-                                <rect key="frame" x="16" y="80" width="66" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="userTappedCancel:" destination="Axv-p5-dRG" eventType="touchUpInside" id="4zA-Ub-FDQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8t-aY-Bh6">
-                                <rect key="frame" x="290" y="80" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="userTappedSave:" destination="Axv-p5-dRG" eventType="touchUpInside" id="QLo-k1-ZEC"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add to Cart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOf-Av-su3">
-                                <rect key="frame" x="146" y="38" width="94" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASg-gV-pVX" userLabel="Item Name Label">
                                 <rect key="frame" x="28" y="155" width="88" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -87,16 +64,30 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="eYK-DH-02Y"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add to Cart" id="yca-pw-9ZZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0wD-ho-4bP">
+                            <connections>
+                                <action selector="userTappedCancel:" destination="Axv-p5-dRG" id="Bub-gz-7fM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="juk-7n-wEO">
+                            <connections>
+                                <action selector="userTappedSave:" destination="Axv-p5-dRG" id="rzZ-F1-Q4y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="costTextField" destination="fTh-eO-Y49" id="f4Z-Po-ziG"/>
                         <outlet property="itemNameTextField" destination="Yp3-58-CFg" id="Sus-sx-CG7"/>
                         <outlet property="qtyTextField" destination="JJh-SF-jGR" id="UwM-gO-FV4"/>
-                        <outlet property="saveButton" destination="B8t-aY-Bh6" id="f3N-uf-I8d"/>
+                        <outlet property="saveButton" destination="juk-7n-wEO" id="Z8T-Yi-3KP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v94-vZ-WEo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832.8" y="530.28485757121439"/>
+            <point key="canvasLocation" x="3711.1999999999998" y="530.28485757121439"/>
         </scene>
         <!--Grocery Cart-->
         <scene sceneID="DQ0-Ho-oG3">
@@ -131,14 +122,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cds-RH-Ib8">
-                                        <rect key="frame" x="16" y="3" width="56" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Add"/>
-                                        <connections>
-                                            <action selector="addButtonTapped:" destination="S3o-xB-rba" eventType="touchUpInside" id="c4o-Yo-SeM"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -266,25 +249,25 @@
                                 <segue destination="1n5-xi-7Js" kind="show" id="mkl-kj-94W"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="z7K-KO-Yht">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bvV-hr-ykm">
                             <connections>
-                                <segue destination="Axv-p5-dRG" kind="show" identifier="AddItem" id="4Ug-Id-8eq"/>
+                                <action selector="addButtonTapped:" destination="S3o-xB-rba" id="hog-tB-GdO"/>
+                                <segue destination="Axv-p5-dRG" kind="show" id="Z7M-e7-n50"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="Cds-RH-Ib8" id="feb-be-mTe"/>
+                        <outlet property="addButton" destination="bvV-hr-ykm" id="wvP-G6-IsF"/>
                         <outlet property="balanceValue" destination="C7U-vk-keR" id="t9l-Qh-r0b"/>
                         <outlet property="budgetValue" destination="cBo-9M-Wqx" id="B4Y-Uz-Pin"/>
                         <outlet property="groceryStoreTripTableView" destination="qC3-lv-T9G" id="NBz-fS-doc"/>
                         <outlet property="taxRateValue" destination="V00-Er-3Pm" id="ud2-zM-4T9"/>
                         <outlet property="totalCostValue" destination="1Jr-iS-wH9" id="iZ8-RW-bFM"/>
-                        <segue destination="Axv-p5-dRG" kind="presentation" identifier="AddItemSegueID" id="1WY-Eu-qKW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ztf-df-OyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968.79999999999995" y="70.614692653673174"/>
+            <point key="canvasLocation" x="2847.1999999999998" y="70.614692653673174"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="VpQ-P0-Znm">
@@ -305,31 +288,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmn-oX-fll" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832.8" y="-158.77061469265368"/>
+            <point key="canvasLocation" x="3711.1999999999998" y="-158.77061469265368"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="zz9-oJ-4hy">
+        <scene sceneID="Rk5-gz-fiD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rlx-e0-fks" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3m4-ko-GBE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z5G-b7-sbr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YM1-gj-Vgz">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="S3o-xB-rba" kind="relationship" relationship="rootViewController" id="cZm-qb-fpa"/>
+                        <segue destination="S3o-xB-rba" kind="relationship" relationship="rootViewController" id="GhE-HN-f2R"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qhn-L3-HWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ufx-YD-96q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29.600000000000001" y="70.614692653673174"/>
+            <point key="canvasLocation" x="1908" y="70.614692653673174"/>
         </scene>
     </scenes>
     <resources>
         <image name="strong-women-816x460" width="816" height="460"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="4Ug-Id-8eq"/>
-    </inferredMetricsTieBreakers>
 </document>

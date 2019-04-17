@@ -12,7 +12,7 @@ class ShopperViewController: UIViewController {
     // have a PTR to the ShopperModel
     var model:  Shopper?
     
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var qtyTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -25,11 +25,12 @@ class ShopperViewController: UIViewController {
         nameTextField.delegate = self
     }
     
-    @IBAction func userTappedCancel(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func userTappedCancel(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+
     }
     // The event of Save Tapped happens before the textFieldShouldEndEditing event  -- weird??
-    @IBAction func userTappedSave(_ sender: UIButton) {
+    @IBAction func userTappedSave(_ sender: UIBarButtonItem) {
         // Tell the nameTextField to loose focus and execute delegate
         nameTextField.resignFirstResponder()
         qtyTextField.resignFirstResponder()
@@ -57,9 +58,8 @@ class ShopperViewController: UIViewController {
             return
         }
         
-        
-        // dismiss this modal dialog --
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+
     }
 
 }

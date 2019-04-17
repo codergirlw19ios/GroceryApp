@@ -24,7 +24,7 @@ class GroceryListViewController: UIViewController {
     }
     
 
-    @IBAction func AddButtonTapped(_ sender: UIButton) {
+    @IBAction func AddButtonTapped(_ sender: UIBarButtonItem) {
         
         // call the segue - AddItemSegueID
         performSegue(withIdentifier: "AddItemSegueID", sender: sender)

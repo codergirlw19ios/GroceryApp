@@ -5,7 +5,7 @@ class AddItemViewController: UIViewController {
 
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         print(#function + "Add Item")
@@ -17,11 +17,11 @@ class AddItemViewController: UIViewController {
         nameTextField.delegate = self
     }
 
-    @IBAction func cancelButtonTapped(_sender : UIButton) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func cancelButtonTapped(_sender : Any?) {
+        navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         nameTextField.resignFirstResponder()
         quantityTextField.resignFirstResponder()
         
@@ -35,7 +35,7 @@ class AddItemViewController: UIViewController {
             return
         }
 
-        dismiss(animated: true, completion: nil)
+        cancelButtonTapped(_sender: nil)
     }
 
     deinit {
