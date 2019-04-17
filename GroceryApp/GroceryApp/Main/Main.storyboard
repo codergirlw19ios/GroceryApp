@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j2s-8g-FwQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iZZ-6T-9rb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,46 +10,46 @@
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
-        <scene sceneID="Fxz-Hb-EI7">
+        <scene sceneID="lsW-m4-V6q">
             <objects>
-                <tabBarController id="j2s-8g-FwQ" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" itemSpacing="81" itemWidth="53" id="e2A-iK-Bet">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cu5-PS-r2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="iZZ-6T-9rb" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hw2-aE-J9F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="zRC-XX-Iy0" kind="relationship" relationship="viewControllers" id="QHc-f9-f5G"/>
-                        <segue destination="f4M-Ee-d62" kind="relationship" relationship="viewControllers" id="loz-x0-EB3"/>
+                        <segue destination="hHF-mu-99P" kind="relationship" relationship="viewControllers" id="WF0-w7-dYb"/>
+                        <segue destination="Rcs-Ni-56M" kind="relationship" relationship="viewControllers" id="Uaj-so-MVk"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iuu-vf-pX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1010" y="-126"/>
+            <point key="canvasLocation" x="-446" y="-316"/>
         </scene>
         <!--GroceryTrip-->
-        <scene sceneID="VJB-fw-wbT">
+        <scene sceneID="FA9-Vd-ysn">
             <objects>
-                <viewControllerPlaceholder storyboardName="GroceryTrip" id="f4M-Ee-d62" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grocery Trip" image="GroceryTripTab" selectedImage="GroceryTripTab" id="3SA-hI-6fI"/>
+                <viewControllerPlaceholder storyboardName="GroceryTrip" id="Rcs-Ni-56M" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Grocery Trip" image="grocerytrip_tab" selectedImage="grocerytrip_tab" id="3EZ-G1-aeR"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cbp-JJ-J1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CTW-s7-utX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="-196"/>
+            <point key="canvasLocation" x="160" y="-383"/>
         </scene>
         <!--ShoppingList-->
-        <scene sceneID="V8C-ng-hrU">
+        <scene sceneID="Xip-88-yDi">
             <objects>
-                <viewControllerPlaceholder storyboardName="ShoppingList" id="zRC-XX-Iy0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping List" image="ShoppingListTab" selectedImage="ShoppingListTab" id="2JH-cu-GfQ"/>
+                <viewControllerPlaceholder storyboardName="ShoppingList" id="hHF-mu-99P" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="shoppinglist_tab" selectedImage="shoppinglist_tab" id="9Vl-J5-PRe"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hr8-B7-Sm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hoz-8G-xOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-387" y="-55"/>
+            <point key="canvasLocation" x="166" y="-247"/>
         </scene>
     </scenes>
     <resources>
-        <image name="GroceryTripTab" width="30" height="30"/>
-        <image name="ShoppingListTab" width="30" height="30"/>
+        <image name="grocerytrip_tab" width="30" height="30"/>
+        <image name="shoppinglist_tab" width="30" height="30"/>
     </resources>
 </document>

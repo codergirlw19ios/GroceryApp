@@ -47,6 +47,7 @@ class GroceryTripViewController: UIViewController {
         // eventually pass in shopping list from shopping list model
         // instead of persistence
         model = GroceryTripModel(budget: budget, shoppingList: GroceryItemPersistence(filename: "ShoppingList").groceryItems(), persistence: GroceryItemPersistence(filename: "Cart"))
+        model?.delegate = self
         addButton.isEnabled = true
         populateTextViews()
         groceryTripTableView.reloadData()

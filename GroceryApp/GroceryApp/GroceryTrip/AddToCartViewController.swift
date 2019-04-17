@@ -27,7 +27,6 @@ class AddToCartViewController: UIViewController {
 
     @IBAction func cancelButtonTapped(_sender : Any?) {
         navigationController?.popViewController(animated: true)
-      //  dismiss(animated: true, completion: nil)
     }
 
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
