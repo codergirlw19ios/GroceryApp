@@ -27,6 +27,7 @@
 		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
 		26B1893722264D08001765F8 /* ShoppingListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1893622264D08001765F8 /* ShoppingListModelTests.swift */; };
 		26C4652F225EC45800F426BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C4652E225EC45800F426BB /* Main.storyboard */; };
+		BEC86A202266A5B9009A7170 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC86A1F2266A5B9009A7170 /* StateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		2685C1BE2226486100207624 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		26B1893622264D08001765F8 /* ShoppingListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModelTests.swift; sourceTree = "<group>"; };
 		26C4652E225EC45800F426BB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BEC86A1F2266A5B9009A7170 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				26C4652E225EC45800F426BB /* Main.storyboard */,
+				BEC86A1F2266A5B9009A7170 /* StateController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				262236D22238A4BC00B29A19 /* ShoppingListViewController.swift in Sources */,
 				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,
 				2674FB79225434EC005AD287 /* GroceryTripTableViewCell.swift in Sources */,
+				BEC86A202266A5B9009A7170 /* StateController.swift in Sources */,
 				2674FB7B225434EC005AD287 /* AddToCartViewController.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
 				26151154223A558B0094EDA4 /* GroceryItemPersistence.swift in Sources */,
@@ -464,13 +468,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XLLAHK97KS;
+				DEVELOPMENT_TEAM = 4A622L379L;
 				INFOPLIST_FILE = "$(SRCROOT)/GroceryApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = rawls.GroceryApp;
+				PRODUCT_BUNDLE_IDENTIFIER = caggarw.GroceryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -482,13 +486,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XLLAHK97KS;
+				DEVELOPMENT_TEAM = 4A622L379L;
 				INFOPLIST_FILE = "$(SRCROOT)/GroceryApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = rawls.GroceryApp;
+				PRODUCT_BUNDLE_IDENTIFIER = caggarw.GroceryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
