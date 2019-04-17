@@ -5,27 +5,21 @@ protocol ShoppingListModelDelegate: class {
 }
 
 class ShoppingListModel {
+    
+    private let stateController: StateController
     // MARK: - initialization
-    init(persistence: GroceryItemPersistence){
-        self.persistence = persistence
-        shoppingList = persistence.groceryItems()
+    init(stateController: StateController) {
+       self.stateController = stateController
     }
-
+    
     deinit {
         print("deinit ShoppingListModel")
-    }
-
-    // MARK: - private variables
-    private let persistence: GroceryItemPersistence
-    private var shoppingList: [GroceryItem] {
-        didSet {
-            persistence.write(shoppingList)
-        }
     }
 
     // MARK: - public variables
     weak var delegate: ShoppingListModelDelegate?
     var listCount: Int { return shoppingList.count }
+    var shoppingList: [GroceryItem] { return stateController.shoppingList }
 
     func groceryItemFor(row: Int) -> GroceryItem? {
         guard row < listCount else { return nil }
@@ -36,7 +30,7 @@ class ShoppingListModel {
     func addItemToShoppingList(name: String, quantity: Int) -> GroceryItem {
         let groceryItem = GroceryItem(name: name, quantity: quantity)
 
-        shoppingList.append(groceryItem)
+        stateController.shoppingList.append(groceryItem)
 
         // let the controller know to update the table view
         delegate?.dataUpdated()

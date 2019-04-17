@@ -8,8 +8,11 @@
 import UIKit
 
 class ShoppingListViewController: UIViewController {
-
-    let model = ShoppingListModel(persistence: GroceryItemPersistence(filename: "ShoppingList"))
+    private let model:ShoppingListModel
+    
+    private init() {
+        self.model = ShoppingListModel(stateController: StateController.shared)
+    }
 
     @IBOutlet weak var shoppingListTableView: UITableView!
 
@@ -33,8 +36,12 @@ class ShoppingListViewController: UIViewController {
         guard let destination = segue.destination as? AddItemViewController else {
             return
         }
-
         destination.model = model
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       super.viewWillAppear(animated)
+       shoppingListTableView.reloadData()
     }
 
     deinit {
