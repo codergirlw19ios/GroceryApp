@@ -32,6 +32,7 @@ class GroceryTripViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "About", style: .plain, target: self, action: #selector(aboutButtonPressed))
 
         subTotalTextField.isUserInteractionEnabled = false
         totalTextField.isUserInteractionEnabled = false
@@ -52,6 +53,14 @@ class GroceryTripViewController: UIViewController {
 
         populateTextViews()
     }
+
+    @objc func aboutButtonPressed() {
+        let aboutViewController = UIStoryboard(name: "GroceryTrip", bundle: nil).instantiateViewController(withIdentifier: "AboutViewController")
+
+        navigationController?.pushViewController(aboutViewController, animated: true)
+    }
+
+
 
     func generateModel() {
         guard let budget = try? Validation.validDouble(budgetTextField.text) else {
@@ -184,7 +193,7 @@ extension GroceryTripViewController: UITextFieldDelegate {
 
         self.view.addGestureRecognizer(gesture)
         dismissKeyboardGesture = gesture
-        
+
         return true
     }
 

@@ -195,11 +195,6 @@
                         <viewLayoutGuide key="safeArea" id="Ngx-3b-gGl"/>
                     </view>
                     <navigationItem key="navigationItem" id="s9a-ea-FLR">
-                        <barButtonItem key="leftBarButtonItem" title="About" id="kNm-ko-Eft">
-                            <connections>
-                                <segue destination="QGm-w3-L9P" kind="show" id="8vu-ZU-ypC"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ble-Nb-zDp">
                             <connections>
                                 <action selector="addButtonTapped:" destination="aDz-HN-WPi" id="G2O-Qm-Fdh"/>
@@ -324,19 +319,19 @@
         <!--About-->
         <scene sceneID="PMN-nm-Q3L">
             <objects>
-                <viewController title="About" id="QGm-w3-L9P" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewController" title="About" id="QGm-w3-L9P" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sl4-Ly-La9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chateau" translatesAutoresizingMaskIntoConstraints="NO" id="eeA-jv-mUp">
-                                <rect key="frame" x="0.0" y="120.5" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="76.5" width="375" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eeA-jv-mUp" secondAttribute="height" multiplier="375:250" id="sHb-Io-3yW"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfm-mc-OZ8">
-                                <rect key="frame" x="20" y="380.5" width="335" height="276.5"/>
+                                <rect key="frame" x="20" y="336.5" width="335" height="320.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Bonjour mes amis!
 
@@ -345,7 +340,7 @@ Je suis une étudiante de la vie! En vraiement, je travaille comme développeuse
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amanda Rawls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dz-SB-CXg">
-                                <rect key="frame" x="113.5" y="74" width="148.5" height="26.5"/>
+                                <rect key="frame" x="113.5" y="30" width="148.5" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
