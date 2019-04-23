@@ -13,43 +13,74 @@ protocol GroceryTripModelDelegate: class {
 
 class GroceryTripModel {
     // MARK: - Initialization
-    init(budget: Double, stateController: StateController, groceryItemPersistence: GroceryItemPersistence) {
-        self.budget = budget
-
-        taxRate = 0.0
-
+    init(budget: Double, stateController: StateController, groceryItemPersistence: GroceryItemPersistence, groceryTripModelPersistence: GroceryTripModelPersistence) {
         self.stateController = stateController
-        
+
         self.groceryItemPersistence = groceryItemPersistence
         cart = groceryItemPersistence.groceryItems()
+
+        self.groceryModelPersistence = groceryTripModelPersistence
+
+        guard let groceryTripModelData = groceryModelPersistence.data() else {
+            self.budget = budget
+            self.taxRate = 0.0
+            persistModel()
+            return
+        }
+
+        self.budget = groceryTripModelData.budget
+        self.taxRate = groceryTripModelData.taxRate
+        self.subTotal = groceryTripModelData.subTotal
+        self.totalCost = groceryTripModelData.totalCost
+        self.balance = groceryTripModelData.balance
     }
 
     // MARK: - private variables
+    private let groceryModelPersistence: GroceryTripModelPersistence
     private let stateController: StateController
     private var shoppingList: [ShoppingListItem] {
         return stateController.shoppingList
     }
 
     private let groceryItemPersistence: GroceryItemPersistence
+
     private var cart: [GroceryItem] {
         didSet {
             groceryItemPersistence.write(cart)
         }
     }
 
-    private var budget: Double?
-    private var taxRate: Double
-    private var subTotal: Double {
-        return cart.reduce(0) { accumulatingSubTotal, item in
-            return accumulatingSubTotal + ((item.cost ?? 0.00) * Double(item.quantity))
-        }
+    private var budget: Double? {
+        didSet { persistModel() }
     }
-    private var totalCost: Double {
-        let calculatedTaxRate = taxRate > 0 && taxRate < 1 ? 1 + taxRate : 1
 
-        return subTotal * calculatedTaxRate
+    private var taxRate: Double{
+        didSet { persistModel() }
     }
-    private var balance: Double { return (budget ?? 0.0) - totalCost }
+    private var subTotal: Double {
+        get {
+            return cart.reduce(0) { accumulatingSubTotal, item in
+                return accumulatingSubTotal + ((item.cost ?? 0.00) * Double(item.quantity))
+            }
+        }
+        set { persistModel() }
+    }
+
+    private var totalCost: Double {
+        get {
+            let calculatedTaxRate = taxRate > 0 && taxRate < 1 ? 1 + taxRate : 1
+
+            return subTotal * calculatedTaxRate
+        }
+        set { persistModel() }
+
+    }
+    private var balance: Double {
+        get {
+            return (budget ?? 0.0) - totalCost
+        }
+        set { persistModel() }
+    }
 
     // MARK: - public variables
     weak var delegate: GroceryTripModelDelegate?
@@ -161,6 +192,12 @@ class GroceryTripModel {
             throw GroceryTripError.taxRateError
         }
     }
+
+    fileprivate func persistModel() {
+        guard let budget = budget else { return }
+
+        groceryModelPersistence.write(GroceryTripModelData(budget: budget, taxRate: self.taxRate, subTotal: self.subTotal, totalCost: self.totalCost, balance: self.balance))
+    }
 }
 
 enum GroceryTripError: Error {
@@ -169,4 +206,12 @@ enum GroceryTripError: Error {
     case itemQuantityExceedsRequiredAmount
     case itemQuantityFallsShortOfRequiredAmount
     case taxRateError
+}
+
+struct GroceryTripModelData: Codable {
+    let budget: Double
+    let taxRate: Double
+    let subTotal: Double
+    let totalCost: Double
+    let balance: Double
 }

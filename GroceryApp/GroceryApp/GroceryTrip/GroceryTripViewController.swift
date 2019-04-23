@@ -19,6 +19,8 @@ class GroceryTripViewController: UIViewController {
 
     let stateController = StateController.shared
     var model: GroceryTripModel?
+    var modelPersistence = GroceryTripModelPersistence(filename: "GroceryTrip")
+    var groceryItemPersistence = GroceryItemPersistence(filename: "Cart")
 
     private var dismissKeyboardGesture: UITapGestureRecognizer?
 
@@ -31,8 +33,6 @@ class GroceryTripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        populateTextViews()
-
         subTotalTextField.isUserInteractionEnabled = false
         totalTextField.isUserInteractionEnabled = false
         balanceTextField.isUserInteractionEnabled = false
@@ -42,9 +42,15 @@ class GroceryTripViewController: UIViewController {
         budgetTextField.delegate = self
         model?.delegate = self
 
-        addButton.isEnabled = false
+        guard let budget = modelPersistence.data()?.budget else {
+            budgetTextField.becomeFirstResponder()
+            addButton.isEnabled = false
+            return
+        }
 
-        budgetTextField.becomeFirstResponder()
+        model = GroceryTripModel(budget: budget, stateController: stateController, groceryItemPersistence: groceryItemPersistence, groceryTripModelPersistence: modelPersistence)
+
+        populateTextViews()
     }
 
     func generateModel() {
@@ -52,9 +58,10 @@ class GroceryTripViewController: UIViewController {
             return
         }
 
-        model = GroceryTripModel(budget: budget, stateController: stateController, groceryItemPersistence: GroceryItemPersistence(filename: "Cart"))
+        model = GroceryTripModel(budget: budget, stateController: stateController, groceryItemPersistence: groceryItemPersistence, groceryTripModelPersistence: modelPersistence)
         model?.delegate = self
         addButton.isEnabled = true
+
         populateTextViews()
         groceryTripTableView.reloadData()
         view.layoutIfNeeded()
