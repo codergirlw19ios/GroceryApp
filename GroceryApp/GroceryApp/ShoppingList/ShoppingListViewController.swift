@@ -9,12 +9,16 @@ import UIKit
 
 class ShoppingListViewController: UIViewController {
 
-    let model = ShoppingListModel(persistence: GroceryItemPersistence(filename: "ShoppingList"))
+    let model = ShoppingListModel(stateController: StateController.shared)
 
     @IBOutlet weak var shoppingListTableView: UITableView!
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        shoppingListTableView.reloadData()
+    }
+
     override func viewDidLoad() {
-        print(#function + "Shopping List")
         super.viewDidLoad()
 
         shoppingListTableView.dataSource = self

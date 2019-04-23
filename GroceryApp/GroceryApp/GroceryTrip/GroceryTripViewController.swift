@@ -16,9 +16,17 @@ class GroceryTripViewController: UIViewController {
     @IBOutlet weak var balanceTextField: UITextField!
     @IBOutlet weak var groceryTripTableView: UITableView!
     @IBOutlet weak var addButton: UIBarButtonItem!
-    
+
+    let stateController = StateController.shared
     var model: GroceryTripModel?
+
     private var dismissKeyboardGesture: UITapGestureRecognizer?
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        groceryTripTableView.reloadData()
+        populateTextViews()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +52,7 @@ class GroceryTripViewController: UIViewController {
             return
         }
 
-        // eventually pass in shopping list from shopping list model
-        // instead of persistence
-        model = GroceryTripModel(budget: budget, shoppingList: GroceryItemPersistence(filename: "ShoppingList").groceryItems(), persistence: GroceryItemPersistence(filename: "Cart"))
+        model = GroceryTripModel(budget: budget, shoppingList: stateController.shoppingList, persistence: GroceryItemPersistence(filename: "Cart"))
         model?.delegate = self
         addButton.isEnabled = true
         populateTextViews()
