@@ -62,15 +62,18 @@ extension ShoppingListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = shoppingListTableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath)
 
-        // retrieve the grocery item for this index path
-        let groceryItem: GroceryItem? = model.groceryItemFor(row: indexPath.row)
+        // retrieve the shoppingListItem for this index path
+        let shoppingListItem: ShoppingListItem? = model.shoppingListItem(row: indexPath.row)
 
         // title = grocery item name
-        cell.textLabel?.text = groceryItem?.name
+        cell.textLabel?.text = shoppingListItem?.groceryItem.name
 
         // right detail = grocery item quantity
-        cell.detailTextLabel?.text = groceryItem?.quantity != nil ? String(groceryItem!.quantity) : ""
+        cell.detailTextLabel?.text = shoppingListItem?.groceryItem.quantity != nil ? String(shoppingListItem!.groceryItem.quantity) : ""
 
+        guard let item = shoppingListItem else { return cell }
+
+        cell.accessoryType = item.inCart ? .checkmark : .none
         return cell
     }
 }

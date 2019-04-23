@@ -7,21 +7,30 @@
 
 import Foundation
 
+struct ShoppingListItem: Codable {
+    var groceryItem: GroceryItem
+    var inCart: Bool
+
+    mutating func updateInCart() {
+        inCart = !inCart
+    }
+}
+
 class StateController {
 
-    static let shared = StateController(persistence: GroceryItemPersistence(filename: "ShoppingList"))
+    static let shared = StateController(persistence: ShoppingListPersistence(filename: "ShoppingList"))
 
-    private let persistence: GroceryItemPersistence
+    private let persistence: ShoppingListPersistence
     
-    var shoppingList: [GroceryItem] {
+    var shoppingList: [ShoppingListItem] {
         didSet {
             persistence.write(shoppingList)
         }
     }
 
-    private init(persistence: GroceryItemPersistence) {
+    private init(persistence: ShoppingListPersistence) {
         self.persistence = persistence
-        shoppingList = persistence.groceryItems()
+        self.shoppingList = persistence.shoppingList()
     }
 }
 

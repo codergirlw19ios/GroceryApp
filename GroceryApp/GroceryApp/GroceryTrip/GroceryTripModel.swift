@@ -13,24 +13,27 @@ protocol GroceryTripModelDelegate: class {
 
 class GroceryTripModel {
     // MARK: - Initialization
-    init(budget: Double, shoppingList: [GroceryItem], persistence: GroceryItemPersistence) {
+    init(budget: Double, stateController: StateController, groceryItemPersistence: GroceryItemPersistence) {
         self.budget = budget
 
         taxRate = 0.0
 
-        let keyValuePairs = Set(shoppingList).map{ ($0, false )}
-        self.shoppingList = Dictionary(uniqueKeysWithValues: keyValuePairs)
-        print(shoppingList)
-        self.persistence = persistence
-        cart = persistence.groceryItems()
+        self.stateController = stateController
+        
+        self.groceryItemPersistence = groceryItemPersistence
+        cart = groceryItemPersistence.groceryItems()
     }
 
     // MARK: - private variables
-    private var shoppingList: [GroceryItem: Bool]
-    private let persistence: GroceryItemPersistence
+    private let stateController: StateController
+    private var shoppingList: [ShoppingListItem] {
+        return stateController.shoppingList
+    }
+
+    private let groceryItemPersistence: GroceryItemPersistence
     private var cart: [GroceryItem] {
         didSet {
-            persistence.write(cart)
+            groceryItemPersistence.write(cart)
         }
     }
 
@@ -68,7 +71,7 @@ class GroceryTripModel {
     }
 
     func addToCart(name: String, quantity: Int, cost: Double, overrideShoppingList: Bool = false) throws {
-        let shoppingListNames = shoppingList.keys.map{$0.name}
+        let shoppingListNames = shoppingList.map{$0.groceryItem.name}
 
         if overrideShoppingList {
 
@@ -78,38 +81,54 @@ class GroceryTripModel {
         } else {
 
             guard shoppingListNames.contains(name),
-                var shoppingListItem = shoppingList.keys.first(where: {$0.name == name})
+                var groceryListItem = shoppingList.map({ $0.groceryItem
+                }).first(where: {$0.name == name})
                 else {
                     throw GroceryTripError.itemNotInShoppingList
             }
 
-            guard shoppingListItem.quantity == quantity else {
-                if shoppingListItem.quantity > quantity {
+            guard groceryListItem.quantity == quantity else {
+                if groceryListItem.quantity > quantity {
                     throw GroceryTripError.itemQuantityFallsShortOfRequiredAmount
                 }
                 throw GroceryTripError.itemQuantityExceedsRequiredAmount
             }
 
-            shoppingList[shoppingListItem] = true
-            shoppingListItem.update(cost: cost)
-            cart.append(shoppingListItem)
+            updateShoppingListItem(of: groceryListItem, with: cost)
+            groceryListItem.update(cost: cost)
+            cart.append(groceryListItem)
             delegate?.dataUpdated()
         }
 
         if balance < 0.0 { throw GroceryTripError.exceedsBudget }
     }
 
-    func removeFromCart(_ groceryItem: GroceryItem) {
-        cart.removeAll(where: {$0 == groceryItem})
-        shoppingList[groceryItem] = false
+    // update inCart status of the first ShoppingListItem in the shopping cart whose groceryItems match
+    func updateShoppingListItem(of groceryItem: GroceryItem, with cost: Double) {
+        guard let indexToUpdate: Int = shoppingList.firstIndex(where: { shoppingListItem in
+            shoppingListItem.groceryItem == groceryItem }) else { return }
+
+        var temporaryList = shoppingList
+        temporaryList[indexToUpdate].updateInCart()
+        temporaryList[indexToUpdate].groceryItem.update(cost: cost)
+
+        stateController.shoppingList = temporaryList
     }
 
-    func checkout() throws -> (shoppingList: [GroceryItem], remainingBudget: Double){
+    func removeFromCart(_ groceryItem: GroceryItem) {
+        cart.removeAll(where: {$0 == groceryItem})
+
+        var matchingShoppingListItem = shoppingList.first { shoppingListItem in
+            shoppingListItem.groceryItem == groceryItem }
+
+        matchingShoppingListItem?.updateInCart()
+    }
+
+    func checkout() throws -> (shoppingList: [ShoppingListItem], remainingBudget: Double){
         guard taxRate > 0.0 && taxRate < 1 else { throw GroceryTripError.taxRateError }
         guard balance > 0.0 else { throw GroceryTripError.exceedsBudget }
-        let remainingShoppingList = shoppingList.filter { (shoppingListEntry) -> Bool in
-            return !shoppingListEntry.value
-            }.keys
+        var remainingShoppingList = shoppingList
+        remainingShoppingList.removeAll { $0.inCart == true }
 
         return (Array(remainingShoppingList), balance)
     }

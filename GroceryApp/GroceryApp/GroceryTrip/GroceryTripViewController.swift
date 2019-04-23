@@ -52,7 +52,7 @@ class GroceryTripViewController: UIViewController {
             return
         }
 
-        model = GroceryTripModel(budget: budget, shoppingList: stateController.shoppingList, persistence: GroceryItemPersistence(filename: "Cart"))
+        model = GroceryTripModel(budget: budget, stateController: stateController, groceryItemPersistence: GroceryItemPersistence(filename: "Cart"))
         model?.delegate = self
         addButton.isEnabled = true
         populateTextViews()
