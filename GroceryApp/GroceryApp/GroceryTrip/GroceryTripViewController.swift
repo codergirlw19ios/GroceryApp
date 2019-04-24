@@ -60,8 +60,6 @@ class GroceryTripViewController: UIViewController {
         navigationController?.pushViewController(aboutViewController, animated: true)
     }
 
-
-
     func generateModel() {
         guard let budget = try? Validation.validDouble(budgetTextField.text) else {
             return

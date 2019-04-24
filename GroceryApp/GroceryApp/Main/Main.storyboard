@@ -12,7 +12,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="lsW-m4-V6q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cu5-PS-r2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="iZZ-6T-9rb" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hw2-aE-J9F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -20,32 +19,33 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hHF-mu-99P" kind="relationship" relationship="viewControllers" id="WF0-w7-dYb"/>
-                        <segue destination="Rcs-Ni-56M" kind="relationship" relationship="viewControllers" id="Uaj-so-MVk"/>
+                        <segue destination="uU4-ix-5LT" kind="relationship" relationship="viewControllers" id="oxc-ma-8lb"/>
+                        <segue destination="gJw-fb-dpO" kind="relationship" relationship="viewControllers" id="kNW-8x-vGT"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cu5-PS-r2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-446" y="-316"/>
         </scene>
-        <!--GroceryTrip-->
-        <scene sceneID="FA9-Vd-ysn">
-            <objects>
-                <viewControllerPlaceholder storyboardName="GroceryTrip" id="Rcs-Ni-56M" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grocery Trip" image="grocerytrip_tab" selectedImage="grocerytrip_tab" id="3EZ-G1-aeR"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CTW-s7-utX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="160" y="-383"/>
-        </scene>
         <!--ShoppingList-->
-        <scene sceneID="Xip-88-yDi">
+        <scene sceneID="V7H-wV-Rns">
             <objects>
-                <viewControllerPlaceholder storyboardName="ShoppingList" id="hHF-mu-99P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping List" image="shoppinglist_tab" selectedImage="shoppinglist_tab" id="9Vl-J5-PRe"/>
+                <viewControllerPlaceholder storyboardName="ShoppingList" id="uU4-ix-5LT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="shoppinglist_tab" selectedImage="shoppinglist_tab" id="ga4-x6-ini"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hoz-8G-xOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vww-Fg-bsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="-247"/>
+            <point key="canvasLocation" x="358" y="-524"/>
+        </scene>
+        <!--GroceryTrip-->
+        <scene sceneID="5PB-Nj-mSb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GroceryTrip" id="gJw-fb-dpO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Grocery Trip" image="grocerytrip_tab" selectedImage="grocerytrip_tab" id="6t5-8P-HDX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HoO-Jj-kmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="358" y="-303"/>
         </scene>
     </scenes>
     <resources>

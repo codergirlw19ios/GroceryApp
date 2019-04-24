@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="602.39999999999998" y="-212.74362818590706"/>
         </scene>
-        <!--Shopping List View Controller-->
+        <!--Shopping List-->
         <scene sceneID="XwR-27-xHJ">
             <objects>
                 <viewController id="fEB-it-7mc" customClass="ShoppingListViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zSS-HB-Rc6">
-                                <rect key="frame" x="0.0" y="74" width="375" height="593"/>
+                                <rect key="frame" x="0.0" y="74" width="375" height="544"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="shoppingListCell" textLabel="ktt-sa-lbS" detailTextLabel="4M9-GM-I1K" style="IBUITableViewCellStyleValue1" id="I7S-2I-2TR">
@@ -130,6 +130,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q72-V4-SJV"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="shoppinglist_tab" selectedImage="shoppinglist_tab" id="fY1-Zh-h99"/>
                     <navigationItem key="navigationItem" id="6Jr-GZ-hp5">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y55-DA-K5K">
                             <connections>
@@ -137,6 +138,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="shoppingListTableView" destination="zSS-HB-Rc6" id="8mE-eG-fUc"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="AddItemSegue" id="ViP-VC-XIn"/>
@@ -153,7 +155,6 @@
                     <tabBarItem key="tabBarItem" title="Item" id="Pf5-hw-bN4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bC6-wJ-D6P">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -166,4 +167,7 @@
             <point key="canvasLocation" x="-1312.8" y="-211.84407796101951"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="shoppinglist_tab" width="30" height="30"/>
+    </resources>
 </document>

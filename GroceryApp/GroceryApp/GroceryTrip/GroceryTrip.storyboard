@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Grocery Trip View Controller-->
+        <!--Grocery Trip-->
         <scene sceneID="YgD-ZS-F8d">
             <objects>
                 <viewController id="aDz-HN-WPi" customClass="GroceryTripViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,7 +36,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xqc-lK-Sao">
-                                <rect key="frame" x="0.0" y="114" width="375" height="383"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="334"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroceryTripCell" id="YcF-HV-BiK" customClass="GroceryTripTableViewCell" customModule="GroceryApp" customModuleProvider="target">
@@ -116,7 +116,7 @@
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="D5O-d1-Wx2" userLabel="Summary Stack View">
-                                <rect key="frame" x="140.5" y="507" width="224.5" height="150"/>
+                                <rect key="frame" x="140.5" y="458" width="224.5" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xW2-Lt-BrY" userLabel="Labels Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="65.5" height="150"/>
@@ -194,6 +194,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ngx-3b-gGl"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Grocery Trip" image="grocerytrip_tab" selectedImage="grocerytrip_tab" id="wW8-NJ-IiZ"/>
                     <navigationItem key="navigationItem" id="s9a-ea-FLR">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ble-Nb-zDp">
                             <connections>
@@ -201,6 +202,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="Ble-Nb-zDp" id="AcD-hS-iyy"/>
                         <outlet property="balanceTextField" destination="RLe-Fx-ORH" id="ud9-fR-MwX"/>
@@ -387,5 +389,6 @@ Je suis une étudiante de la vie! En vraiement, je travaille comme développeuse
     </scenes>
     <resources>
         <image name="chateau" width="2048" height="1536"/>
+        <image name="grocerytrip_tab" width="30" height="30"/>
     </resources>
 </document>
