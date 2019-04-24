@@ -124,14 +124,14 @@ class GroceryTripModel {
                 }
                 throw GroceryTripError.itemQuantityExceedsRequiredAmount
             }
+            
+            if balance < 0.0 { throw GroceryTripError.exceedsBudget }
 
             updateShoppingListItem(of: groceryListItem, with: cost)
             groceryListItem.update(cost: cost)
             cart.append(groceryListItem)
             delegate?.dataUpdated()
         }
-
-        if balance < 0.0 { throw GroceryTripError.exceedsBudget }
     }
 
     // update inCart status of the first ShoppingListItem in the shopping cart whose groceryItems match
