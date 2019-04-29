@@ -9,9 +9,23 @@ import UIKit
 
 class GroceryListViewController: UIViewController {
 
-    let model = Shopper(persistence: GroceryListPersistence())
+    let model = Shopper()
     
     @IBOutlet weak var groceryListTableView: UITableView!
+    
+    @IBAction func AddButtonTapped(_ sender: UIBarButtonItem) {
+        
+        // call the segue - AddItemSegueID
+        performSegue(withIdentifier: "AddItemSegueID", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? AddGroceryItemViewController else {
+            return
+        }
+        // pass the REAL unique ptr to the model to the destination view controller -
+        destination.model = model
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +36,16 @@ class GroceryListViewController: UIViewController {
         // let the GroceryListViewController listen for the model's delegate
         model.delegate = self
     }
-    
-
-    @IBAction func AddButtonTapped(_ sender: UIBarButtonItem) {
+    // each time a tab bar button is pressed and a view is recalled to the screen
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        groceryListTableView.reloadData()
         
-        // call the segue - AddItemSegueID
-        performSegue(withIdentifier: "AddItemSegueID", sender: sender)
     }
+
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? ShopperViewController else {
-            return
-        }
-        // pass the REAL unique ptr to the model to the destination view controller -
-        destination.model = model
-    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -58,7 +67,7 @@ extension GroceryListViewController : UITableViewDelegate {
 // When the user scrolls off the screen the cell gets dequeued to conserve memory
 extension GroceryListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.myGroceryList.count
+        return StateController.shared.myGroceryList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

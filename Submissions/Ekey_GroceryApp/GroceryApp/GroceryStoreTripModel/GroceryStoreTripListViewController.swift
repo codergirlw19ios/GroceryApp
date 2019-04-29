@@ -45,6 +45,12 @@ class GroceryStoreTripListViewController: UIViewController {
         calculateTotals()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        groceryStoreTripTableView.reloadData()
+        
+    }
+    
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         // if there is no model, do not trigger segue; you cannot abort from prepare(for:sender:) so you have to stop the action here.
         guard gstModel != nil else { return }
@@ -74,9 +80,10 @@ class GroceryStoreTripListViewController: UIViewController {
         }
         
         if (gstModel == nil) {
-            gstModel = GroceryStoreTrip(persistence: GroceryListPersistence(),
+            gstModel = GroceryStoreTrip(
                                     budget: budget,
-                                    groceryList: [ GroceryItem( "Milk", 1, 2.50),                                                                                                          GroceryItem( "Yogurt",  1,  2.50),                                                                                                                 GroceryItem( "Apples",  4),                                                                                                                ], taxRate: taxRate > 0.0 ? taxRate : 0.0)
+                                    groceryList: StateController.shared.myGroceryList,
+                                    taxRate: taxRate > 0.0 ? taxRate : 0.0)
        
         }
         

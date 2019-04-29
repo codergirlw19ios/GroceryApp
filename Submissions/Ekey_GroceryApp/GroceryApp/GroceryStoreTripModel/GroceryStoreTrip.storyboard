@@ -97,9 +97,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sh7-uG-cAa" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="102" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sh7-uG-cAa" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="124" width="375" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGI-2F-u3T">
                                         <rect key="frame" x="236" y="8" width="36" height="20.5"/>
@@ -126,7 +125,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qC3-lv-T9G">
-                                <rect key="frame" x="0.0" y="141" width="375" height="349"/>
+                                <rect key="frame" x="0.0" y="168" width="375" height="349"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -222,25 +221,34 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Budget:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts4-g6-gZx" userLabel="Budget Label">
-                                        <rect key="frame" x="8" y="73" width="60.5" height="20.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cBo-9M-Wqx" userLabel="budgetValue">
-                                        <rect key="frame" x="8" y="101" width="89" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts4-g6-gZx" userLabel="Budget Label">
+                                <rect key="frame" x="16" y="89" width="61" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cBo-9M-Wqx" userLabel="budgetValue">
+                                <rect key="frame" x="132" y="89" width="127" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="5sG-Qg-v0x"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Sh7-uG-cAa" firstAttribute="top" secondItem="cBo-9M-Wqx" secondAttribute="bottom" id="0GW-a2-sud"/>
+                            <constraint firstItem="Sh7-uG-cAa" firstAttribute="top" secondItem="ts4-g6-gZx" secondAttribute="bottom" id="Lzp-ck-eJg"/>
+                            <constraint firstItem="ts4-g6-gZx" firstAttribute="top" secondItem="AUe-Yk-HH7" secondAttribute="top" constant="25" id="ayf-JX-a3K"/>
+                            <constraint firstItem="ts4-g6-gZx" firstAttribute="leading" secondItem="AUe-Yk-HH7" secondAttribute="leading" constant="16" id="bcC-FF-Bm5"/>
+                            <constraint firstItem="cBo-9M-Wqx" firstAttribute="leading" secondItem="ts4-g6-gZx" secondAttribute="trailing" constant="55" id="cad-OA-hFt"/>
+                            <constraint firstItem="cBo-9M-Wqx" firstAttribute="top" secondItem="AUe-Yk-HH7" secondAttribute="top" constant="25" id="nNd-xy-TlZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AUe-Yk-HH7"/>
                     </view>
                     <navigationItem key="navigationItem" title="Grocery Cart" id="yRe-ma-f7m">

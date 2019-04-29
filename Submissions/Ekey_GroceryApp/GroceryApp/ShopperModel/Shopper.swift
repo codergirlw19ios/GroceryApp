@@ -8,35 +8,20 @@ class Shopper {
     
     weak var delegate : ShopperDelegate?
     
-    private let persistence: GroceryListPersistence
-    
-//    public private(set) var myGroceryList: [GroceryItem] {
-//        didSet {
-//           persistence.writeGroceryList(myGroceryList)
-//        }
-//    }
-    
-    init(persistence: GroceryListPersistence) {
-        self.persistence = persistence
-        // read the data from the file and initialize list
-   //     myGroceryList = persistence.readGroceryList()
+    init() {
+  
     }
-    public private(set) var myGroceryList = [
-        GroceryItem( "Milk", 1, 2.50),
-        GroceryItem( "Yogurt",  1,  2.50),
-//        GroceryItem( "Apples",  4),
-//        GroceryItem( "Bread",  1),
-//        GroceryItem( "Lettuce",  1,  2.50),
-//        GroceryItem( "Cucumber",  1,  2.50),
-//        GroceryItem( "Tomato",  1)
-    ]
+//    public private(set) var myGroceryList = [
+//        GroceryItem( "Milk", 1, 2.50),
+//        GroceryItem( "Yogurt",  1,  2.50),
+//    ]
 
     // Add a unique groceryItem to the users list
     func addGroceryItemToList(_ groceryItem: GroceryItem ) throws {
         // check the list to see if item already exists, if so, give user a message
         // else add the item to the list.
-        if !myGroceryList.contains(where: { $0.name.lowercased() == groceryItem.name.lowercased() }) {
-            myGroceryList.append(groceryItem)
+        if !StateController.shared.myGroceryList.contains(where: { $0.name.lowercased() == groceryItem.name.lowercased() }) {
+            StateController.shared.myGroceryList.append(groceryItem)
         } else {
             throw GroceryStoreTripError.itemExistsInList
         }
@@ -50,11 +35,11 @@ class Shopper {
     // can be nil
     func getGroceryItem(index: Int) throws -> GroceryItem? {
         
-        if index < 0 || index >= myGroceryList.count {
+        if index < 0 || index >= StateController.shared.myGroceryList.count {
             throw ShopperError.OutOfBounds
         }
     
-        return myGroceryList[index]
+        return StateController.shared.myGroceryList[index]
     }
     
     // verify string is not empty

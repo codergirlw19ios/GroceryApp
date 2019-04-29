@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2685C19B222646F400207624 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C19A222646F400207624 /* AppDelegate.swift */; };
-		2685C19D222646F400207624 /* ShopperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C19C222646F400207624 /* ShopperViewController.swift */; };
+		2685C19D222646F400207624 /* AddGroceryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C19C222646F400207624 /* AddGroceryItemViewController.swift */; };
 		2685C1A0222646F400207624 /* Shopper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2685C19E222646F400207624 /* Shopper.storyboard */; };
 		2685C1A2222646F700207624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2685C1A1222646F700207624 /* Assets.xcassets */; };
 		2685C1A5222646F700207624 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2685C1A3222646F700207624 /* LaunchScreen.storyboard */; };
@@ -19,6 +19,7 @@
 		C728FB46225D155800AD5D9A /* StringValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728FB45225D155800AD5D9A /* StringValidation.swift */; };
 		C728FB4E2267EABF00AD5D9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C728FB4D2267EABF00AD5D9A /* Main.storyboard */; };
 		C733AC5F22518E320064DF16 /* GroceryStoreTripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C733AC5E22518E320064DF16 /* GroceryStoreTripListViewController.swift */; };
+		C73C560D2271085D0050990A /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C560C2271085D0050990A /* StateController.swift */; };
 		C744FC25222EE03E009F2EB3 /* GroceryStoreTripError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC24222EE03E009F2EB3 /* GroceryStoreTripError.swift */; };
 		C744FC27222EE64A009F2EB3 /* ShopperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC26222EE64A009F2EB3 /* ShopperTest.swift */; };
 		C744FC29222EE827009F2EB3 /* GroceryStoreTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744FC28222EE827009F2EB3 /* GroceryStoreTrip.swift */; };
@@ -43,7 +44,7 @@
 /* Begin PBXFileReference section */
 		2685C197222646F400207624 /* GroceryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2685C19A222646F400207624 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2685C19C222646F400207624 /* ShopperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopperViewController.swift; sourceTree = "<group>"; };
+		2685C19C222646F400207624 /* AddGroceryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryItemViewController.swift; sourceTree = "<group>"; };
 		2685C19F222646F400207624 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Shopper.storyboard; sourceTree = "<group>"; };
 		2685C1A1222646F700207624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2685C1A4222646F700207624 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		C728FB45225D155800AD5D9A /* StringValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidation.swift; sourceTree = "<group>"; };
 		C728FB4D2267EABF00AD5D9A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C733AC5E22518E320064DF16 /* GroceryStoreTripListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTripListViewController.swift; sourceTree = "<group>"; };
+		C73C560C2271085D0050990A /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		C744FC24222EE03E009F2EB3 /* GroceryStoreTripError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTripError.swift; sourceTree = "<group>"; };
 		C744FC26222EE64A009F2EB3 /* ShopperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopperTest.swift; sourceTree = "<group>"; };
 		C744FC28222EE827009F2EB3 /* GroceryStoreTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryStoreTrip.swift; sourceTree = "<group>"; };
@@ -145,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				2685C19E222646F400207624 /* Shopper.storyboard */,
-				2685C19C222646F400207624 /* ShopperViewController.swift */,
+				2685C19C222646F400207624 /* AddGroceryItemViewController.swift */,
 				C783E41122495062001B056A /* GroceryListViewController.swift */,
 				2685C1BC222647F000207624 /* Shopper.swift */,
 			);
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				C728FB4D2267EABF00AD5D9A /* Main.storyboard */,
+				C73C560C2271085D0050990A /* StateController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -292,13 +295,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C733AC5F22518E320064DF16 /* GroceryStoreTripListViewController.swift in Sources */,
+				C73C560D2271085D0050990A /* StateController.swift in Sources */,
 				C744FC29222EE827009F2EB3 /* GroceryStoreTrip.swift in Sources */,
 				C783E41222495062001B056A /* GroceryListViewController.swift in Sources */,
 				C7F280022251BD330049A43A /* AddToCartViewController.swift in Sources */,
 				C728FB46225D155800AD5D9A /* StringValidation.swift in Sources */,
 				2685C1BD222647F000207624 /* Shopper.swift in Sources */,
 				C783E4152249DB3C001B056A /* GroceryListPersistence.swift in Sources */,
-				2685C19D222646F400207624 /* ShopperViewController.swift in Sources */,
+				2685C19D222646F400207624 /* AddGroceryItemViewController.swift in Sources */,
 				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
 				C727B8B422555449009EC3CA /* Questions.swift in Sources */,

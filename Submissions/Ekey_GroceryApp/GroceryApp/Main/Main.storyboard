@@ -13,14 +13,14 @@
         <scene sceneID="vl3-92-1Kl">
             <objects>
                 <tabBarController id="Q46-b1-ZeU" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qf6-sD-UQc">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" id="Qf6-sD-UQc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="71I-dG-41A" kind="relationship" relationship="viewControllers" id="cHt-e0-3EP"/>
                         <segue destination="dUB-R2-VH7" kind="relationship" relationship="viewControllers" id="xDA-5X-vgn"/>
+                        <segue destination="71I-dG-41A" kind="relationship" relationship="viewControllers" id="cHt-e0-3EP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MM1-mF-dgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,21 +31,25 @@
         <scene sceneID="Aoq-Ju-Iet">
             <objects>
                 <viewControllerPlaceholder storyboardName="GroceryStoreTrip" id="71I-dG-41A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Jh7-MO-51X"/>
+                    <tabBarItem key="tabBarItem" title="gsTrip" image="grocery" landscapeImage="grocery" largeContentSizeImage="grocery" selectedImage="grocery" id="Jh7-MO-51X"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3SZ-hN-wsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1001" y="-660"/>
+            <point key="canvasLocation" x="-994" y="-449"/>
         </scene>
         <!--Shopper-->
         <scene sceneID="SmA-Je-rio">
             <objects>
                 <viewControllerPlaceholder storyboardName="Shopper" id="dUB-R2-VH7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="yRP-LW-Flc"/>
+                    <tabBarItem key="tabBarItem" title="Shopper" image="shopping" landscapeImage="shopping" largeContentSizeImage="shopping" selectedImage="grocery" id="yRP-LW-Flc"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wdb-G1-x3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-982" y="-500"/>
+            <point key="canvasLocation" x="-1035" y="-657"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="grocery" width="30" height="30"/>
+        <image name="shopping" width="30" height="30"/>
+    </resources>
 </document>

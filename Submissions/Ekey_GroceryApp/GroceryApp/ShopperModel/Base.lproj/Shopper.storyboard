@@ -13,7 +13,7 @@
         <!--Add Grocery Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ShopperViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AddGroceryItemViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-R2-VJ8">
-                                <rect key="frame" x="0.0" y="10" width="375" height="657"/>
+                                <rect key="frame" x="0.0" y="10" width="375" height="582"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groceryListCellID" textLabel="5Je-33-7bq" detailTextLabel="Jx7-RD-6Ey" style="IBUITableViewCellStyleValue1" id="Bdh-OC-50u">
@@ -115,9 +115,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="smj-9P-Heg" firstAttribute="bottom" secondItem="7h1-R2-VJ8" secondAttribute="bottom" id="69f-4U-7qS"/>
                             <constraint firstItem="7h1-R2-VJ8" firstAttribute="top" secondItem="Df8-gj-6B6" secondAttribute="top" constant="10" id="AXo-nU-ShX"/>
                             <constraint firstItem="7h1-R2-VJ8" firstAttribute="trailing" secondItem="smj-9P-Heg" secondAttribute="trailing" id="MSW-1P-PhZ"/>
+                            <constraint firstItem="smj-9P-Heg" firstAttribute="bottom" secondItem="7h1-R2-VJ8" secondAttribute="bottom" constant="75" id="MfP-QK-bPs"/>
                             <constraint firstItem="7h1-R2-VJ8" firstAttribute="leading" secondItem="smj-9P-Heg" secondAttribute="leading" id="b9r-6j-hZM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="smj-9P-Heg"/>
@@ -132,6 +132,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="GroceryListTableView" destination="7h1-R2-VJ8" id="Pjn-vp-hH9"/>
+                        <outlet property="groceryListTableView" destination="7h1-R2-VJ8" id="qCn-EI-J3x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PE7-Uo-GHq" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,9 +12,8 @@
         <!--Tab Bar Controller-->
         <scene sceneID="lsW-m4-V6q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cu5-PS-r2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController id="iZZ-6T-9rb" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hw2-aE-J9F">
+                <tabBarController modalTransitionStyle="flipHorizontal" id="iZZ-6T-9rb" sceneMemberID="viewController">
+                    <tabBar key="tabBar" autoresizesSubviews="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Hw2-aE-J9F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -24,6 +23,7 @@
                         <segue destination="Rcs-Ni-56M" kind="relationship" relationship="viewControllers" id="Uaj-so-MVk"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cu5-PS-r2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-446" y="-316"/>
         </scene>
@@ -31,7 +31,7 @@
         <scene sceneID="FA9-Vd-ysn">
             <objects>
                 <viewControllerPlaceholder storyboardName="GroceryTrip" id="Rcs-Ni-56M" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grocery Trip" image="grocerytrip_tab" selectedImage="grocerytrip_tab" id="3EZ-G1-aeR"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Grocery Trip" image="grocerytrip_tab" selectedImage="grocerytrip_tab" id="3EZ-G1-aeR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTW-s7-utX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

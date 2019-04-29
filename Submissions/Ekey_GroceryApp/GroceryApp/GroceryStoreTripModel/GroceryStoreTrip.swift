@@ -26,7 +26,7 @@ class GroceryStoreTrip {
     weak var delegate : GroceryStoreTripDelegate?
     
     public var actionModel = GSTAction()
-    private let persistence: GroceryListPersistence
+ //   private let persistence: GroceryListPersistence
     public private(set) var budget : Double = 0.0
     public private(set) var taxRate = 0.0     // percentage
     private var balance = 0.0     // read only computed value
@@ -41,12 +41,12 @@ class GroceryStoreTrip {
 //        }
 //    }
     
-    init(persistence: GroceryListPersistence, budget: Double, groceryList: [GroceryItem], taxRate: Double = 0.0) {
+    init(budget: Double, groceryList: [GroceryItem], taxRate: Double = 0.0) {
         self.budget = budget
         self.taxRate = taxRate
         self.balance = budget - totalCost
         
-        self.persistence = persistence
+  //      self.persistence = persistence
   //      myCart = persistence.readGroceryList()
         
         // Convert the array of GroceryList to a Dictionary and populate shoppingList

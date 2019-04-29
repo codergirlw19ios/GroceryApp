@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopperViewController: UIViewController {
+class AddGroceryItemViewController: UIViewController {
 
     // have a PTR to the ShopperModel
     var model:  Shopper?
@@ -20,7 +20,7 @@ class ShopperViewController: UIViewController {
         super.viewDidLoad()
         
         saveButton.isEnabled = false
-        // self = ShopperViewController -- i.e. Look for the delegate handler in ShopperViewController
+        // self = AddGroceryItemViewController -- i.e. Look for the delegate handler in AddGroceryItemViewController
         qtyTextField.delegate = self
         nameTextField.delegate = self
     }
@@ -65,7 +65,7 @@ class ShopperViewController: UIViewController {
 }
 
 
-extension  ShopperViewController : UITextFieldDelegate {
+extension  AddGroceryItemViewController : UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         
