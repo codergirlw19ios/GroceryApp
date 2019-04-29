@@ -166,6 +166,7 @@ extension GroceryTripViewController: UITableViewDataSource {
 }
 
 extension GroceryTripViewController: UITextFieldDelegate {
+    
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if textField == taxRateTextField, let model = model {
             let taxRate = try? model.validate(cost: taxRateTextField.text)
