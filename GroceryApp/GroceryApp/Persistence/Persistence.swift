@@ -21,6 +21,19 @@ class Persistence {
             .appendingPathExtension(type)
     }
 
+    // read single item JSON from file
+    func read<T>() -> T? where T: Decodable {
+        do {
+            let data = try Data(contentsOf: fileURL)
+            return try decode(type: T.self, data)
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }
+
+        return nil
+    }
+
+    // read array JSON from file
     func read<T>() -> [T] where T: Decodable {
         do {
             let data = try Data(contentsOf: fileURL)
