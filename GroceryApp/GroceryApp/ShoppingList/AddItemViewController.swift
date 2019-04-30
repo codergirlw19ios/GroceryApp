@@ -15,6 +15,8 @@ class AddItemViewController: UIViewController {
 
         quantityTextField.delegate = self
         nameTextField.delegate = self
+
+        nameTextField.becomeFirstResponder()
     }
 
     @IBAction func cancelButtonTapped(_sender : Any?) {

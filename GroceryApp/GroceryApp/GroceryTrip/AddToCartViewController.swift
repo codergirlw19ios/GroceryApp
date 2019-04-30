@@ -14,31 +14,40 @@ class AddToCartViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var costTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var feedbackView: FeedbackView!
+    @IBOutlet weak var continueButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         saveButton.isEnabled = false
+        continueButton.isHidden = true
+        feedbackView.isHidden = true
 
         quantityTextField.delegate = self
         nameTextField.delegate = self
         costTextField.delegate = self
+
+        nameTextField.becomeFirstResponder()
     }
 
     @IBAction func cancelButtonTapped(_sender : Any?) {
         navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func saveButtonTapped(_ sender: Any?) {
         guard let model = model, let name = nameTextField.text, let quantity = Int(quantityTextField.text ?? ""), let cost = Double(costTextField.text ?? "") else {
             print("invalid")
             return
         }
 
         do {
-            try model.addToCart(name: name, quantity: quantity, cost: cost)
-        } catch let error as GroceryTripError { // TODO: handle errors individually and inform user what faileds
-            print(error)
+            try model.addToCart(name: name, quantity: quantity, cost: cost, overrideShoppingList: !feedbackView.isHidden)
+        } catch let error as GroceryTripError {
+            saveButton.isEnabled = false
+            continueButton.isHidden = false
+            feedbackView.update(message: error.description)
+            feedbackView.toggleView(isHidden: false)
             return
         } catch {
             print(#function)
@@ -60,13 +69,31 @@ extension AddToCartViewController: UITextFieldDelegate {
         replacementString string: String
     ) -> Bool {
 
+        validate(textField, replacementString: string)
+
+        return true
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        continueButton.isHidden = true
+        feedbackView.toggleView(isHidden: true)
+        validate(textField, replacementString: textField.text)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+
+extension AddToCartViewController {
+    func validate(_ textField: UITextField, replacementString string: String?) {
         guard let model = model else {
             saveButton.isEnabled = false
-            return true
+            return
         }
 
-        // TODO: handle specific error cases and inform user of
-        // why the save button is disabled
         var name: String?
         var quantity: Int?
         var cost: Double?
@@ -89,12 +116,5 @@ extension AddToCartViewController: UITextFieldDelegate {
         } else {
             saveButton.isEnabled = false
         }
-
-        return true
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }

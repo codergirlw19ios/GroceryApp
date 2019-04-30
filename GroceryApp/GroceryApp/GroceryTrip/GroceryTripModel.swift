@@ -125,13 +125,13 @@ class GroceryTripModel {
                 throw GroceryTripError.itemQuantityExceedsRequiredAmount
             }
 
+            if balance < 0.0 { throw GroceryTripError.exceedsBudget }
+            
             updateShoppingListItem(of: groceryListItem, with: cost)
             groceryListItem.update(cost: cost)
             cart.append(groceryListItem)
             delegate?.dataUpdated()
         }
-
-        if balance < 0.0 { throw GroceryTripError.exceedsBudget }
     }
 
     // update inCart status of the first ShoppingListItem in the shopping cart whose groceryItems match
@@ -206,6 +206,21 @@ enum GroceryTripError: Error {
     case itemQuantityExceedsRequiredAmount
     case itemQuantityFallsShortOfRequiredAmount
     case taxRateError
+
+    var description: String {
+        switch self {
+        case .exceedsBudget:
+            return "This will exceed your budget."
+        case .itemNotInShoppingList:
+            return "This is not in your shopping list."
+        case .itemQuantityExceedsRequiredAmount:
+            return "This quantity is more than on your shopping list."
+        case .itemQuantityFallsShortOfRequiredAmount:
+            return "This quantity falls short of your shopping list."
+        case .taxRateError:
+            return "There is a problem with the tax rate."
+        }
+    }
 }
 
 struct GroceryTripModelData: Codable {
