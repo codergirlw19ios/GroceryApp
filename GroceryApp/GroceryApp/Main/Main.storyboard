@@ -19,6 +19,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="WQY-vL-9km" kind="relationship" relationship="viewControllers" id="PrZ-jn-ved"/>
                         <segue destination="uU4-ix-5LT" kind="relationship" relationship="viewControllers" id="oxc-ma-8lb"/>
                         <segue destination="gJw-fb-dpO" kind="relationship" relationship="viewControllers" id="kNW-8x-vGT"/>
                     </connections>
@@ -47,9 +48,20 @@
             </objects>
             <point key="canvasLocation" x="358" y="-303"/>
         </scene>
+        <!--RecipeSearch-->
+        <scene sceneID="B2U-jF-Ekd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RecipeSearch" id="WQY-vL-9km" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="RecipeSearch" image="recipesearch_tab" selectedImage="recipesearch_tab" id="ZUp-jv-2tp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oNY-1Q-NjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="366" y="-96"/>
+        </scene>
     </scenes>
     <resources>
         <image name="grocerytrip_tab" width="30" height="30"/>
+        <image name="recipesearch_tab" width="30" height="30"/>
         <image name="shoppinglist_tab" width="30" height="30"/>
     </resources>
 </document>

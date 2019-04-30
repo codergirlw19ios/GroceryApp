@@ -80,6 +80,7 @@ extension ShoppingListViewController: UITableViewDataSource {
 
 extension ShoppingListViewController: ShoppingListModelDelegate {
     func dataUpdated() {
-        shoppingListTableView.reloadData()
+        shoppingListTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+
     }
 }

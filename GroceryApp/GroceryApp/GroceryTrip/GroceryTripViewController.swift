@@ -207,7 +207,7 @@ extension GroceryTripViewController: UITextFieldDelegate {
 
 extension GroceryTripViewController: GroceryTripModelDelegate {
     func dataUpdated() {
-        groceryTripTableView.reloadData()
+        groceryTripTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         populateTextViews()
         view.layoutIfNeeded()
     }
