@@ -14,11 +14,11 @@ protocol RecipeSearchModelDelegate: class {
 class RecipeSearchModel {
     weak var delegate: RecipeSearchModelDelegate?
     private let persistence: RecipeSearchPersistence
-    private let networking: RecipeSearchNetworking
+    private let networking: RecipeSearchNetwork
     private var searchQuery: RecipeSearchQuery? {
         didSet {
             persistence.write(searchQuery!)
-            networking.fetchRecipes(with: searchQuery!) { recipes in
+            networking.fetch(with: searchQuery!) { recipes in
                 self.recipes = recipes
             }
         }
@@ -41,7 +41,7 @@ class RecipeSearchModel {
         return recipes[row]
     }
 
-    init(persistence: RecipeSearchPersistence, networking: RecipeSearchNetworking) {
+    init(persistence: RecipeSearchPersistence, networking: RecipeSearchNetwork) {
         self.persistence = persistence
         self.networking = networking
 

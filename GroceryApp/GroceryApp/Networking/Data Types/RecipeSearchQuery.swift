@@ -8,7 +8,7 @@
 import Foundation
 
 // Since the data on the api, and thus the results, can change, we actually want to persist the query, not the api. If the app crashes/reopens, we want to rerun the query, not load potentially bad data.
-struct RecipeSearchQuery: Codable {
+struct RecipeSearchQuery: Query, Codable {
     let query: String
 
     // comma separated list

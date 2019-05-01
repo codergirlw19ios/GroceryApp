@@ -9,7 +9,7 @@ import UIKit
 
 class RecipeSearchTableViewController: UITableViewController {
 
-    let model = RecipeSearchModel(persistence: RecipeSearchPersistence(filename: "RecipeSearch"), networking: RecipeSearchNetworking())
+    let model = RecipeSearchModel(persistence: RecipeSearchPersistence(filename: "RecipeSearch"), networking: RecipeSearchNetwork())
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

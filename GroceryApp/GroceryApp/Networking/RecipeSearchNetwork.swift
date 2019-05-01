@@ -1,5 +1,5 @@
 //
-//  RecipeSearchNetworking.swift
+//  RecipeSearchNetwork.swift
 //  GroceryApp
 //
 //  Created by Amanda Rawls on 4/29/19.
