@@ -51,14 +51,16 @@ class FeedbackView: UIView {
     }
 
     func toggleView(isHidden: Bool){
-        let toggleHidden = CABasicAnimation(keyPath: "isHidden")
-        toggleHidden.fromValue = self.isHidden
-        toggleHidden.toValue = isHidden
+        let opacity: Float = isHidden ? 0.0 : 1.0
+        let toggleHidden = CABasicAnimation(keyPath: "opacity")
+        toggleHidden.fromValue = layer.opacity
+        toggleHidden.toValue = opacity
         toggleHidden.duration = 1
         toggleHidden.repeatCount = 1
-        layer.add(toggleHidden, forKey: "isHidden")
+        layer.add(toggleHidden, forKey: "opacity")
 
-        self.isHidden = isHidden
+        layer.opacity = opacity
+
     }
 }
 

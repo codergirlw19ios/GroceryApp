@@ -22,7 +22,7 @@ class AddToCartViewController: UIViewController {
 
         saveButton.isEnabled = false
         continueButton.isHidden = true
-        feedbackView.isHidden = true
+        feedbackView.layer.opacity = 0.0
 
         quantityTextField.delegate = self
         nameTextField.delegate = self
@@ -42,7 +42,7 @@ class AddToCartViewController: UIViewController {
         }
 
         do {
-            try model.addToCart(name: name, quantity: quantity, cost: cost, overrideShoppingList: !feedbackView.isHidden)
+            try model.addToCart(name: name, quantity: quantity, cost: cost, overrideShoppingList: feedbackView.layer.opacity == 1.0)
         } catch let error as GroceryTripError {
             saveButton.isEnabled = false
             continueButton.isHidden = false
@@ -75,8 +75,6 @@ extension AddToCartViewController: UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        continueButton.isHidden = true
-        feedbackView.toggleView(isHidden: true)
         validate(textField, replacementString: textField.text)
     }
 
@@ -89,6 +87,11 @@ extension AddToCartViewController: UITextFieldDelegate {
 
 extension AddToCartViewController {
     func validate(_ textField: UITextField, replacementString string: String?) {
+        continueButton.isHidden = true
+        if feedbackView.layer.opacity == 1.0 {
+            feedbackView.toggleView(isHidden: true)
+        }
+        
         guard let model = model else {
             saveButton.isEnabled = false
             return
