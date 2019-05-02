@@ -31,6 +31,10 @@
 		26C465312264526800F426BB /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C465302264526800F426BB /* StateController.swift */; };
 		26F55E11226E9B4D007E0CB0 /* GroceryTripModelPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */; };
 		26F9B8DA226EBCC700E68D15 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8D9226EBCC700E68D15 /* FeedbackView.swift */; };
+		26F9B90B22798FA600E68D15 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B90A22798FA600E68D15 /* Network.swift */; };
+		26F9B90D227992F900E68D15 /* RandomCatNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B90C227992F900E68D15 /* RandomCatNetwork.swift */; };
+		26F9B90F227999B000E68D15 /* ImageNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B90E227999B000E68D15 /* ImageNetwork.swift */; };
+		26F9B9132279A2AA00E68D15 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B9122279A2AA00E68D15 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,10 @@
 		26C465302264526800F426BB /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripModelPersistence.swift; sourceTree = "<group>"; };
 		26F9B8D9226EBCC700E68D15 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		26F9B90A22798FA600E68D15 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		26F9B90C227992F900E68D15 /* RandomCatNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCatNetwork.swift; sourceTree = "<group>"; };
+		26F9B90E227999B000E68D15 /* ImageNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetwork.swift; sourceTree = "<group>"; };
+		26F9B9122279A2AA00E68D15 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 				2674FB74225434EC005AD287 /* GroceryTripTableViewCell.swift */,
 				2674FB76225434EC005AD287 /* AddToCartViewController.swift */,
 				26F9B8D9226EBCC700E68D15 /* FeedbackView.swift */,
+				26F9B9122279A2AA00E68D15 /* AboutViewController.swift */,
 			);
 			path = GroceryTrip;
 			sourceTree = "<group>";
@@ -149,6 +158,7 @@
 				2674FB73225434EC005AD287 /* GroceryTrip */,
 				2685C1BB2226479300207624 /* ShoppingList */,
 				2685C1BE2226486100207624 /* GroceryItem.swift */,
+				26F9B90922798F8D00E68D15 /* Network */,
 				26151152223A55770094EDA4 /* Persistence */,
 				2674FB82225443C3005AD287 /* Validation */,
 				2685C1BA2226473100207624 /* Supporting Files */,
@@ -196,6 +206,16 @@
 				26C465302264526800F426BB /* StateController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		26F9B90922798F8D00E68D15 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				26F9B90A22798FA600E68D15 /* Network.swift */,
+				26F9B90C227992F900E68D15 /* RandomCatNetwork.swift */,
+				26F9B90E227999B000E68D15 /* ImageNetwork.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,11 +330,15 @@
 				262236D22238A4BC00B29A19 /* ShoppingListViewController.swift in Sources */,
 				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,
 				2674FB79225434EC005AD287 /* GroceryTripTableViewCell.swift in Sources */,
+				26F9B90B22798FA600E68D15 /* Network.swift in Sources */,
 				26C465312264526800F426BB /* StateController.swift in Sources */,
 				2674FB7B225434EC005AD287 /* AddToCartViewController.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
+				26F9B90D227992F900E68D15 /* RandomCatNetwork.swift in Sources */,
 				26F9B8DA226EBCC700E68D15 /* FeedbackView.swift in Sources */,
+				26F9B90F227999B000E68D15 /* ImageNetwork.swift in Sources */,
 				26151154223A558B0094EDA4 /* GroceryItemPersistence.swift in Sources */,
+				26F9B9132279A2AA00E68D15 /* AboutViewController.swift in Sources */,
 				2674FB7C225434EC005AD287 /* GroceryTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
