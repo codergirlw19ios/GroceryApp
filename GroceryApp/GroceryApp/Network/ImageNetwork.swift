@@ -8,14 +8,17 @@
 import Foundation
 import UIKit
 
-class ImageNetwork: URLNetwork {
-    init(baseURL: String) {
-        super.init(baseURL: baseURL, mimeType: "image/jpeg")
+class ImageNetwork: URLNetworkProtocol {
+    let baseURL: String
+    let mimeType: String
+
+    init(baseURL: String, mimeType: String = "image/jpeg") {
+        self.baseURL = baseURL
+        self.mimeType = mimeType
     }
 
     func result(from data: Data) -> UIImage? {
         let image = UIImage(data: data)
-        print("ImageNetwork", image ?? "nil")
         return image
     }
 }
