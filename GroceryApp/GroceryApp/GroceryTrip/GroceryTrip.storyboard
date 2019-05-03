@@ -277,10 +277,43 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qof-yM-Cte" customClass="FeedbackView" customModule="GroceryApp" customModuleProvider="target">
+                                <rect key="frame" x="94" y="247.5" width="187.5" height="187.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="98i-O3-lzp">
+                                        <rect key="frame" x="40" y="40" width="107.5" height="107.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="98i-O3-lzp" firstAttribute="top" secondItem="Qof-yM-Cte" secondAttribute="top" constant="40" id="2tF-9J-VBR"/>
+                                    <constraint firstAttribute="trailing" secondItem="98i-O3-lzp" secondAttribute="trailing" constant="40" id="Hpx-tL-ydS"/>
+                                    <constraint firstItem="98i-O3-lzp" firstAttribute="leading" secondItem="Qof-yM-Cte" secondAttribute="leading" constant="40" id="UzQ-R9-QPM"/>
+                                    <constraint firstAttribute="width" secondItem="Qof-yM-Cte" secondAttribute="height" multiplier="1:1" id="XQU-86-DRw"/>
+                                    <constraint firstAttribute="bottom" secondItem="98i-O3-lzp" secondAttribute="bottom" constant="40" id="t9e-8W-iWd"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="message" destination="98i-O3-lzp" id="jQx-1u-eO3"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tud-Uf-M8T">
+                                <rect key="frame" x="155" y="468" width="65" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="eRC-yX-8XF" eventType="touchUpInside" id="eLh-IX-DXW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Tud-Uf-M8T" firstAttribute="top" secondItem="Qof-yM-Cte" secondAttribute="bottom" constant="33" id="9qH-QK-Ahc"/>
                             <constraint firstItem="xpX-Ef-SdA" firstAttribute="top" secondItem="rAH-CH-0bg" secondAttribute="bottom" constant="20" id="Acy-yT-cC6"/>
+                            <constraint firstItem="Qof-yM-Cte" firstAttribute="width" secondItem="e7K-sY-2b5" secondAttribute="width" multiplier="0.5" id="Azy-QT-9aY"/>
+                            <constraint firstItem="Tud-Uf-M8T" firstAttribute="centerX" secondItem="e7K-sY-2b5" secondAttribute="centerX" id="CZm-9b-0LX"/>
                             <constraint firstItem="99J-e3-Xlz" firstAttribute="trailing" secondItem="xpX-Ef-SdA" secondAttribute="trailing" constant="10" id="DTP-wR-AYp"/>
                             <constraint firstItem="YGo-bt-7FU" firstAttribute="top" secondItem="xpX-Ef-SdA" secondAttribute="bottom" constant="20" id="Iys-mL-6Yz"/>
                             <constraint firstItem="YGo-bt-7FU" firstAttribute="leading" secondItem="99J-e3-Xlz" secondAttribute="leading" constant="10" id="Rf6-eK-SAT"/>
@@ -288,9 +321,11 @@
                             <constraint firstItem="xpX-Ef-SdA" firstAttribute="leading" secondItem="99J-e3-Xlz" secondAttribute="leading" constant="10" id="bhb-j7-gcp"/>
                             <constraint firstItem="99J-e3-Xlz" firstAttribute="trailing" secondItem="YGo-bt-7FU" secondAttribute="trailing" constant="10" id="jwf-2H-gtM"/>
                             <constraint firstItem="rAH-CH-0bg" firstAttribute="leading" secondItem="99J-e3-Xlz" secondAttribute="leading" constant="10" id="lE2-S4-8hY"/>
+                            <constraint firstItem="Qof-yM-Cte" firstAttribute="centerY" secondItem="99J-e3-Xlz" secondAttribute="centerY" id="o8p-zX-ci9"/>
                             <constraint firstItem="qWu-nc-Pc3" firstAttribute="leading" secondItem="ePG-dN-wJD" secondAttribute="leading" id="uxV-bj-J7w"/>
                             <constraint firstItem="rAH-CH-0bg" firstAttribute="top" secondItem="99J-e3-Xlz" secondAttribute="top" constant="10" id="ysG-1h-WJS"/>
                             <constraint firstItem="A03-82-9Ro" firstAttribute="leading" secondItem="ePG-dN-wJD" secondAttribute="leading" id="zPm-O3-5DR"/>
+                            <constraint firstItem="Qof-yM-Cte" firstAttribute="centerX" secondItem="e7K-sY-2b5" secondAttribute="centerX" id="zlq-c5-9U3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="99J-e3-Xlz"/>
                     </view>
@@ -307,8 +342,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="continueButton" destination="Tud-Uf-M8T" id="D01-pb-ngd"/>
                         <outlet property="costTextField" destination="A03-82-9Ro" id="hEh-vl-Fil"/>
+                        <outlet property="feedbackView" destination="Qof-yM-Cte" id="9gr-OC-Igg"/>
                         <outlet property="nameTextField" destination="ePG-dN-wJD" id="pUo-Wd-svq"/>
                         <outlet property="quantityTextField" destination="qWu-nc-Pc3" id="zt2-aa-Dkd"/>
                         <outlet property="saveButton" destination="ny4-Gv-cWB" id="QR2-nd-TsG"/>
