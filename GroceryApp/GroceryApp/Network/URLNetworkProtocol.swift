@@ -13,7 +13,7 @@ protocol URLNetworkProtocol: class {
     var baseURL: String { get }
     var mimeType: String { get }
 
-    func fetch(completion: @escaping (ResultType?) -> ())
+    func fetch(with query: Query?, completion: @escaping (ResultType?) -> ())
     func handleClientError(_ error: Error)
     func handleServerError(_ urlResponse: URLResponse?)
     func result(from data: Data) -> ResultType?
@@ -31,8 +31,9 @@ extension URLNetworkProtocol {
         print(urlResponse.debugDescription)
     }
 
-    func fetch(completion: @escaping (ResultType?) ->()) {
-        let url = URL(string: baseURL)!
+    func fetch(with query: Query? = nil, completion: @escaping (ResultType?) ->()) {
+        let urlString = query != nil ? baseURL + query!.urlString : baseURL
+        let url = URL(string: urlString)!
 
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {

@@ -18,8 +18,13 @@ class RecipeSearchModel {
     private var searchQuery: RecipeSearchQuery? {
         didSet {
             persistence.write(searchQuery!)
-            networking.fetch(with: searchQuery!) { recipes in
-                self.recipes = recipes
+            networking.fetch(with: searchQuery!) { optionalRecipes in
+                switch optionalRecipes {
+                case .none:
+                    self.recipes = []
+                case .some(let recipes):
+                    self.recipes = recipes
+                }
             }
         }
     }

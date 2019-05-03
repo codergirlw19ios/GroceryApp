@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RecipeSearchNetwork: URLNetwork {
+class RecipeSearchNetwork: URLNetworkProtocol {
     let baseURL = "http://www.recipepuppy.com/api/"
     let mimeType = "text/javascript"
 
