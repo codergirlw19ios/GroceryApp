@@ -29,20 +29,18 @@ class AboutViewController: UIViewController {
 
     @objc
     private func loadRandomCat() {
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            self?.randomCatNetwork.fetch { optionalCatResult in
-                switch optionalCatResult {
-                case .none:
-                    return
-                case .some(let result):
-                    let imageNetwork = ImageNetwork(baseURL: result.file)
-                    imageNetwork.fetch { [weak self] imageResult in
-                        switch imageResult {
-                        case .none:
-                            return
-                        case .some(let image):
-                            self?.imageView.image = image
-                        }
+        randomCatNetwork.fetch { optionalCatResult in
+            switch optionalCatResult {
+            case .none:
+                return
+            case .some(let result):
+                let imageNetwork = ImageNetwork(baseURL: result.file)
+                imageNetwork.fetch { [weak self] imageResult in
+                    switch imageResult {
+                    case .none:
+                        return
+                    case .some(let image):
+                        self?.imageView.image = image
                     }
                 }
             }
