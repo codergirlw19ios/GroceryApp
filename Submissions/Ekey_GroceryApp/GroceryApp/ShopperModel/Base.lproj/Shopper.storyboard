@@ -77,13 +77,13 @@
         <!--Grocery List-->
         <scene sceneID="e2s-di-p9D">
             <objects>
-                <viewController id="Pye-ca-Nlm" customClass="GroceryListViewController" customModule="GroceryApp" sceneMemberID="viewController">
+                <viewController id="Pye-ca-Nlm" customClass="GroceryListViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Df8-gj-6B6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-R2-VJ8">
-                                <rect key="frame" x="0.0" y="10" width="375" height="582"/>
+                                <rect key="frame" x="0.0" y="10" width="375" height="533"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groceryListCellID" textLabel="5Je-33-7bq" detailTextLabel="Jx7-RD-6Ey" style="IBUITableViewCellStyleValue1" id="Bdh-OC-50u">
@@ -122,6 +122,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="smj-9P-Heg"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Shopper" image="shopping" selectedImage="shopping" id="BIf-D9-Keg"/>
                     <navigationItem key="navigationItem" title="Grocery List" id="MNo-ta-tup">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1l7-xj-ffV">
                             <connections>
@@ -130,6 +131,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="GroceryListTableView" destination="7h1-R2-VJ8" id="Pjn-vp-hH9"/>
                         <outlet property="groceryListTableView" destination="7h1-R2-VJ8" id="qCn-EI-J3x"/>
@@ -158,4 +160,7 @@
             <point key="canvasLocation" x="-1655.2" y="-107.49625187406298"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="shopping" width="30" height="30"/>
+    </resources>
 </document>

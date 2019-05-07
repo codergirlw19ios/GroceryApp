@@ -27,7 +27,6 @@
 		2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BC222647F000207624 /* ShoppingListModel.swift */; };
 		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
 		26B1893722264D08001765F8 /* ShoppingListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1893622264D08001765F8 /* ShoppingListModelTests.swift */; };
-		26C4652F225EC45800F426BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C4652E225EC45800F426BB /* Main.storyboard */; };
 		26C465312264526800F426BB /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C465302264526800F426BB /* StateController.swift */; };
 		26F55E11226E9B4D007E0CB0 /* GroceryTripModelPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */; };
 /* End PBXBuildFile section */
@@ -191,7 +190,6 @@
 			children = (
 				26C4652E225EC45800F426BB /* Main.storyboard */,
 				26C465302264526800F426BB /* StateController.swift */,
-
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -277,7 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2685C1A5222646F700207624 /* LaunchScreen.storyboard in Resources */,
-				C728FB49225EC48500AD5D9A /* Main.storyboard in Resources */,
 				2685C1A2222646F700207624 /* Assets.xcassets in Resources */,
 				2685C1A0222646F400207624 /* ShoppingList.storyboard in Resources */,
 				2674FB7A225434EC005AD287 /* GroceryTrip.storyboard in Resources */,
@@ -477,7 +474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XLLAHK97KS;
+				DEVELOPMENT_TEAM = N79448YYKX;
 				INFOPLIST_FILE = "$(SRCROOT)/GroceryApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -495,7 +492,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XLLAHK97KS;
+				DEVELOPMENT_TEAM = N79448YYKX;
 				INFOPLIST_FILE = "$(SRCROOT)/GroceryApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
