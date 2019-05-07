@@ -11,15 +11,19 @@ import UIKit
 
 class AddToCartViewController: UIViewController {
 
+    
+    @IBOutlet weak var continueButton: UIButton!
     // have a PTR to the GroceryStoreTrip
     var gstModel:  GroceryStoreTrip?
     var groceryItem: GroceryItem?
     var action = Action.Add
     
+    @IBOutlet weak var feedBackView: FeedbackView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var qtyTextField: UITextField!
     @IBOutlet weak var costTextField: UITextField!
+    
     
     
     override func viewDidLoad() {
@@ -30,7 +34,8 @@ class AddToCartViewController: UIViewController {
         qtyTextField.delegate = self
         itemNameTextField.delegate = self
         costTextField.delegate = self
-        
+        feedBackView.isHidden = true
+        continueButton.isHidden = true
         
         // if we have a model, get the action
         if (gstModel != nil) {
@@ -65,7 +70,7 @@ class AddToCartViewController: UIViewController {
        // dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func userTappedSave(_ sender: UIBarButtonItem) {
+    @IBAction func userTappedSave(_ sender: Any?) {
         // Tell the nameTextField to loose focus and execute delegate
         itemNameTextField.resignFirstResponder()
         qtyTextField.resignFirstResponder()
@@ -91,12 +96,21 @@ class AddToCartViewController: UIViewController {
         }
         
         do {
-            try gstModel?.addGroceryItemToCart( GroceryItem(itemName, itemQty, itemCost ), true )
+            // If continue button -- then feedbackView is NOT hidden -- thus adds
+            try gstModel?.addGroceryItemToCart( GroceryItem(itemName, itemQty, itemCost ), !feedBackView.isHidden )
+            
             itemNameTextField.text!.removeAll()
             qtyTextField.text!.removeAll()
             costTextField.text!.removeAll()
             
-            
+        } catch let error as GroceryStoreTripError { // TODO: handle errors individually and inform user what faileds
+            // show this view
+            feedBackView.isHidden = false
+            continueButton.isHidden = false
+            saveButton.isEnabled = false
+            feedBackView.updateLabel(text: error.description)
+            print(error)
+            return
             // somehow we need to notify the GroceryStoreTripViewContoller that we added and Item and to show it in the list..
             // I think they add a notification to the addGroceryItemToCart -- then anyone who is listening can do what they need to do
             
@@ -140,6 +154,8 @@ extension  AddToCartViewController : UITextFieldDelegate {
                 try Validation.validateString(stringValue: itemNameTextField.text)
                 _ = try Validation.validateInt(intValue: qtyTextField.text)
             }
+            continueButton.isHidden = true
+            feedBackView.isHidden = true
             saveButton.isEnabled = true
         } catch {
             saveButton.isEnabled = false
