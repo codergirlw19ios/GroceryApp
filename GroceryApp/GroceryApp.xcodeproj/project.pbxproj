@@ -30,6 +30,7 @@
 		26C4652F225EC45800F426BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C4652E225EC45800F426BB /* Main.storyboard */; };
 		26C465312264526800F426BB /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C465302264526800F426BB /* StateController.swift */; };
 		26F55E11226E9B4D007E0CB0 /* GroceryTripModelPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */; };
+		BE7A2FDB2277D15200A93C4E /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A2FDA2277D15200A93C4E /* FeedbackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		26C4652E225EC45800F426BB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		26C465302264526800F426BB /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripModelPersistence.swift; sourceTree = "<group>"; };
+		BE7A2FDA2277D15200A93C4E /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				2674FB77225434EC005AD287 /* GroceryTripViewController.swift */,
 				2674FB74225434EC005AD287 /* GroceryTripTableViewCell.swift */,
 				2674FB76225434EC005AD287 /* AddToCartViewController.swift */,
+				BE7A2FDA2277D15200A93C4E /* FeedbackView.swift */,
 			);
 			path = GroceryTrip;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				26C465312264526800F426BB /* StateController.swift in Sources */,
 				2674FB7B225434EC005AD287 /* AddToCartViewController.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
+				BE7A2FDB2277D15200A93C4E /* FeedbackView.swift in Sources */,
 				26151154223A558B0094EDA4 /* GroceryItemPersistence.swift in Sources */,
 				2674FB7C225434EC005AD287 /* GroceryTripViewController.swift in Sources */,
 			);

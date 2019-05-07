@@ -277,20 +277,57 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLd-jD-ccO" customClass="FeedbackView" customModule="GroceryApp" customModuleProvider="target">
+                                <rect key="frame" x="94" y="240" width="187.5" height="187.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqj-yr-Qvs">
+                                        <rect key="frame" x="40" y="40" width="107.5" height="107.5"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="feedBack">
+                                            <accessibilityTraits key="traits" staticText="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Kqj-yr-Qvs" secondAttribute="bottom" constant="40" id="8ec-PX-wQB"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kqj-yr-Qvs" secondAttribute="trailing" constant="40" id="E2H-Sf-fB2"/>
+                                    <constraint firstAttribute="width" secondItem="XLd-jD-ccO" secondAttribute="height" multiplier="1:1" id="c7n-UL-cZL"/>
+                                    <constraint firstItem="Kqj-yr-Qvs" firstAttribute="leading" secondItem="XLd-jD-ccO" secondAttribute="leading" constant="40" id="g3P-4d-lH0"/>
+                                    <constraint firstItem="Kqj-yr-Qvs" firstAttribute="top" secondItem="XLd-jD-ccO" secondAttribute="top" constant="40" id="xfB-Ll-VW7"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="feedBack" destination="Kqj-yr-Qvs" id="6FS-qQ-LgU"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGx-Xd-mga">
+                                <rect key="frame" x="256.5" y="468.5" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="eRC-yX-8XF" eventType="touchUpInside" id="zFb-hi-IKE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xpX-Ef-SdA" firstAttribute="top" secondItem="rAH-CH-0bg" secondAttribute="bottom" constant="20" id="Acy-yT-cC6"/>
                             <constraint firstItem="99J-e3-Xlz" firstAttribute="trailing" secondItem="xpX-Ef-SdA" secondAttribute="trailing" constant="10" id="DTP-wR-AYp"/>
                             <constraint firstItem="YGo-bt-7FU" firstAttribute="top" secondItem="xpX-Ef-SdA" secondAttribute="bottom" constant="20" id="Iys-mL-6Yz"/>
+                            <constraint firstItem="XLd-jD-ccO" firstAttribute="centerX" secondItem="e7K-sY-2b5" secondAttribute="centerX" id="KOp-Nm-XjI"/>
                             <constraint firstItem="YGo-bt-7FU" firstAttribute="leading" secondItem="99J-e3-Xlz" secondAttribute="leading" constant="10" id="Rf6-eK-SAT"/>
+                            <constraint firstItem="sGx-Xd-mga" firstAttribute="centerY" secondItem="e7K-sY-2b5" secondAttribute="centerY" constant="150" id="WYK-PO-656"/>
                             <constraint firstItem="99J-e3-Xlz" firstAttribute="trailing" secondItem="rAH-CH-0bg" secondAttribute="trailing" constant="10" id="ahr-2y-CRe"/>
                             <constraint firstItem="xpX-Ef-SdA" firstAttribute="leading" secondItem="99J-e3-Xlz" secondAttribute="leading" constant="10" id="bhb-j7-gcp"/>
+                            <constraint firstItem="XLd-jD-ccO" firstAttribute="width" secondItem="e7K-sY-2b5" secondAttribute="width" multiplier="0.5" id="f2j-60-wpg"/>
                             <constraint firstItem="99J-e3-Xlz" firstAttribute="trailing" secondItem="YGo-bt-7FU" secondAttribute="trailing" constant="10" id="jwf-2H-gtM"/>
+                            <constraint firstItem="sGx-Xd-mga" firstAttribute="centerX" secondItem="e7K-sY-2b5" secondAttribute="centerX" constant="100" id="l0l-vS-FaA"/>
                             <constraint firstItem="rAH-CH-0bg" firstAttribute="leading" secondItem="99J-e3-Xlz" secondAttribute="leading" constant="10" id="lE2-S4-8hY"/>
                             <constraint firstItem="qWu-nc-Pc3" firstAttribute="leading" secondItem="ePG-dN-wJD" secondAttribute="leading" id="uxV-bj-J7w"/>
                             <constraint firstItem="rAH-CH-0bg" firstAttribute="top" secondItem="99J-e3-Xlz" secondAttribute="top" constant="10" id="ysG-1h-WJS"/>
                             <constraint firstItem="A03-82-9Ro" firstAttribute="leading" secondItem="ePG-dN-wJD" secondAttribute="leading" id="zPm-O3-5DR"/>
+                            <constraint firstItem="XLd-jD-ccO" firstAttribute="centerY" secondItem="e7K-sY-2b5" secondAttribute="centerY" id="zdq-pd-GGo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="99J-e3-Xlz"/>
                     </view>
@@ -308,7 +345,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="continueButton" destination="sGx-Xd-mga" id="yA1-1w-Z7B"/>
                         <outlet property="costTextField" destination="A03-82-9Ro" id="hEh-vl-Fil"/>
+                        <outlet property="feedBackView" destination="XLd-jD-ccO" id="8rI-3D-46q"/>
                         <outlet property="nameTextField" destination="ePG-dN-wJD" id="pUo-Wd-svq"/>
                         <outlet property="quantityTextField" destination="qWu-nc-Pc3" id="zt2-aa-Dkd"/>
                         <outlet property="saveButton" destination="ny4-Gv-cWB" id="QR2-nd-TsG"/>
