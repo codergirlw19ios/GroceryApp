@@ -16,7 +16,8 @@ class GroceryTripViewController: UIViewController {
     @IBOutlet weak var balanceTextField: UITextField!
     @IBOutlet weak var groceryTripTableView: UITableView!
     @IBOutlet weak var addButton: UIBarButtonItem!
-
+   
+    
     let stateController = StateController.shared
     var model: GroceryTripModel?
     var modelPersistence = GroceryTripModelPersistence(filename: "GroceryTrip")

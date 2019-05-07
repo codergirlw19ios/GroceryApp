@@ -206,6 +206,21 @@ enum GroceryTripError: Error {
     case itemQuantityExceedsRequiredAmount
     case itemQuantityFallsShortOfRequiredAmount
     case taxRateError
+    
+    var description: String {
+        switch self {
+        case .exceedsBudget:
+            return "Exceeds Budget"
+        case .itemNotInShoppingList:
+            return "Item is Not in the Shopping List"
+        case .itemQuantityExceedsRequiredAmount:
+            return "Item Quantity exceeds the Required Amount"
+        case .itemQuantityFallsShortOfRequiredAmount:
+            return "Item Quantity Falls Short of Required Amount"
+        case .taxRateError:
+            return "Tax Rate Error"
+        }
+    }
 }
 
 struct GroceryTripModelData: Codable {
