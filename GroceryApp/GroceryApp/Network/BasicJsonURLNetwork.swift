@@ -8,19 +8,17 @@
 import Foundation
 import UIKit
 
-struct RandomCatResult: Decodable {
-    let file: String
-}
+
 
 class BasicJsonURLNetork<T>: URLNetworkProtocol where T: Decodable{
     var baseURL: String = ""
     var mimeType: String = "application/json"
     typealias ResultType = T
     
-    init(baseURL: String, mimeType: String? )
+    init(baseURL: String, _ mimeType: String = "application/json")
     {
         self.baseURL = baseURL
-        self.mimeType = mimeType ?? "application/json"
+        self.mimeType = mimeType
     }
     
     func result(from data: Data) -> T? {

@@ -15,10 +15,10 @@ class ImageNetwork: URLNetworkProtocol {
     var baseURL: String = ""
     var mimeType: String = "image/jpeg"
     
-    init(baseURL: String, mimeType: String? )
+    init(baseURL: String, mimeType: String =  "image/jpeg")
     {
         self.baseURL = baseURL
-        self.mimeType = mimeType ?? "image/jpeg"
+        self.mimeType = mimeType
     }
     
     func result(from data: Data) -> UIImage? {

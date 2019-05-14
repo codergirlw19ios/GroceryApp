@@ -33,6 +33,7 @@
 		C737A8052280ED4A0075F97C /* URLNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A8042280ED4A0075F97C /* URLNetwork.swift */; };
 		C737A807228102A60075F97C /* BasicJsonURLNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A806228102A60075F97C /* BasicJsonURLNetwork.swift */; };
 		C737A809228111790075F97C /* ImageNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A808228111790075F97C /* ImageNetwork.swift */; };
+		C737A80D22824AC20075F97C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A80C22824AC20075F97C /* AboutViewController.swift */; };
 		C73C560F2277D1560050990A /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C560E2277D1560050990A /* FeedbackView.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		C737A8042280ED4A0075F97C /* URLNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLNetwork.swift; sourceTree = "<group>"; };
 		C737A806228102A60075F97C /* BasicJsonURLNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicJsonURLNetwork.swift; sourceTree = "<group>"; };
 		C737A808228111790075F97C /* ImageNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetwork.swift; sourceTree = "<group>"; };
+		C737A80C22824AC20075F97C /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C73C560E2277D1560050990A /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				2674FB74225434EC005AD287 /* GroceryTripTableViewCell.swift */,
 				2674FB76225434EC005AD287 /* AddToCartViewController.swift */,
 				C73C560E2277D1560050990A /* FeedbackView.swift */,
+				C737A80C22824AC20075F97C /* AboutViewController.swift */,
 			);
 			path = GroceryTrip;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				C73C560F2277D1560050990A /* FeedbackView.swift in Sources */,
 				C737A809228111790075F97C /* ImageNetwork.swift in Sources */,
 				26151154223A558B0094EDA4 /* GroceryItemPersistence.swift in Sources */,
+				C737A80D22824AC20075F97C /* AboutViewController.swift in Sources */,
 				2674FB7C225434EC005AD287 /* GroceryTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
