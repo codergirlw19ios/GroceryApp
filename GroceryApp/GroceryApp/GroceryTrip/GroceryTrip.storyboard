@@ -360,17 +360,11 @@
         <!--About-->
         <scene sceneID="PMN-nm-Q3L">
             <objects>
-                <viewController storyboardIdentifier="AboutViewController" title="About" id="QGm-w3-L9P" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewController" title="About" id="QGm-w3-L9P" customClass="AboutViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sl4-Ly-La9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chateau" translatesAutoresizingMaskIntoConstraints="NO" id="eeA-jv-mUp">
-                                <rect key="frame" x="0.0" y="76.5" width="375" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="eeA-jv-mUp" secondAttribute="height" multiplier="375:250" id="sHb-Io-3yW"/>
-                                </constraints>
-                            </imageView>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfm-mc-OZ8">
                                 <rect key="frame" x="20" y="336.5" width="335" height="320.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -386,6 +380,16 @@ Je suis une étudiante de la vie! En vraiement, je travaille comme développeuse
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chateau" translatesAutoresizingMaskIntoConstraints="NO" id="eeA-jv-mUp">
+                                <rect key="frame" x="0.0" y="76.5" width="375" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eeA-jv-mUp" secondAttribute="height" multiplier="375:250" id="sHb-Io-3yW"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DGa-QN-Fwl">
+                                <rect key="frame" x="90" y="0.0" width="110" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -401,6 +405,9 @@ Je suis une étudiante de la vie! En vraiement, je travaille comme développeuse
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lYK-LE-Q2W"/>
                     </view>
+                    <connections>
+                        <outlet property="catImage" destination="eeA-jv-mUp" id="cBL-qv-XtJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmD-Dq-bC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

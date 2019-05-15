@@ -40,7 +40,7 @@ class AddToCartViewController: UIViewController {
         }
 
         do {
-            try model.addToCart(name: name, quantity: quantity, cost: cost, overrideShoppingList: feedBackView.isHidden)
+            try model.addToCart(name: name, quantity: quantity, cost: cost, overrideShoppingList: !feedBackView.isHidden)
         } catch let error as GroceryTripError { // TODO: handle errors individually and inform user what faileds
             print(error)
             return
