@@ -29,6 +29,9 @@ class RecipeNetwork: URLNetworkProtocol {
         return results.map{ Recipe(recipeResult: $0)}
     }
     
+    //function - {} is the completion. Called the trailing closure
+    //escaping tells us that the closure can be called when the class reference is gone. Since the
+    // reference is gone, it can crash. weak self means it makes it optional. 
     func fetch(with query: Query?, completion: @escaping ([Recipe]?) -> ()) {
         network.fetch(with: query) { [weak self] optionalRecipeSearchResult in
             completion(self?.result(from: optionalRecipeSearchResult))

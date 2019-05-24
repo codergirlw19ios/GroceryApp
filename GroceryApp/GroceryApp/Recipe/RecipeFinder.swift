@@ -49,7 +49,7 @@ class Recipe {
 }
 }
 
-struct RecipeSearchQuery {
+struct RecipeSearchQuery: Hashable, Codable, Query {
     
     let name: String
     let ingredients: String
