@@ -42,6 +42,8 @@ class GroceryTripViewController: UIViewController {
         groceryTripTableView.delegate = self
         taxRateTextField.delegate = self
         budgetTextField.delegate = self
+        // set the models delegate to GroceryTripViewController
+        // i.e.  GroceryTripViewController is listening to whatever events the model delegate will raise
         model?.delegate = self
 
         guard let budget = modelPersistence.data()?.budget else {
@@ -206,6 +208,7 @@ extension GroceryTripViewController: UITextFieldDelegate {
     }
 }
 
+// This class will listen for any events from GTMDelegate
 extension GroceryTripViewController: GroceryTripModelDelegate {
     func dataUpdated() {
         groceryTripTableView.reloadData()

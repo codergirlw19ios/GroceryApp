@@ -130,6 +130,7 @@ class GroceryTripModel {
             updateShoppingListItem(of: groceryListItem, with: cost)
             groceryListItem.update(cost: cost)
             cart.append(groceryListItem)
+            // notify whoever is listening that the model was updated
             delegate?.dataUpdated()
         }
     }

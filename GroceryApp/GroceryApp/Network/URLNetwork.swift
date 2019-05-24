@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol Query {
+    func urlString() -> String
+}
+
 protocol URLNetworkProtocol: class {
     // type is not specified until protocol is adopted
     associatedtype ResultType
@@ -15,7 +19,7 @@ protocol URLNetworkProtocol: class {
     var mimeType: String { get }
     
     // same as startLoad
-    func fetch (completion: @escaping (ResultType?) -> () )
+    func fetch (with query: RecipeSearchQuery?, completion: @escaping (ResultType?) -> () )
     func handleClientError(_ error: Error)
     func handleServerError(_ urlResponse: URLResponse?)
     func result ( from data: Data) -> ResultType?
@@ -25,9 +29,13 @@ protocol URLNetworkProtocol: class {
 extension URLNetworkProtocol {
     
     // A closure is said to escape a function when the closure is passed as an argument to the function, but is called after the function returns.
-    func fetch(completion: @escaping (ResultType?) ->()) {
-        let url = URL(string: baseURL)!
+    func fetch(with query: RecipeSearchQuery? = nil, completion: @escaping (ResultType?) ->()) {
+        let queryUrlString = query?.urlString().addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString = query != nil ? baseURL + queryUrlString : baseURL
         
+        let url = URL(string: urlString)!
+//        func fetch(completion: @escaping (ResultType?) ->()) {
+//            let url = URL(string: baseURL)!
         // create task in a suspended state -- task is started by Resume call below
         // task delivers the server’s response, data, and possibly errors to a completion handler block
         // Creates a task that retrieves the contents of the specified URL, then calls a handler upon completion.

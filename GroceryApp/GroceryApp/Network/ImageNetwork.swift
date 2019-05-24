@@ -21,6 +21,7 @@ class ImageNetwork: URLNetworkProtocol {
         self.mimeType = mimeType
     }
     
+    // result is the completion handler for ImageNetwork
     func result(from data: Data) -> UIImage? {
         guard let result = try? UIImage(data: data) else
         {

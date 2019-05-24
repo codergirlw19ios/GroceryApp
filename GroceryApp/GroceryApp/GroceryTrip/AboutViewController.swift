@@ -47,6 +47,7 @@ class AboutViewController: UIViewController {
             case .some(let result):
                 let imageNetwork = ImageNetwork(baseURL: result.file)
                 // Question:  what is going on with fetch no parens and weak self
+                //
                 imageNetwork.fetch() { [weak self] imageResult in
                 switch imageResult {
                 case .none:

@@ -21,6 +21,7 @@ class BasicJsonURLNetork<T>: URLNetworkProtocol where T: Decodable{
         self.mimeType = mimeType
     }
     
+    // result is the completion handler for BasicJsonURLNetwork
     func result(from data: Data) -> T? {
         guard let result = try? JSONDecoder().decode(T.self, from: data) else
         {

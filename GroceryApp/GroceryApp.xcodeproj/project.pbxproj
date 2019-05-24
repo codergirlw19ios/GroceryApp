@@ -35,6 +35,16 @@
 		C737A809228111790075F97C /* ImageNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A808228111790075F97C /* ImageNetwork.swift */; };
 		C737A80D22824AC20075F97C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A80C22824AC20075F97C /* AboutViewController.swift */; };
 		C73C560F2277D1560050990A /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C560E2277D1560050990A /* FeedbackView.swift */; };
+		C73CFC2E228C6F1300D6B452 /* RecipeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC2D228C6F1300D6B452 /* RecipeFinder.swift */; };
+		C73CFC30228CE47300D6B452 /* RecipeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC2F228CE47300D6B452 /* RecipeNetwork.swift */; };
+		C73CFC32228DD7DA00D6B452 /* RecipeSearchPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC31228DD7DA00D6B452 /* RecipeSearchPersistence.swift */; };
+		C73CFC34228DDC8A00D6B452 /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC33228DDC8A00D6B452 /* RecipeSearchModel.swift */; };
+		C73CFC36228E137D00D6B452 /* RecipeSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC35228E137D00D6B452 /* RecipeSearchTableViewController.swift */; };
+		C73CFC38228E1E3E00D6B452 /* Recipes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73CFC37228E1E3E00D6B452 /* Recipes.storyboard */; };
+		C73CFC3A228E20F800D6B452 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC39228E20F800D6B452 /* RecipeTableViewCell.swift */; };
+		C73CFC3C228E2BD700D6B452 /* QueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC3B228E2BD700D6B452 /* QueryModel.swift */; };
+		C73CFC3E228F946900D6B452 /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC3D228F946900D6B452 /* QueryViewController.swift */; };
+		C73CFC40228F967E00D6B452 /* QueryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CFC3F228F967E00D6B452 /* QueryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +90,16 @@
 		C737A808228111790075F97C /* ImageNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetwork.swift; sourceTree = "<group>"; };
 		C737A80C22824AC20075F97C /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C73C560E2277D1560050990A /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		C73CFC2D228C6F1300D6B452 /* RecipeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFinder.swift; sourceTree = "<group>"; };
+		C73CFC2F228CE47300D6B452 /* RecipeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetwork.swift; sourceTree = "<group>"; };
+		C73CFC31228DD7DA00D6B452 /* RecipeSearchPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchPersistence.swift; sourceTree = "<group>"; };
+		C73CFC33228DDC8A00D6B452 /* RecipeSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchModel.swift; sourceTree = "<group>"; };
+		C73CFC35228E137D00D6B452 /* RecipeSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewController.swift; sourceTree = "<group>"; };
+		C73CFC37228E1E3E00D6B452 /* Recipes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recipes.storyboard; sourceTree = "<group>"; };
+		C73CFC39228E20F800D6B452 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		C73CFC3B228E2BD700D6B452 /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
+		C73CFC3D228F946900D6B452 /* QueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
+		C73CFC3F228F967E00D6B452 /* QueryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +127,7 @@
 				26151153223A558B0094EDA4 /* GroceryItemPersistence.swift */,
 				264DFA192267E3BF001C0970 /* ShoppingListPersistence.swift */,
 				26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */,
+				C73CFC31228DD7DA00D6B452 /* RecipeSearchPersistence.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -154,6 +175,7 @@
 		2685C199222646F400207624 /* GroceryApp */ = {
 			isa = PBXGroup;
 			children = (
+				C73CFC2C228C6E9800D6B452 /* RecipeSearch */,
 				C737A8032280ED210075F97C /* Network */,
 				26C4652D225EC44600F426BB /* Main */,
 				2674FB73225434EC005AD287 /* GroceryTrip */,
@@ -214,8 +236,24 @@
 				C737A8042280ED4A0075F97C /* URLNetwork.swift */,
 				C737A806228102A60075F97C /* BasicJsonURLNetwork.swift */,
 				C737A808228111790075F97C /* ImageNetwork.swift */,
+				C73CFC2F228CE47300D6B452 /* RecipeNetwork.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C73CFC2C228C6E9800D6B452 /* RecipeSearch */ = {
+			isa = PBXGroup;
+			children = (
+				C73CFC37228E1E3E00D6B452 /* Recipes.storyboard */,
+				C73CFC2D228C6F1300D6B452 /* RecipeFinder.swift */,
+				C73CFC33228DDC8A00D6B452 /* RecipeSearchModel.swift */,
+				C73CFC35228E137D00D6B452 /* RecipeSearchTableViewController.swift */,
+				C73CFC39228E20F800D6B452 /* RecipeTableViewCell.swift */,
+				C73CFC3B228E2BD700D6B452 /* QueryModel.swift */,
+				C73CFC3D228F946900D6B452 /* QueryViewController.swift */,
+				C73CFC3F228F967E00D6B452 /* QueryTableViewCell.swift */,
+			);
+			path = RecipeSearch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +340,7 @@
 				26C4652F225EC45800F426BB /* Main.storyboard in Resources */,
 				2685C1A2222646F700207624 /* Assets.xcassets in Resources */,
 				2685C1A0222646F400207624 /* ShoppingList.storyboard in Resources */,
+				C73CFC38228E1E3E00D6B452 /* Recipes.storyboard in Resources */,
 				2674FB7A225434EC005AD287 /* GroceryTrip.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,7 +359,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C73CFC3C228E2BD700D6B452 /* QueryModel.swift in Sources */,
+				C73CFC3E228F946900D6B452 /* QueryViewController.swift in Sources */,
+				C73CFC32228DD7DA00D6B452 /* RecipeSearchPersistence.swift in Sources */,
+				C73CFC34228DDC8A00D6B452 /* RecipeSearchModel.swift in Sources */,
 				2674FB7F22543B6A005AD287 /* Persistence.swift in Sources */,
+				C73CFC3A228E20F800D6B452 /* RecipeTableViewCell.swift in Sources */,
 				264DFA1A2267E3BF001C0970 /* ShoppingListPersistence.swift in Sources */,
 				C737A8052280ED4A0075F97C /* URLNetwork.swift in Sources */,
 				2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */,
@@ -338,7 +382,11 @@
 				C73C560F2277D1560050990A /* FeedbackView.swift in Sources */,
 				C737A809228111790075F97C /* ImageNetwork.swift in Sources */,
 				26151154223A558B0094EDA4 /* GroceryItemPersistence.swift in Sources */,
+				C73CFC30228CE47300D6B452 /* RecipeNetwork.swift in Sources */,
+				C73CFC36228E137D00D6B452 /* RecipeSearchTableViewController.swift in Sources */,
+				C73CFC40228F967E00D6B452 /* QueryTableViewCell.swift in Sources */,
 				C737A80D22824AC20075F97C /* AboutViewController.swift in Sources */,
+				C73CFC2E228C6F1300D6B452 /* RecipeFinder.swift in Sources */,
 				2674FB7C225434EC005AD287 /* GroceryTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,7 +552,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XLLAHK97KS;
+				DEVELOPMENT_TEAM = N79448YYKX;
 				INFOPLIST_FILE = "$(SRCROOT)/GroceryApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -522,7 +570,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XLLAHK97KS;
+				DEVELOPMENT_TEAM = N79448YYKX;
 				INFOPLIST_FILE = "$(SRCROOT)/GroceryApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
