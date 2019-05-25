@@ -32,7 +32,7 @@ class QueryViewController: UIViewController {
         
        self.navigationItem.setLeftBarButtonItems([UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewQuery)), UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchNewQuery)) ], animated: false)
         
-   //     searchButton.isEnabled = true
+        model = QueryModel(ingredients: [])
         queryTableView.dataSource = self
         queryTableView.delegate = self
         queryTextField.delegate = self
@@ -40,6 +40,7 @@ class QueryViewController: UIViewController {
         // i.e.  QueryViewController is listening to whatever events the QueryViewController delegate will raise
         // QUESTION  Why not just call the recipeSearchModel.updateRecipeSearchQuery directly instead of using 2 delegates
         qvcDelegate = self
+        model?.delegate = self
         
     }
     
@@ -61,7 +62,13 @@ class QueryViewController: UIViewController {
     }
     
     @objc func addNewIngredient() {
-        navigationController?.popViewController(animated: true)
+        
+        queryTableView.beginUpdates()
+        queryTableView.insertRows(at: [IndexPath(row: recipeSearchModel?.recipeCount ?? 0, section: 0)], with: .automatic)
+        model?.addIngredient(name: "pickles")
+        queryTableView.endUpdates()
+        
+     
     }
     /*
     // MARK: - Navigation
@@ -84,8 +91,18 @@ extension QueryViewController: QueryViewControllerDelegate {
         
 }
 
-extension QueryViewController : UITableViewDelegate {
+extension QueryViewController: QueryDelegate {
+    func dataUpdated() {
+        self.queryTableView.reloadData()
+        view.layoutIfNeeded()
+    }
     
+}
+
+extension QueryViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // handle selecting a row for editing
+    }
 }
 
 extension QueryViewController: UITableViewDataSource {

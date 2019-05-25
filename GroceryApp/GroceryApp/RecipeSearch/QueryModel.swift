@@ -8,9 +8,13 @@
 import Foundation
 import UIKit
 
+protocol QueryDelegate: class {
+    func dataUpdated()
+}
 
 class QueryModel {
 
+    weak var delegate: QueryDelegate?
     var ingredients: [String]
     var row: Int?
     var ingredientCount: Int { return ingredients.count }
@@ -26,7 +30,12 @@ class QueryModel {
 
     func updateIngredient(row: Int, name: String) {
         ingredients[row] = name
+        delegate?.dataUpdated()
     }
     
+    func addIngredient(name: String) {
+        ingredients.append(name)
+        delegate?.dataUpdated()
+    }
 }
 
