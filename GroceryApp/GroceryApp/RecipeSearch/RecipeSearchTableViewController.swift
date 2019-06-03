@@ -12,6 +12,7 @@ class RecipeSearchTableViewController: UITableViewController {
     var recipeSearchModel : RecipeSearchModel?
     var modelPersistence = RecipeSearchPersistence(filename: "RecipeQuery")
     var recipeNetwork = RecipeNetwork()
+    private var dismissKeyboardGesture: UITapGestureRecognizer?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -121,3 +122,32 @@ extension RecipeSearchTableViewController: RecipeSearchModelDelegate {
 //        recipeSearchModel?.updateRecipeSearchQuery(query: searchQuery)
 //    }
 //}
+
+extension RecipeSearchTableViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        
+    }
+    
+    @objc func endEditing() {
+            self.view.endEditing(true)
+        }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+    
+        self.view.addGestureRecognizer(gesture)
+        dismissKeyboardGesture = gesture
+        
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let gesture = dismissKeyboardGesture {
+            self.view.removeGestureRecognizer(gesture)
+            dismissKeyboardGesture = nil
+        }
+        textField.resignFirstResponder()
+        return true
+    }
+}
+

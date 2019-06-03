@@ -45,8 +45,18 @@ class QueryViewController: UIViewController {
     }
     
     @objc func searchNewQuery() {
+        
+        guard let queryText = try? Validation.notEmpty(queryTextField.text) else {
+            return
+        }
+        
+        if (model?.ingredientCount ?? 0 < 1 ) {
+            return
+        }
+        
         // Gather info from the fields and construct the query
-        var searchQuery = RecipeSearchQuery(query: "omlet", ingredients: ["eggs","milk"])
+        // This triggers the fetch
+        var searchQuery = RecipeSearchQuery(query: queryText, ingredients: (model?.ingredients)!)
         
         // QUESTION  Why not just call the recipeSearchModel.updateRecipeSearchQuery directly instead of using 2 delegates
         // trigger the delegate to update Recipe Search model
@@ -65,10 +75,9 @@ class QueryViewController: UIViewController {
         
         queryTableView.beginUpdates()
         queryTableView.insertRows(at: [IndexPath(row: recipeSearchModel?.recipeCount ?? 0, section: 0)], with: .automatic)
-        model?.addIngredient(name: "pickles")
+        // add an ingredient so it returns 1 when asked
+        model?.addIngredient(name: "")
         queryTableView.endUpdates()
-        
-     
     }
     /*
     // MARK: - Navigation
@@ -102,6 +111,13 @@ extension QueryViewController: QueryDelegate {
 extension QueryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // handle selecting a row for editing
+        model?.row = indexPath.row
+        guard let cell = tableView.cellForRow(at: indexPath) as? QueryTableViewCell else {
+            return
+        }
+        
+        model?.updateIngredient(name: cell.ingredientField.text!)
+       
     }
 }
 
@@ -113,20 +129,45 @@ extension QueryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = queryTableView.dequeueReusableCell(withIdentifier: "IngredientTableCelIID", for: indexPath) as? QueryTableViewCell else {
+        guard let cell = queryTableView.dequeueReusableCell(withIdentifier: "IngredientTableCellID", for: indexPath) as? QueryTableViewCell else {
                 return UITableViewCell()
         }
             
         // retrieve the grocery item for this index path
         let ingredient: String? = model?.getIngredient(row: indexPath.row)
-        
+        model?.row = indexPath.row
         cell.decorateCell(with: ingredient)
+        cell.qtvcDelegate = self
         
         return cell
     }
     
 }
 
-extension QueryViewController: UITextFieldDelegate {
+extension QueryViewController: UITextFieldDelegate, QueryTableViewCellDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        if textField == queryTextField {
+            view.layoutIfNeeded()
+        //    generateModel()
+        } else {
+            // must be an ingredient
+            if !textField.text!.isEmpty {
+                model?.updateIngredient(name: textField.text!)
+            }
+            
+        }
+
+    }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
+
+
+
