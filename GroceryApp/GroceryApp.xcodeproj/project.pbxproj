@@ -10,6 +10,7 @@
 		2605590E2238CECC00BCB3C0 /* ShoppingListPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2605590D2238CECC00BCB3C0 /* ShoppingListPersistenceTests.swift */; };
 		26151154223A558B0094EDA4 /* GroceryItemPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26151153223A558B0094EDA4 /* GroceryItemPersistence.swift */; };
 		262236D22238A4BC00B29A19 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262236D12238A4BC00B29A19 /* ShoppingListViewController.swift */; };
+		26300950227C103100AB2D89 /* BasicJsonURLNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2630094F227C103100AB2D89 /* BasicJsonURLNetwork.swift */; };
 		264DFA1A2267E3BF001C0970 /* ShoppingListPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFA192267E3BF001C0970 /* ShoppingListPersistence.swift */; };
 		2674FB79225434EC005AD287 /* GroceryTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674FB74225434EC005AD287 /* GroceryTripTableViewCell.swift */; };
 		2674FB7A225434EC005AD287 /* GroceryTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2674FB75225434EC005AD287 /* GroceryTrip.storyboard */; };
@@ -25,12 +26,29 @@
 		2685C1A5222646F700207624 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2685C1A3222646F700207624 /* LaunchScreen.storyboard */; };
 		2685C1B0222646F700207624 /* GroceryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1AF222646F700207624 /* GroceryItemTests.swift */; };
 		2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BC222647F000207624 /* ShoppingListModel.swift */; };
-		2685C1BF2226486100207624 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685C1BE2226486100207624 /* GroceryItem.swift */; };
+		2690728F227C3048008EDB23 /* RecipeSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690728A227C3048008EDB23 /* RecipeSearchQuery.swift */; };
+		26907290227C3048008EDB23 /* RecipeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690728B227C3048008EDB23 /* RecipeResult.swift */; };
+		26907291227C3048008EDB23 /* sampleRecipeResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2690728D227C3048008EDB23 /* sampleRecipeResponse.json */; };
+		26907292227C3048008EDB23 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690728E227C3048008EDB23 /* Query.swift */; };
+		26907296227C33F0008EDB23 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26907294227C33F0008EDB23 /* Recipe.swift */; };
+		26907297227C33F0008EDB23 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26907295227C33F0008EDB23 /* GroceryItem.swift */; };
 		26B1893722264D08001765F8 /* ShoppingListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1893622264D08001765F8 /* ShoppingListModelTests.swift */; };
 		26C4652F225EC45800F426BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C4652E225EC45800F426BB /* Main.storyboard */; };
 		26C465312264526800F426BB /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C465302264526800F426BB /* StateController.swift */; };
 		26F55E11226E9B4D007E0CB0 /* GroceryTripModelPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */; };
 		26F9B8DA226EBCC700E68D15 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8D9226EBCC700E68D15 /* FeedbackView.swift */; };
+		26F9B8E22277F24300E68D15 /* RecipeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F9B8E12277F24300E68D15 /* RecipeSearch.storyboard */; };
+		26F9B8E42277F26800E68D15 /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8E32277F26800E68D15 /* RecipeSearchViewController.swift */; };
+		26F9B8E62277F4F500E68D15 /* RecipeSearchPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8E52277F4F500E68D15 /* RecipeSearchPersistence.swift */; };
+		26F9B8E92277FEA600E68D15 /* RecipeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8E82277FEA600E68D15 /* RecipeNetwork.swift */; };
+		26F9B8F0227804E800E68D15 /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8EF227804E800E68D15 /* RecipeSearchModel.swift */; };
+		26F9B8F522780D1A00E68D15 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8F422780D1A00E68D15 /* RecipeTableViewCell.swift */; };
+		26F9B8F822781A6400E68D15 /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8F722781A6400E68D15 /* QueryViewController.swift */; };
+		26F9B8FA22781F1100E68D15 /* QueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8F922781F1100E68D15 /* QueryModel.swift */; };
+		26F9B8FC2278234900E68D15 /* QueryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B8FB2278234900E68D15 /* QueryTableViewCell.swift */; };
+		26F9B90B22798FA600E68D15 /* URLNetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B90A22798FA600E68D15 /* URLNetworkProtocol.swift */; };
+		26F9B90F227999B000E68D15 /* ImageNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B90E227999B000E68D15 /* ImageNetwork.swift */; };
+		26F9B9132279A2AA00E68D15 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9B9122279A2AA00E68D15 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +65,7 @@
 		2605590D2238CECC00BCB3C0 /* ShoppingListPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListPersistenceTests.swift; sourceTree = "<group>"; };
 		26151153223A558B0094EDA4 /* GroceryItemPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemPersistence.swift; sourceTree = "<group>"; };
 		262236D12238A4BC00B29A19 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
+		2630094F227C103100AB2D89 /* BasicJsonURLNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicJsonURLNetwork.swift; sourceTree = "<group>"; };
 		264DFA192267E3BF001C0970 /* ShoppingListPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListPersistence.swift; sourceTree = "<group>"; };
 		2674FB74225434EC005AD287 /* GroceryTripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryTripTableViewCell.swift; sourceTree = "<group>"; };
 		2674FB75225434EC005AD287 /* GroceryTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroceryTrip.storyboard; sourceTree = "<group>"; };
@@ -66,12 +85,29 @@
 		2685C1AF222646F700207624 /* GroceryItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemTests.swift; sourceTree = "<group>"; };
 		2685C1B1222646F700207624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2685C1BC222647F000207624 /* ShoppingListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModel.swift; sourceTree = "<group>"; };
-		2685C1BE2226486100207624 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		2690728A227C3048008EDB23 /* RecipeSearchQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchQuery.swift; sourceTree = "<group>"; };
+		2690728B227C3048008EDB23 /* RecipeResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeResult.swift; sourceTree = "<group>"; };
+		2690728D227C3048008EDB23 /* sampleRecipeResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleRecipeResponse.json; sourceTree = "<group>"; };
+		2690728E227C3048008EDB23 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		26907294227C33F0008EDB23 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		26907295227C33F0008EDB23 /* GroceryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		26B1893622264D08001765F8 /* ShoppingListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModelTests.swift; sourceTree = "<group>"; };
 		26C4652E225EC45800F426BB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		26C465302264526800F426BB /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTripModelPersistence.swift; sourceTree = "<group>"; };
 		26F9B8D9226EBCC700E68D15 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		26F9B8E12277F24300E68D15 /* RecipeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipeSearch.storyboard; sourceTree = "<group>"; };
+		26F9B8E32277F26800E68D15 /* RecipeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchViewController.swift; sourceTree = "<group>"; };
+		26F9B8E52277F4F500E68D15 /* RecipeSearchPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchPersistence.swift; sourceTree = "<group>"; };
+		26F9B8E82277FEA600E68D15 /* RecipeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetwork.swift; sourceTree = "<group>"; };
+		26F9B8EF227804E800E68D15 /* RecipeSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchModel.swift; sourceTree = "<group>"; };
+		26F9B8F422780D1A00E68D15 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		26F9B8F722781A6400E68D15 /* QueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
+		26F9B8F922781F1100E68D15 /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
+		26F9B8FB2278234900E68D15 /* QueryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableViewCell.swift; sourceTree = "<group>"; };
+		26F9B90A22798FA600E68D15 /* URLNetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLNetworkProtocol.swift; sourceTree = "<group>"; };
+		26F9B90E227999B000E68D15 /* ImageNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetwork.swift; sourceTree = "<group>"; };
+		26F9B9122279A2AA00E68D15 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +135,7 @@
 				26151153223A558B0094EDA4 /* GroceryItemPersistence.swift */,
 				264DFA192267E3BF001C0970 /* ShoppingListPersistence.swift */,
 				26F55E10226E9B4C007E0CB0 /* GroceryTripModelPersistence.swift */,
+				26F9B8E52277F4F500E68D15 /* RecipeSearchPersistence.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -112,6 +149,7 @@
 				2674FB74225434EC005AD287 /* GroceryTripTableViewCell.swift */,
 				2674FB76225434EC005AD287 /* AddToCartViewController.swift */,
 				26F9B8D9226EBCC700E68D15 /* FeedbackView.swift */,
+				26F9B9122279A2AA00E68D15 /* AboutViewController.swift */,
 			);
 			path = GroceryTrip;
 			sourceTree = "<group>";
@@ -148,9 +186,11 @@
 				26C4652D225EC44600F426BB /* Main */,
 				2674FB73225434EC005AD287 /* GroceryTrip */,
 				2685C1BB2226479300207624 /* ShoppingList */,
-				2685C1BE2226486100207624 /* GroceryItem.swift */,
+				26F9B8E02277F22D00E68D15 /* RecipeSearch */,
+				26F9B90922798F8D00E68D15 /* Network */,
 				26151152223A55770094EDA4 /* Persistence */,
 				2674FB82225443C3005AD287 /* Validation */,
+				26907293227C33F0008EDB23 /* Data Types */,
 				2685C1BA2226473100207624 /* Supporting Files */,
 			);
 			path = GroceryApp;
@@ -189,6 +229,32 @@
 			path = ShoppingList;
 			sourceTree = "<group>";
 		};
+		26907289227C3048008EDB23 /* Data Types */ = {
+			isa = PBXGroup;
+			children = (
+				2690728A227C3048008EDB23 /* RecipeSearchQuery.swift */,
+				2690728B227C3048008EDB23 /* RecipeResult.swift */,
+			);
+			path = "Data Types";
+			sourceTree = "<group>";
+		};
+		2690728C227C3048008EDB23 /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				2690728D227C3048008EDB23 /* sampleRecipeResponse.json */,
+			);
+			path = Sample;
+			sourceTree = "<group>";
+		};
+		26907293227C33F0008EDB23 /* Data Types */ = {
+			isa = PBXGroup;
+			children = (
+				26907294227C33F0008EDB23 /* Recipe.swift */,
+				26907295227C33F0008EDB23 /* GroceryItem.swift */,
+			);
+			path = "Data Types";
+			sourceTree = "<group>";
+		};
 		26C4652D225EC44600F426BB /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +262,42 @@
 				26C465302264526800F426BB /* StateController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		26F9B8E02277F22D00E68D15 /* RecipeSearch */ = {
+			isa = PBXGroup;
+			children = (
+				26F9B8F622781A5200E68D15 /* Query */,
+				26F9B8EF227804E800E68D15 /* RecipeSearchModel.swift */,
+				26F9B8E12277F24300E68D15 /* RecipeSearch.storyboard */,
+				26F9B8E32277F26800E68D15 /* RecipeSearchViewController.swift */,
+				26F9B8F422780D1A00E68D15 /* RecipeTableViewCell.swift */,
+			);
+			path = RecipeSearch;
+			sourceTree = "<group>";
+		};
+		26F9B8F622781A5200E68D15 /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				26F9B8F722781A6400E68D15 /* QueryViewController.swift */,
+				26F9B8F922781F1100E68D15 /* QueryModel.swift */,
+				26F9B8FB2278234900E68D15 /* QueryTableViewCell.swift */,
+			);
+			path = Query;
+			sourceTree = "<group>";
+		};
+		26F9B90922798F8D00E68D15 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2690728E227C3048008EDB23 /* Query.swift */,
+				26F9B90A22798FA600E68D15 /* URLNetworkProtocol.swift */,
+				2630094F227C103100AB2D89 /* BasicJsonURLNetwork.swift */,
+				26F9B90E227999B000E68D15 /* ImageNetwork.swift */,
+				26F9B8E82277FEA600E68D15 /* RecipeNetwork.swift */,
+				26907289227C3048008EDB23 /* Data Types */,
+				2690728C227C3048008EDB23 /* Sample */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,9 +380,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F9B8E22277F24300E68D15 /* RecipeSearch.storyboard in Resources */,
 				2685C1A5222646F700207624 /* LaunchScreen.storyboard in Resources */,
 				26C4652F225EC45800F426BB /* Main.storyboard in Resources */,
 				2685C1A2222646F700207624 /* Assets.xcassets in Resources */,
+				26907291227C3048008EDB23 /* sampleRecipeResponse.json in Resources */,
 				2685C1A0222646F400207624 /* ShoppingList.storyboard in Resources */,
 				2674FB7A225434EC005AD287 /* GroceryTrip.storyboard in Resources */,
 			);
@@ -302,19 +406,35 @@
 			files = (
 				2674FB7F22543B6A005AD287 /* Persistence.swift in Sources */,
 				264DFA1A2267E3BF001C0970 /* ShoppingListPersistence.swift in Sources */,
+				2690728F227C3048008EDB23 /* RecipeSearchQuery.swift in Sources */,
 				2685C1BD222647F000207624 /* ShoppingListModel.swift in Sources */,
+				26F9B8FA22781F1100E68D15 /* QueryModel.swift in Sources */,
+				26F9B8F822781A6400E68D15 /* QueryViewController.swift in Sources */,
+				26F9B8E92277FEA600E68D15 /* RecipeNetwork.swift in Sources */,
 				26F55E11226E9B4D007E0CB0 /* GroceryTripModelPersistence.swift in Sources */,
+				26300950227C103100AB2D89 /* BasicJsonURLNetwork.swift in Sources */,
 				2685C19D222646F400207624 /* AddItemViewController.swift in Sources */,
+				26F9B8FC2278234900E68D15 /* QueryTableViewCell.swift in Sources */,
 				2674FB84225443D7005AD287 /* Validation.swift in Sources */,
+				26F9B8E42277F26800E68D15 /* RecipeSearchViewController.swift in Sources */,
+				26907292227C3048008EDB23 /* Query.swift in Sources */,
+				26907290227C3048008EDB23 /* RecipeResult.swift in Sources */,
 				2674FB7D225434EC005AD287 /* GroceryTripModel.swift in Sources */,
 				262236D22238A4BC00B29A19 /* ShoppingListViewController.swift in Sources */,
-				2685C1BF2226486100207624 /* GroceryItem.swift in Sources */,
 				2674FB79225434EC005AD287 /* GroceryTripTableViewCell.swift in Sources */,
+				26F9B90B22798FA600E68D15 /* URLNetworkProtocol.swift in Sources */,
 				26C465312264526800F426BB /* StateController.swift in Sources */,
 				2674FB7B225434EC005AD287 /* AddToCartViewController.swift in Sources */,
+				26F9B8E62277F4F500E68D15 /* RecipeSearchPersistence.swift in Sources */,
+				26907297227C33F0008EDB23 /* GroceryItem.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
 				26F9B8DA226EBCC700E68D15 /* FeedbackView.swift in Sources */,
+				26F9B90F227999B000E68D15 /* ImageNetwork.swift in Sources */,
+				26F9B8F522780D1A00E68D15 /* RecipeTableViewCell.swift in Sources */,
+				26F9B8F0227804E800E68D15 /* RecipeSearchModel.swift in Sources */,
 				26151154223A558B0094EDA4 /* GroceryItemPersistence.swift in Sources */,
+				26F9B9132279A2AA00E68D15 /* AboutViewController.swift in Sources */,
+				26907296227C33F0008EDB23 /* Recipe.swift in Sources */,
 				2674FB7C225434EC005AD287 /* GroceryTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
