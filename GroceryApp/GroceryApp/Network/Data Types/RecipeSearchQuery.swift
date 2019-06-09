@@ -12,28 +12,53 @@ struct RecipeSearchQuery: Query, Codable {
     let query: String
 
     // comma separated list
-    let ingredients: [String]
-
-    init(query: String, ingredients: [GroceryItem]) {
-        self.init(query: query, ingredients: ingredients.map { $0.name })
-    }
+    let ingredients: String
 
     init(query: String, ingredients: [String], page: Int? = nil) {
+        self.init(query: query, ingredients: ingredients.joined(separator: ","), page: page)
+    }
+
+    init(query: String, ingredients: String, page: Int? = nil) {
         self.query = query
         self.ingredients = ingredients
         self.page = page
+
     }
 
     let page: Int?
 
     var urlString: String {
-        // build base query with ingredients
-        var result = "?i=" + ingredients.joined(separator: ",") + "&q=" + query
+        var result = "?"
+        print(result)
 
-        // if a specific page is requested, use it
-        if let page = page {
-            result.append("&p=" + String(page))
+        var needsAnd: Bool = false
+
+        if !ingredients.isEmpty {
+            result.append("i=" + ingredients)
+            needsAnd = true
+            print(result)
+
         }
+
+        if !query.isEmpty {
+            if needsAnd {
+                result.append("&")
+                print(result)
+
+            }
+            result.append("q=" + query)
+            needsAnd = true
+        }
+
+        if let page = page {
+            if needsAnd {
+                result.append("&")
+                print(result)
+
+            }
+            result.append("p=" + String(page))
+        }
+        print(result)
 
         return result
     }

@@ -11,7 +11,7 @@ class BasicJsonURLNetwork<T>: URLNetworkProtocol where T: Decodable {
     let baseURL: String
     let mimeType: String
 
-    init(baseURL: String, mimeType: String = "application/json" ){
+    init(baseURL: String, mimeType: String = "application/json"){
         self.baseURL = baseURL
         self.mimeType = mimeType
     }

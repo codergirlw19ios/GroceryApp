@@ -7,9 +7,9 @@
 
 import UIKit
 
-class RecipeSearchTableViewController: UITableViewController {
+class RecipeSearchViewController: UITableViewController {
 
-    let model = RecipeSearchModel(persistence: RecipeSearchPersistence(filename: "RecipeSearch"), networking: RecipeSearchNetwork())
+    let model = RecipeSearchModel(persistence: RecipeSearchPersistence(filename: "RecipeSearch"), recipeNetwork: RecipeNetwork())
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -19,7 +19,6 @@ class RecipeSearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.clearsSelectionOnViewWillAppear = false
         model.delegate = self
     }
 
@@ -30,7 +29,7 @@ class RecipeSearchTableViewController: UITableViewController {
     }
 }
 
-extension RecipeSearchTableViewController {
+extension RecipeSearchViewController {
 
     // MARK: - Table view data source
 
@@ -56,13 +55,13 @@ extension RecipeSearchTableViewController {
     }
 }
 
-extension RecipeSearchTableViewController: RecipeSearchModelDelegate {
+extension RecipeSearchViewController: RecipeSearchModelDelegate {
     func dataUpdated() {
         tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
 }
 
-extension RecipeSearchTableViewController: QueryViewControllerDelegate {
+extension RecipeSearchViewController: QueryViewControllerDelegate {
     func update(searchQuery: RecipeSearchQuery) {
         model.update(searchQuery: searchQuery)
     }

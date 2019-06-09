@@ -32,7 +32,9 @@ extension URLNetworkProtocol {
     }
 
     func fetch(with query: Query? = nil, completion: @escaping (ResultType?) ->()) {
-        let urlString = query != nil ? baseURL + query!.urlString : baseURL
+        let queryUrlString = query?.urlString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        let urlString = query != nil ? baseURL + queryUrlString : baseURL
+        print(urlString)
         let url = URL(string: urlString)!
 
         let task = URLSession.shared.dataTask(with: url) { data, response, error in

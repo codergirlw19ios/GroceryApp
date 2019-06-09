@@ -24,7 +24,7 @@ class QueryModel {
     }
 
     func addIngredient() {
-        ingredients.append("")
+        ingredients.insert("", at: 0)
     }
 
     func updateSelectedRow(_ ingredient: String) {
@@ -33,5 +33,6 @@ class QueryModel {
         }
 
         ingredients[selectedRow] = ingredient
+        self.selectedRow = nil
     }
 }

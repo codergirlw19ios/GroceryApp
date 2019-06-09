@@ -10,15 +10,15 @@ import UIKit
 
 class Recipe {
     let name: String
-    let link: URL
-    let imageURL: URL?
+    let link: String
+    let imageURL: String?
     let ingredients: [GroceryItem]
 
     // we only fetch the image if we look at the recipe in detail
     var image: UIImage?
 
     init(recipeResult: RecipeResult) {
-        self.name = recipeResult.name
+        self.name = recipeResult.name ?? ""
         self.link = recipeResult.link
         self.imageURL = recipeResult.imageURL
         self.ingredients = recipeResult.ingredients.components(separatedBy: ",").map {
