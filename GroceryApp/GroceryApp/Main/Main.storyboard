@@ -21,6 +21,7 @@
                     <connections>
                         <segue destination="uU4-ix-5LT" kind="relationship" relationship="viewControllers" id="oxc-ma-8lb"/>
                         <segue destination="gJw-fb-dpO" kind="relationship" relationship="viewControllers" id="kNW-8x-vGT"/>
+                        <segue destination="j6L-TV-NZN" kind="relationship" relationship="viewControllers" id="dIb-Vg-AD0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cu5-PS-r2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -47,9 +48,19 @@
             </objects>
             <point key="canvasLocation" x="358" y="-303"/>
         </scene>
+        <!--RecipeFinder-->
+        <scene sceneID="zi5-tT-bgr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RecipeFinder" id="j6L-TV-NZN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Recipe" image="recipe" landscapeImage="recipe" id="cbU-7v-r72"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U1D-Vb-GaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="grocerytrip_tab" width="30" height="30"/>
+        <image name="recipe" width="30" height="30"/>
         <image name="shoppinglist_tab" width="30" height="30"/>
     </resources>
 </document>

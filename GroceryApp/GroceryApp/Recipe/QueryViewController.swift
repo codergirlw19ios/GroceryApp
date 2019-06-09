@@ -15,8 +15,9 @@ class QueryViewController: UIViewController {
     @IBOutlet weak var queryTableView: UITableView!
     @IBOutlet weak var queryTextField: UITextField!
     
-    let model: QueryModel
+    let model = QueryModel(ingredients: [])
     var recipeSearchModel : RecipeSearchModel?
+    var dismissKeyboardGesture: UITapGestureRecognizer?
     
     weak var delegate: QueryViewControllerDelegate?
     var searchButton: UIBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchNewQuery))
@@ -36,7 +37,7 @@ class QueryViewController: UIViewController {
     @objc func searchNewQuery() {
         
         if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1) {
-            var searchQuery = RecipeSearchQuery(name: queryTextField.text ?? "", ingredients: model.ingredients)
+            let searchQuery = RecipeSearchQuery(name: queryTextField.text ?? "", ingredients: model.ingredients)
             recipeSearchModel?.updateSearchQuery(query: searchQuery)
             navigationController?.popViewController(animated: true)
         }
@@ -51,8 +52,19 @@ class QueryViewController: UIViewController {
     @objc func addNewIngredient() {
         queryTableView.beginUpdates()
         queryTableView.insertRows(at: [IndexPath(row: model.getNumberOfIngredients(), section:0)], with: .automatic)
+//        queryTableView.insertRows(at: [IndexPath(row: 0, section:0)], with: .automatic)
         model.addIngredient()
         queryTableView.endUpdates()
+    }
+    
+//    func saveCurrent() {
+//        if(model.row != nil) {
+//            //
+//        }
+//    }
+    
+    @objc func endEditing() {
+        view.endEditing(true)
     }
 }
 
@@ -69,15 +81,21 @@ extension QueryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         model.row = indexPath.row
         let cell = tableView.cellForRow(at: indexPath) as! QueryTableViewCell
-        model.updateIngredient(row: indexPath.row, ingredient: cell.ingredientTextField.text ?? "")
-        //Where is this?
-        model.selectedRow = nil
+        model.updateIngredient(ingredient: cell.ingredientTextField.text ?? "")
+        model.row = nil
         
         //Then use the same validation logic as the save function to
         //determine whether or not to enable the save button.
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1) {
+            searchButton.isEnabled = true
+        }
+    }
+    
 }
+
 
 extension QueryViewController: UITableViewDataSource {
     
@@ -93,16 +111,52 @@ extension QueryViewController: UITableViewDataSource {
         
         let ingredient: String? = model.getIngredient(row: indexPath.row)
         
-        cell.decorateCell(with: ingredient)
+        cell.decorate(ingredient: ingredient)
         
         return cell
     }
     
 }
 
-extension QueryViewController: UITextFieldDelegate {
-    //Conform QueryViewController to UITextFieldDelegate. In textFieldDidEndEditing(_:), use the same validation logic as the save function to determine whether or not to enable the save button.
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        <#code#>
+extension QueryViewController: UITextFieldDelegate, QueryTableViewCellDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        view.addGestureRecognizer(dismissKeyboardGesture!)
+        return true
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (dismissKeyboardGesture != nil) {
+            view.removeGestureRecognizer(dismissKeyboardGesture!)
+        }
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField != queryTextField) {
+            model.updateIngredient(ingredient: textField.text ?? "")
+        }
+        if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1) {
+            searchButton.isEnabled = true
+        }
+        
+    }
+    
+    
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+//        view.addGestureRecognizer(dismissKeyboardGesture!)
+//    }
+    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if (dismissKeyboardGesture != nil) {
+//            view.removeGestureRecognizer(dismissKeyboardGesture!)
+//        }
+//        textField.resignFirstResponder()
+//        return true
+//    }
 }
+
+

@@ -25,7 +25,11 @@ class QueryModel {
         return ingredients[row]
     }
     
-    func updateIngredient(row: Int, ingredient:String) {
+    func updateIngredient(ingredient: String) {
+        guard let row = row else {
+            return
+        }
+        
         ingredients[row] = ingredient
     }
     

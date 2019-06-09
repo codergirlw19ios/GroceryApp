@@ -55,7 +55,7 @@ extension URLNetworkProtocol {
     }
     
     func handleServerError(_ urlResponse: URLResponse?) {
-        print(urlResponse)
+        print(urlResponse?.description ?? "nil")
     }
     
     

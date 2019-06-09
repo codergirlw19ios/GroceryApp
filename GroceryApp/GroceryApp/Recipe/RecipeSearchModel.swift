@@ -17,7 +17,6 @@ class RecipeSearchModel {
     let persistence: RecipeSearchPersistence
     var recipes = [Recipe]() {
         didSet {
-            // notify whoever is listening that we added data to this object
             self.delegate?.dataUpdated()
         }
     }
@@ -32,7 +31,7 @@ class RecipeSearchModel {
             // optional Recipe Array is the return Type
             // func fetch(with query: Query, completion: @escaping ([Recipe]?) -> ()) {
             
-            network.fetch(with: recipeSearchQuery as! RecipeSearchQuery) { optionalRecipeArray in
+            network.fetch(with: recipeSearchQuery) { optionalRecipeArray in
                 self.recipes = optionalRecipeArray ?? [Recipe]()
             }
         }

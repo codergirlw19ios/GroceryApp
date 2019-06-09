@@ -7,10 +7,8 @@
 
 import UIKit
 
-class RecipeSearchTableViewController: UITableViewController, RecipeSearchModelDelegate, QueryViewControllerDelegate {
+class RecipeSearchTableViewController: UITableViewController, RecipeSearchModelDelegate, QueryViewControllerDelegate, UITextFieldDelegate {
     let model = RecipeSearchModel(network: RecipeNetwork(), persistence: RecipeSearchPersistence(filename: "recipes"))
-    
-    var dismissKeyboardGesture: UITapGestureRecognizer?
     
     func dataUpdated() {
         self.tableView.reloadData()
@@ -25,10 +23,18 @@ class RecipeSearchTableViewController: UITableViewController, RecipeSearchModelD
         model.delegate = self
     }
     
-    @objc func endEditing() {
-        view.endEditing(true)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? QueryViewController else {
+            return
+        }
+        
+        destination.delegate = self
     }
     
+//    @objc func endEditing() {
+//        view.endEditing(true)
+//    }
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -58,6 +64,7 @@ class RecipeSearchTableViewController: UITableViewController, RecipeSearchModelD
 
         return cell
     }
+
 
     /*
     // Override to support conditional editing of the table view.

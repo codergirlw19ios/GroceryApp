@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FWG-TE-p2g">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeId" textLabel="2eu-ff-9FA" detailTextLabel="ASN-5L-Wrm" style="IBUITableViewCellStyleSubtitle" id="7FG-QK-ZeZ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeId" textLabel="2eu-ff-9FA" detailTextLabel="ASN-5L-Wrm" style="IBUITableViewCellStyleSubtitle" id="7FG-QK-ZeZ" customClass="RecipeTableViewCell" customModule="GroceryApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7FG-QK-ZeZ" id="0nd-09-ZYD" customClass="RecipeTableViewCell" customModule="GroceryApp" customModuleProvider="target">
@@ -51,7 +51,11 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Recipe" image="recipe" landscapeImage="recipe" id="Xp5-aP-CWQ"/>
                     <navigationItem key="navigationItem" id="75c-Db-1h3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="PC7-Mb-gTc"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="PC7-Mb-gTc">
+                            <connections>
+                                <segue destination="vaq-A2-TGS" kind="show" id="FLp-ye-gw0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -127,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="742-fz-kgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4238" y="-367"/>
+            <point key="canvasLocation" x="4025" y="-72"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rjF-i7-dh5">
@@ -163,7 +167,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KtP-hv-rxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3138.4000000000001" y="-84.107946026986511"/>
+            <point key="canvasLocation" x="3247" y="-72"/>
         </scene>
     </scenes>
     <resources>
