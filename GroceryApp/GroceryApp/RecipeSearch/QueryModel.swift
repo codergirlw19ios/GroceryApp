@@ -22,7 +22,7 @@ class QueryModel {
     init(ingredients: [String])
     {
         self.ingredients = ingredients
-        self.row = 0
+        self.row = -1
     }
     
     func getIngredient(row: Int) -> String {
@@ -31,12 +31,14 @@ class QueryModel {
 
     
     func updateIngredient(name: String) {
-        ingredients[row] = name
+        if row != -1 {
+            ingredients[row] = name
+        }
         //       delegate?.dataUpdated()
     }
     
     func addIngredient(name: String) {
-        ingredients.append(name)
+        ingredients.insert(name, at: 0)
  //       delegate?.dataUpdated()
     }
 }

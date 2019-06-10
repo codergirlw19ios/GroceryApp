@@ -141,7 +141,7 @@ extension GroceryTripViewController: UITableViewDataSource {
         let groceryItem: GroceryItem? = model?.cartItemFor(row: indexPath.row)
 
         cell.decorateCell(with: groceryItem)
-
+            
         return cell
         }
         else if indexPath.section == 1 {

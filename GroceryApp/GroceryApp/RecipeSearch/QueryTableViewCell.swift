@@ -9,7 +9,7 @@ import UIKit
 
 protocol QueryTableViewCellDelegate: class {
     
-   func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason)
+   func textFieldDidEndEditing(_ textField: UITextField)
    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
    func textFieldShouldReturn(_ textField: UITextField) -> Bool
 }
@@ -20,9 +20,7 @@ class QueryTableViewCell: UITableViewCell, QueryTableViewCellDelegate {
     weak var qtvcDelegate: QueryTableViewCellDelegate?
 
     func decorateCell(with ingredient: String?){
-        guard let ingredient = ingredient else {
-            return
-        }
+
         ingredientField.text = ingredient
         ingredientField.delegate = self
  
@@ -43,20 +41,17 @@ class QueryTableViewCell: UITableViewCell, QueryTableViewCellDelegate {
 }
 
 extension QueryTableViewCell: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        if textField == ingredientField {
-     //       let ingredient = try? Validation.notEmpty(textField.text)
-            qtvcDelegate?.textFieldDidEndEditing(textField, reason: reason)
-        }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        qtvcDelegate?.textFieldDidEndEditing(textField)
     }
-    
    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
-        return true
+        return qtvcDelegate?.textFieldShouldBeginEditing(textField) ?? true
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
+        return qtvcDelegate?.textFieldShouldReturn(textField) ?? true
+
     }
 }

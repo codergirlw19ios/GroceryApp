@@ -15,14 +15,12 @@ class QueryViewController: UIViewController {
 
     @IBOutlet weak var queryTableView: UITableView!
     @IBOutlet weak var queryTextField: UITextField!
-    weak var qvcDelegate: QueryViewControllerDelegate?
-    var model: QueryModel?
-    var recipeSearchModel : RecipeSearchModel?  // passed in via segue
+    weak var qvcDelegate: QueryViewControllerDelegate?// set to the RecipeSearchViewController
+    let model = QueryModel(ingredients: [])
+
     
-//    let searchButton = UIBarButtonItem.init(title: "Search", style: .plain, target: self, action: #selector(searchNewQuery))
-//
-//    let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewQuery))
-//
+    let searchButton = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchNewQuery))
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,17 +28,15 @@ class QueryViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = (UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewIngredient)))
         
-       self.navigationItem.setLeftBarButtonItems([UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewQuery)), UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchNewQuery)) ], animated: false)
+       self.navigationItem.setLeftBarButtonItems([UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewQuery)), searchButton  ], animated: false)
         
-        model = QueryModel(ingredients: [])
         queryTableView.dataSource = self
         queryTableView.delegate = self
         queryTextField.delegate = self
-        // set the controllers delegate to QueryViewController
-        // i.e.  QueryViewController is listening to whatever events the QueryViewController delegate will raise
-        // QUESTION  Why not just call the recipeSearchModel.updateRecipeSearchQuery directly instead of using 2 delegates
-        qvcDelegate = self
-        model?.delegate = self
+
+        model.delegate = self
+        
+        searchButton.isEnabled = false
         
     }
     
@@ -50,21 +46,20 @@ class QueryViewController: UIViewController {
             return
         }
         
-        if (model?.ingredientCount ?? 0 < 1 ) {
+        if (model.ingredientCount < 1 ) {
             return
         }
         
+        saveCurrentIngredient()
+        
         // Gather info from the fields and construct the query
         // This triggers the fetch
-        var searchQuery = RecipeSearchQuery(query: queryText, ingredients: (model?.ingredients)!)
+        let searchQuery = RecipeSearchQuery(query: queryText, ingredients: model.ingredients)
         
-        // QUESTION  Why not just call the recipeSearchModel.updateRecipeSearchQuery directly instead of using 2 delegates
         // trigger the delegate to update Recipe Search model
-   //     qvcDelegate?.updateRSModel(searchQuery: searchQuery)
+        qvcDelegate?.updateRSModel(searchQuery: searchQuery)
         
-        // is the
-        recipeSearchModel?.updateRecipeSearchQuery(query: searchQuery)
-        navigationController?.popViewController(animated: true)
+         navigationController?.popViewController(animated: true)
     }
 
     @objc func cancelNewQuery() {
@@ -73,10 +68,11 @@ class QueryViewController: UIViewController {
     
     @objc func addNewIngredient() {
         
+        saveCurrentIngredient()
         queryTableView.beginUpdates()
-        queryTableView.insertRows(at: [IndexPath(row: recipeSearchModel?.recipeCount ?? 0, section: 0)], with: .automatic)
+        queryTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         // add an ingredient so it returns 1 when asked
-        model?.addIngredient(name: "")
+        model.addIngredient(name: "")
         queryTableView.endUpdates()
     }
     /*
@@ -89,15 +85,18 @@ class QueryViewController: UIViewController {
     }
     */
 
-}
-
-// Listening for the updateRSModel event/delegate from QVCController
-extension QueryViewController: QueryViewControllerDelegate {
+    func saveCurrentIngredient() {
     
-    func updateRSModel(searchQuery: RecipeSearchQuery) {
-        recipeSearchModel?.updateRecipeSearchQuery(query: searchQuery)
-    }
+        if model.row == -1 {
+            return
+        }
         
+        guard let cell = queryTableView.cellForRow(at: IndexPath(row: model.row, section: 0)) as? QueryTableViewCell else {
+            return
+        }
+        
+        model.updateIngredient(name: cell.ingredientField.text ?? "")
+    }
 }
 
 extension QueryViewController: QueryDelegate {
@@ -111,12 +110,13 @@ extension QueryViewController: QueryDelegate {
 extension QueryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // handle selecting a row for editing
-        model?.row = indexPath.row
+        model.row = indexPath.row
         guard let cell = tableView.cellForRow(at: indexPath) as? QueryTableViewCell else {
             return
         }
         
-        model?.updateIngredient(name: cell.ingredientField.text!)
+        model.updateIngredient(name: cell.ingredientField.text!)
+        model.row = -1
        
     }
 }
@@ -124,7 +124,7 @@ extension QueryViewController : UITableViewDelegate {
 extension QueryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.ingredientCount ?? 0
+        return model.ingredientCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -134,36 +134,38 @@ extension QueryViewController: UITableViewDataSource {
         }
             
         // retrieve the grocery item for this index path
-        let ingredient: String? = model?.getIngredient(row: indexPath.row)
-        model?.row = indexPath.row
-        cell.decorateCell(with: ingredient)
+        let ingredient: String? = model.getIngredient(row: indexPath.row)
+        model.row = indexPath.row
         cell.qtvcDelegate = self
+
+        cell.decorateCell(with: ingredient)
+        // alternative way for the Controller to handle events from cell...
+ //       cell.ingredientField.delegate = self
         
+        cell.ingredientField.becomeFirstResponder()
         return cell
     }
     
 }
 
 extension QueryViewController: UITextFieldDelegate, QueryTableViewCellDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        if textField == queryTextField {
-            view.layoutIfNeeded()
-        //    generateModel()
-        } else {
-            // must be an ingredient
-            if !textField.text!.isEmpty {
-                model?.updateIngredient(name: textField.text!)
-            }
-            
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if let query = queryTextField.text, !query.isEmpty || model.ingredientCount > 0 {
+            searchButton.isEnabled = true
         }
-
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+
         return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField != queryTextField {
+            model.updateIngredient(name: textField.text ?? "")
+        }
         textField.resignFirstResponder()
         return true
     }
