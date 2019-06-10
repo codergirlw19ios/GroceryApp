@@ -9,17 +9,18 @@ import Foundation
 import UIKit
 
 class RecipeNetwork: URLNetworkProtocol {
+    func result(from data: Data) -> Recipe? {
+        return nil
+    }
+    
+    typealias ResultType = Recipe
     var mimeType: String = "application/json"
     let baseURL: String = "http://www.recipepuppy.com/api/"
 //    private let network = BasicJsonURLNetork <RecipeSearchResult>(baseURL: "http://recipepuppy.com/api")
     let network: BasicJsonURLNetwork<RecipeSearchResult>
     
     init() {
-        self.network = BasicJsonURLNetwork.init(baseURL: baseURL, mimeType: mimeType)
-    }
-    
-    func result(from data: Data) -> [Recipe]? {
-        return nil
+        self.network = BasicJsonURLNetwork<RecipeSearchResult>(baseURL: baseURL, mimeType: mimeType)
     }
     
     func result(from searchResult: RecipeSearchResult?) -> [Recipe]? {

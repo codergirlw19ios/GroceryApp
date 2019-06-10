@@ -16,7 +16,6 @@ class QueryViewController: UIViewController {
     @IBOutlet weak var queryTextField: UITextField!
     
     let model = QueryModel(ingredients: [])
-    var recipeSearchModel : RecipeSearchModel?
     var dismissKeyboardGesture: UITapGestureRecognizer?
     
     weak var delegate: QueryViewControllerDelegate?
@@ -26,9 +25,12 @@ class QueryViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.title = "New Query"
-        self.navigationItem.setLeftBarButtonItems([UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewQuery)), UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchNewQuery))], animated: true)
+        
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewIngredient))
+        
+        self.navigationItem.setLeftBarButtonItems([UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewQuery)), UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchNewQuery))], animated: true)
+        
         searchButton.isEnabled = false
         queryTableView.delegate = self
         queryTableView.dataSource = self
@@ -36,9 +38,10 @@ class QueryViewController: UIViewController {
     }
     @objc func searchNewQuery() {
         
-        if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1) {
+        if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1)
+            {
             let searchQuery = RecipeSearchQuery(name: queryTextField.text ?? "", ingredients: model.ingredients)
-            recipeSearchModel?.updateSearchQuery(query: searchQuery)
+                delegate?.updateSearchQuery(searchQuery: searchQuery)
             navigationController?.popViewController(animated: true)
         }
         
@@ -66,14 +69,6 @@ class QueryViewController: UIViewController {
     @objc func endEditing() {
         view.endEditing(true)
     }
-}
-
-extension  QueryViewController: QueryViewControllerDelegate {
-    func updateSearchQuery(searchQuery: RecipeSearchQuery) {
-        recipeSearchModel?.updateSearchQuery(query: searchQuery)
-    }
-    
-    
 }
 
 extension QueryViewController : UITableViewDelegate {

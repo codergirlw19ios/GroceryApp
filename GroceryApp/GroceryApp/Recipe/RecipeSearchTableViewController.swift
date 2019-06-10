@@ -18,9 +18,10 @@ class RecipeSearchTableViewController: UITableViewController, RecipeSearchModelD
     //Write a prepare(for:sender:) segue function for
     //destination as QueryViewController and set delegate to self. On the storyboard, /create a push
     //segue from the Search UIBarButtonItem to the QueryViewController.
+    
+    // MARK: - QueryViewControllerDelegate method
     func updateSearchQuery(searchQuery: RecipeSearchQuery) {
         model.updateSearchQuery(query: searchQuery)
-        model.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

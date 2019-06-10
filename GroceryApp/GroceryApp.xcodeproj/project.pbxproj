@@ -37,7 +37,6 @@
 		BE78DF18228DF93C009A993A /* RecipeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78DF17228DF93C009A993A /* RecipeNetwork.swift */; };
 		BE78DF1A228F69C9009A993A /* RecipeSearchPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78DF19228F69C9009A993A /* RecipeSearchPersistence.swift */; };
 		BE78DF1C228F6BEB009A993A /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78DF1B228F6BEB009A993A /* RecipeSearchModel.swift */; };
-		BE78DF1E2293235A009A993A /* RecipeSearchViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78DF1D2293235A009A993A /* RecipeSearchViewController1.swift */; };
 		BE78DF2222949206009A993A /* RecipeFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE78DF2122949206009A993A /* RecipeFinder.storyboard */; };
 		BE78DF2422949AB8009A993A /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78DF2322949AB8009A993A /* RecipeTableViewCell.swift */; };
 		BE78DF262295DF9F009A993A /* QueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78DF252295DF9F009A993A /* QueryModel.swift */; };
@@ -93,7 +92,6 @@
 		BE78DF17228DF93C009A993A /* RecipeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetwork.swift; sourceTree = "<group>"; };
 		BE78DF19228F69C9009A993A /* RecipeSearchPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchPersistence.swift; sourceTree = "<group>"; };
 		BE78DF1B228F6BEB009A993A /* RecipeSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchModel.swift; sourceTree = "<group>"; };
-		BE78DF1D2293235A009A993A /* RecipeSearchViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchViewController1.swift; sourceTree = "<group>"; };
 		BE78DF2122949206009A993A /* RecipeFinder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipeFinder.storyboard; sourceTree = "<group>"; };
 		BE78DF2322949AB8009A993A /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		BE78DF252295DF9F009A993A /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 			children = (
 				BE78DF15228CDED6009A993A /* RecipeFinder.swift */,
 				BE78DF1B228F6BEB009A993A /* RecipeSearchModel.swift */,
-				BE78DF1D2293235A009A993A /* RecipeSearchViewController1.swift */,
 				BE78DF2122949206009A993A /* RecipeFinder.storyboard */,
 				BE78DF2322949AB8009A993A /* RecipeTableViewCell.swift */,
 				BE78DF252295DF9F009A993A /* QueryModel.swift */,
@@ -383,7 +380,6 @@
 				2674FB79225434EC005AD287 /* GroceryTripTableViewCell.swift in Sources */,
 				26C465312264526800F426BB /* StateController.swift in Sources */,
 				2674FB7B225434EC005AD287 /* AddToCartViewController.swift in Sources */,
-				BE78DF1E2293235A009A993A /* RecipeSearchViewController1.swift in Sources */,
 				2685C19B222646F400207624 /* AppDelegate.swift in Sources */,
 				BE7A2FDB2277D15200A93C4E /* FeedbackView.swift in Sources */,
 				BE665A28228115EB00C71D91 /* ImageNetwork.swift in Sources */,
