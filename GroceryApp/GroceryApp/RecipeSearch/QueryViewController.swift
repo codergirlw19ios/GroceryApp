@@ -87,11 +87,11 @@ class QueryViewController: UIViewController {
 
     func saveCurrentIngredient() {
     
-        if model.row == -1 {
+        if model.row == nil {
             return
         }
         
-        guard let cell = queryTableView.cellForRow(at: IndexPath(row: model.row, section: 0)) as? QueryTableViewCell else {
+        guard let cell = queryTableView.cellForRow(at: IndexPath(row: model.row!, section: 0)) as? QueryTableViewCell else {
             return
         }
         

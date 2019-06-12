@@ -43,7 +43,6 @@ class RecipeSearchModel {
                 optionalRecipeArray in
                 self.recipes = optionalRecipeArray ?? [Recipe]()
                 
-                let string = "help"
             }
         }
     }

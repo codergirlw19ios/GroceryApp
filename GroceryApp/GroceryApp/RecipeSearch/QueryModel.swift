@@ -16,13 +16,14 @@ class QueryModel {
 
     weak var delegate: QueryDelegate?
     var ingredients: [String]
-    var row: Int
+    var row: Int?
     var ingredientCount: Int { return ingredients.count }
     
     init(ingredients: [String])
     {
         self.ingredients = ingredients
         self.row = -1
+        self.row = nil
     }
     
     func getIngredient(row: Int) -> String {
@@ -31,8 +32,8 @@ class QueryModel {
 
     
     func updateIngredient(name: String) {
-        if row != -1 {
-            ingredients[row] = name
+        if row != nil {
+            ingredients[row!] = name
         }
         //       delegate?.dataUpdated()
     }

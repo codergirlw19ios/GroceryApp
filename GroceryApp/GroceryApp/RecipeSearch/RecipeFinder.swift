@@ -8,6 +8,26 @@
 import Foundation
 import UIKit
 
+//{
+//    "title": "Recipe Puppy",
+//    "version": 0.1,
+//    "href": "http://www.recipepuppy.com/",
+//    "results": [
+//    {
+//    "title": "Egg Noodle Omlet Recipe",
+//    "href": "http://www.grouprecipes.com/63652/egg-noodle-omlet.html",
+//    "ingredients": "bacon, cheese, eggs, noodles, onions",
+//    "thumbnail": ""
+//    }
+//    ]
+//}
+struct RecipeSearchResult: Decodable {
+    let title: String
+    let version: Double
+    let href: String
+    let results: [RecipeResult]
+}
+
 struct RecipeResult: Decodable {
     let name: String?
     let link: String
@@ -22,12 +42,7 @@ struct RecipeResult: Decodable {
     }
 }
 
-struct RecipeSearchResult: Decodable {
-    let title: String
-    let version: Double
-    let href: String
-    let results: [RecipeResult]
-}
+
 
 class Recipe {
 
