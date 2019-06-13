@@ -14,7 +14,7 @@ struct RecipeResult: Decodable {
     let ingredients: String
     let imageURL: String?
     
-    enum Codingkeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case name = "title"
         case link = "href"
         case ingredients = "ingredients"

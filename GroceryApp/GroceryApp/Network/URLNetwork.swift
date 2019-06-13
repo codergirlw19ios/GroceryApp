@@ -25,6 +25,7 @@ extension URLNetworkProtocol {
         let queryUrlString = query?.urlString().addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
         let urlString = query != nil ? baseURL + queryUrlString : baseURL
         let url = URL(string: urlString)!
+//        let url = URL(string: "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=1")!
         print(url)
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {

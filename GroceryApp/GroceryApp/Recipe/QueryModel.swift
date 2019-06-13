@@ -21,7 +21,8 @@ class QueryModel {
         return ingredients.count
     }
     
-    func getIngredient(row: Int) -> String {
+    func getIngredient(row: Int) -> String? {
+        guard row < getNumberOfIngredients() else { return nil }
         return ingredients[row]
     }
     
@@ -31,10 +32,11 @@ class QueryModel {
         }
         
         ingredients[row] = ingredient
+        self.row = nil
     }
     
     func addIngredient() {
-        ingredients.append("")
+        ingredients.insert("", at: 0)
     }
     
     

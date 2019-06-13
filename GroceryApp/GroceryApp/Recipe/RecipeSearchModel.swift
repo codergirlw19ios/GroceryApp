@@ -24,19 +24,32 @@ class RecipeSearchModel {
     
     
     var recipeSearchQuery: RecipeSearchQuery? {
+//        didSet {
+//            guard let query = recipeSearchQuery else { return }
+//            persistence.writeRecipeSearchQuery(query)
+//            //func fetch (completion: @escaping (ResultType?) -> () )
+//            // optional Recipe Array is the return Type
+//            // func fetch(with query: Query, completion: @escaping ([Recipe]?) -> ()) {
+//
+//            network.fetch(with: recipeSearchQuery) { optionalRecipeArray in
+//                self.recipes = optionalRecipeArray ?? [Recipe]()
+//            }
+//        }
+        
         didSet {
-            guard let query = recipeSearchQuery else { return }
-            persistence.writeRecipeSearchQuery(query)
+            persistence.write(recipeSearchQuery)
             //func fetch (completion: @escaping (ResultType?) -> () )
             // optional Recipe Array is the return Type
             // func fetch(with query: Query, completion: @escaping ([Recipe]?) -> ()) {
-            
-            network.fetch(with: recipeSearchQuery) { optionalRecipeArray in
+            // The recipeNetwork calls the
+            // base class for recipepuppy is a URLNetwork ( fetch )
+            // private let network = BasicJsonURLNetork <RecipeSearchResult>(baseURL: "http://recipepuppy.com/api")
+            network.fetch(with: recipeSearchQuery as! RecipeSearchQuery){
+                optionalRecipeArray in
                 self.recipes = optionalRecipeArray ?? [Recipe]()
             }
-        }
     }
-    
+    }
 
     init(network: RecipeNetwork, persistence: RecipeSearchPersistence) {
         self.network = network

@@ -37,7 +37,7 @@ class QueryViewController: UIViewController {
         queryTextField.delegate = self
     }
     @objc func searchNewQuery() {
-        
+        saveCurrent()
         if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1)
             {
             let searchQuery = RecipeSearchQuery(name: queryTextField.text ?? "", ingredients: model.ingredients)
@@ -53,18 +53,21 @@ class QueryViewController: UIViewController {
     }
     
     @objc func addNewIngredient() {
+        saveCurrent()
         queryTableView.beginUpdates()
-        queryTableView.insertRows(at: [IndexPath(row: model.getNumberOfIngredients(), section:0)], with: .automatic)
-//        queryTableView.insertRows(at: [IndexPath(row: 0, section:0)], with: .automatic)
+//        queryTableView.insertRows(at: [IndexPath(row: model.getNumberOfIngredients(), section:0)], with: .automatic)
+        queryTableView.insertRows(at: [IndexPath(row: 0, section:0)], with: .automatic)
         model.addIngredient()
         queryTableView.endUpdates()
     }
     
-//    func saveCurrent() {
-//        if(model.row != nil) {
-//            //
-//        }
-//    }
+    func saveCurrent() {
+        if model.row != nil {
+            let cell = queryTableView.cellForRow(at: IndexPath(row: model.row!, section: 0)) as? QueryTableViewCell
+            model.updateIngredient(ingredient: cell?.ingredientTextField.text ?? "")
+        }
+    }
+
     
     @objc func endEditing() {
         view.endEditing(true)
@@ -120,23 +123,43 @@ extension QueryViewController: UITextFieldDelegate, QueryTableViewCellDelegate {
         return true
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (dismissKeyboardGesture != nil) {
-            view.removeGestureRecognizer(dismissKeyboardGesture!)
-        }
-        textField.resignFirstResponder()
-        return true
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if (dismissKeyboardGesture != nil) {
+//            view.removeGestureRecognizer(dismissKeyboardGesture!)
+//        }
+//        textField.resignFirstResponder()
+//        return true
+//    }
     
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if (textField != queryTextField) {
+//            model.updateIngredient(ingredient: textField.text ?? "")
+//        }
+//        if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1) {
+//            searchButton.isEnabled = true
+//        }
+//
+//    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField != queryTextField) {
-            model.updateIngredient(ingredient: textField.text ?? "")
-        }
-        if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1) {
+        if let query = queryTextField.text, !query.isEmpty || model.getNumberOfIngredients() > 0 {
             searchButton.isEnabled = true
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let gesture = dismissKeyboardGesture {
+            view.removeGestureRecognizer(gesture)
+            dismissKeyboardGesture = nil
+        }
         
+        if textField != queryTextField {
+            model.updateIngredient(ingredient: textField.text ?? "")
+        }
+        
+        textField.resignFirstResponder()
+        return true
     }
     
     
