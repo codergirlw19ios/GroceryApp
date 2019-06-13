@@ -24,12 +24,12 @@ class QueryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "New Query"
+        navigationItem.title = "New Query"
         
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewIngredient))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewIngredient))
         
-        self.navigationItem.setLeftBarButtonItems([UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewQuery)), UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchNewQuery))], animated: true)
+        navigationItem.setLeftBarButtonItems([UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewQuery)), searchButton], animated: true)
         
         searchButton.isEnabled = false
         queryTableView.delegate = self
@@ -40,6 +40,7 @@ class QueryViewController: UIViewController {
         saveCurrent()
         if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1)
             {
+            print(model.ingredients)
             let searchQuery = RecipeSearchQuery(name: queryTextField.text ?? "", ingredients: model.ingredients)
                 delegate?.updateSearchQuery(searchQuery: searchQuery)
             navigationController?.popViewController(animated: true)
@@ -78,16 +79,24 @@ extension QueryViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         model.row = indexPath.row
-        let cell = tableView.cellForRow(at: indexPath) as! QueryTableViewCell
-        model.updateIngredient(ingredient: cell.ingredientTextField.text ?? "")
-        model.row = nil
+        let cell = tableView.cellForRow(at: indexPath) as? QueryTableViewCell
+//        model.updateIngredient(ingredient: cell.ingredientTextField.text ?? "")
+        cell?.ingredientTextField.becomeFirstResponder()
+//        model.row = nil
         
         //Then use the same validation logic as the save function to
         //determine whether or not to enable the save button.
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1) {
+//        if ((queryTextField != nil && queryTextField.text != "") || model.getNumberOfIngredients() >= 1) {
+//            searchButton.isEnabled = true
+//        }
+        let cell = tableView.cellForRow(at: indexPath) as? QueryTableViewCell
+        
+        model.updateIngredient(ingredient: cell?.ingredientTextField.text ?? "")
+        
+        if let query = queryTextField.text, !query.isEmpty || model.getNumberOfIngredients() > 0 {
             searchButton.isEnabled = true
         }
     }
@@ -106,9 +115,10 @@ extension QueryViewController: UITableViewDataSource {
         guard let cell = queryTableView.dequeueReusableCell(withIdentifier: "ingredientTableCellId", for: indexPath) as? QueryTableViewCell else {
             return UITableViewCell()
         }
-        
+        model.row = indexPath.row
         let ingredient: String? = model.getIngredient(row: indexPath.row)
-        
+        cell.delegate = self
+        cell.ingredientTextField.becomeFirstResponder()
         cell.decorate(ingredient: ingredient)
         
         return cell
